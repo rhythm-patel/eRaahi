@@ -42,7 +42,7 @@
   <widget class="QPlainTextEdit" name="Heading">
    <property name="geometry">
     <rect>
-     <x>180</x>
+     <x>200</x>
      <y>10</y>
      <width>104</width>
      <height>31</height>
