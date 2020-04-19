@@ -1,6 +1,6 @@
 import mysql.connector
 
-class backend:
+class backendHotel:
 	def __init__(self):
 		self.mydb = mysql.connector.connect(host="localhost",user="root",passwd="admin",database = 'finalproject',auth_plugin='mysql_native_password')
 		self.mycursor = self.mydb.cursor(buffered=True)
