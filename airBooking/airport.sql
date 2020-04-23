@@ -1,0 +1,66 @@
+CREATE TABLE airport(
+   id      INTEGER  NOT NULL PRIMARY KEY 
+  ,country VARCHAR(40) NOT NULL
+  ,city    VARCHAR(25) NOT NULL
+  ,name    VARCHAR(60) NOT NULL
+);
+INSERT INTO airport(id,country,city,name) VALUES (1,'France','Borgo','Poretta Airport');
+INSERT INTO airport(id,country,city,name) VALUES (2,'Spain','S Esteban','La Coruna Airport');
+INSERT INTO airport(id,country,city,name) VALUES (3,'Barbados','Bridgetown','Grantley Adams International Airport');
+INSERT INTO airport(id,country,city,name) VALUES (4,'Canada','Fredericton','Fredericton Airport');
+INSERT INTO airport(id,country,city,name) VALUES (5,'New Zealand','Timaru','Richard Pearse Airport');
+INSERT INTO airport(id,country,city,name) VALUES (6,'Mexico','Castillo de Teayo','Tajin Airport');
+INSERT INTO airport(id,country,city,name) VALUES (7,'Mexico','Petatlan','Ixtapa Zihuatanejo International Airport');
+INSERT INTO airport(id,country,city,name) VALUES (8,'Philippines','Cebu','Lahug Airport');
+INSERT INTO airport(id,country,city,name) VALUES (9,'Canada','Ottawa','Ottawa International Airport');
+INSERT INTO airport(id,country,city,name) VALUES (10,'Grenada','Grenada','Point Salines International Airport');
+INSERT INTO airport(id,country,city,name) VALUES (11,'United States','Plattsburgh','Plattsburgh Air Force Base');
+INSERT INTO airport(id,country,city,name) VALUES (12,'Brazil','Guarulhos','Governador Andre Franco Montoro International Ai');
+INSERT INTO airport(id,country,city,name) VALUES (13,'Chile','Hualpencillo','Carriel Sur International Airport');
+INSERT INTO airport(id,country,city,name) VALUES (14,'Spain','Manises','Valencia Airport');
+INSERT INTO airport(id,country,city,name) VALUES (15,'France','Aix-les-milles','Aix Les Milles Airport');
+INSERT INTO airport(id,country,city,name) VALUES (16,'United States','Charleston','Yeager Airport');
+INSERT INTO airport(id,country,city,name) VALUES (17,'Denmark','Sonderborg','Sonderborg Airport');
+INSERT INTO airport(id,country,city,name) VALUES (18,'Venezuela','Pampatar','Del Caribe International Airport');
+INSERT INTO airport(id,country,city,name) VALUES (19,'China','Xianyang','Hsien Yang Airport');
+INSERT INTO airport(id,country,city,name) VALUES (20,'Iran','Urmieh','Uromiyeh Airport');
+INSERT INTO airport(id,country,city,name) VALUES (21,'Madagascar','Antalaha','Madagascar');
+INSERT INTO airport(id,country,city,name) VALUES (22,'Finland','Pitkaniemi','Tampere Pirkkala Airport');
+INSERT INTO airport(id,country,city,name) VALUES (23,'United States','Latrobe','Westmoreland County Airport');
+INSERT INTO airport(id,country,city,name) VALUES (24,'Romania','Croiova','Craiova Airport');
+INSERT INTO airport(id,country,city,name) VALUES (25,'Netherlands Antilles','Kralendijk','Flamingo Airport');
+INSERT INTO airport(id,country,city,name) VALUES (26,'United States','Milan','Gibson County Airport');
+INSERT INTO airport(id,country,city,name) VALUES (27,'United States','Anvik','Anvik Airport');
+INSERT INTO airport(id,country,city,name) VALUES (28,'United States','Kamuela','Waimea Kohala Airport');
+INSERT INTO airport(id,country,city,name) VALUES (29,'Canada','Saskatoon','John G Diefenbaker International Airport');
+INSERT INTO airport(id,country,city,name) VALUES (30,'Sudan','Atbara','Atbara');
+INSERT INTO airport(id,country,city,name) VALUES (31,'Romania','Kustenje','Constanta Mihail Kogalniceanu Airport');
+INSERT INTO airport(id,country,city,name) VALUES (32,'Cook Islands','Avarua','Rarotonga International Airport');
+INSERT INTO airport(id,country,city,name) VALUES (33,'Norway','Kristiansund Nord','Kristiansund Kvernberget Airport');
+INSERT INTO airport(id,country,city,name) VALUES (34,'China','Wanggezhuang','Liuting Airport');
+INSERT INTO airport(id,country,city,name) VALUES (35,'United States','Hoonah','Hoonah Airport');
+INSERT INTO airport(id,country,city,name) VALUES (36,'Saint Vincent and the Grenadines','Kingstown','E T Joshua Airport');
+INSERT INTO airport(id,country,city,name) VALUES (37,'Turkmenistan','Ashgabat','Ashkhabad Northwest Airport');
+INSERT INTO airport(id,country,city,name) VALUES (38,'Norway','Sandene','Sandane Airport');
+INSERT INTO airport(id,country,city,name) VALUES (39,'United States','Woodruff','Lakelan-Noble F. Lee Memerial Field Airport');
+INSERT INTO airport(id,country,city,name) VALUES (40,'India','Dimapur','Dimapur Airport');
+INSERT INTO airport(id,country,city,name) VALUES (41,'Namibia','Windhoek','Eros Airport');
+INSERT INTO airport(id,country,city,name) VALUES (42,'Mexico','Chetumal','Chetumal International Airport');
+INSERT INTO airport(id,country,city,name) VALUES (43,'United States','Ruby','Ruby Airport');
+INSERT INTO airport(id,country,city,name) VALUES (44,'United States','Kalskag','Kalskag');
+INSERT INTO airport(id,country,city,name) VALUES (45,'Australia','Birdsville','Birdsville Airport');
+INSERT INTO airport(id,country,city,name) VALUES (46,'Anguilla','Anguilla','Wallblake Airport');
+INSERT INTO airport(id,country,city,name) VALUES (47,'New Zealand','Hokitika','Hokitika Airport');
+INSERT INTO airport(id,country,city,name) VALUES (48,'United States','East Haven','Tweed New Haven Airport');
+INSERT INTO airport(id,country,city,name) VALUES (49,'Russia','Novosibirsk','Tolmachevo Airport');
+INSERT INTO airport(id,country,city,name) VALUES (50,'Japan','Naha-shi','Shimojishima Airport');
+INSERT INTO airport(id,country,city,name) VALUES (51,'Philippines','Masbate','Masbate Airport');
+INSERT INTO airport(id,country,city,name) VALUES (52,'United States','Anaktuvuk Pass','Anaktuvuk Pass Airport');
+INSERT INTO airport(id,country,city,name) VALUES (53,'Mexico','Puerto Vallarta','Lic Gustavo Diaz Ordaz International Airport');
+INSERT INTO airport(id,country,city,name) VALUES (54,'United States','Loveland','Fort Collins Loveland Municipal Airport');
+INSERT INTO airport(id,country,city,name) VALUES (55,'United States','Gustavus','Gustavus Airport');
+INSERT INTO airport(id,country,city,name) VALUES (56,'Norway','Sandefjord','Torp Airport');
+INSERT INTO airport(id,country,city,name) VALUES (57,'Chile','Osorno','Canal Bajo Carlos H Siebert Airport');
+INSERT INTO airport(id,country,city,name) VALUES (58,'Canada','Winisk','Moosonee Airport');
+INSERT INTO airport(id,country,city,name) VALUES (59,'South Africa','East London','Ben Schoeman Airport');
+INSERT INTO airport(id,country,city,name) VALUES (60,'India','Tarapur','Kumbhirgram Airport');

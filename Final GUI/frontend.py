@@ -230,12 +230,272 @@ class Ui_MainWindow(object):
 
         self.mybackendHotel = backendHotel()
         self.mybackendAttraction = backendAttraction()
-
+        self.mybackendFlight = backendFlight()
         self.sortButton.setPopupMode(QtWidgets.QToolButton.InstantPopup)
 
         # UPDATED. DYNAMIC SORT MENU
         self.hotelButton.clicked.connect(self.bufferFuncHotel)
         self.attractionButton.clicked.connect(self.sortMenuItemsAttraction)
+        self.airlinesButton.clicked.connect(self.airlineInitializer)
+    class FlightWidget(QtWidgets.QWidget):
+        def __init__(self, outer, parent=None):
+            super(outer.FlightWidget, self).__init__(parent)
+            self.outer = outer
+            self.box = QtWidgets.QVBoxLayout()
+            self.id = QtWidgets.QLabel()
+            self.airline = QtWidgets.QLabel()
+            self.airport = QtWidgets.QLabel()
+            self.departure = QtWidgets.QLabel()
+            self.arrival = QtWidgets.QLabel()
+            self.duration = QtWidgets.QLabel()
+            self.numseats = QtWidgets.QLabel()
+            self.bookbutton = QtWidgets.QPushButton()
+            self.bookbutton.setText("Book Now")
+
+            self.h1 = QtWidgets.QHBoxLayout()
+            # self.box.addWidget(self.id)
+            # self.box.addWidget(self.airline)
+            self.h1.addWidget(self.id)
+            self.h1.addWidget(self.airline)
+            self.box.addLayout(self.h1)
+            self.box.addWidget(self.airport)
+            self.h2 = QtWidgets.QHBoxLayout()
+            self.h2.addWidget(self.departure)
+            self.h2.addWidget(self.arrival)
+            self.box.addLayout(self.h2)
+            self.box.addWidget(self.duration)
+            self.box.addWidget(self.numseats)
+            self.box.addWidget(self.bookbutton)
+            
+
+            self.setLayout(self.box)
+
+        def setTextOnAllLabel(self, flight):
+            self.id.setText("Flight No : " + str(flight['id']))
+            self.airline.setText("Airline : " + flight['airline'])
+            self.airport.setText("Destination Airport: " + flight['airport'])
+            self.departure.setText("Departure Time: " + str(flight['departure']))
+            self.arrival.setText("Arrival Time: " + str(flight['arrival']))
+            self.duration.setText("Flight Duration: " + str(flight['duration']))
+            self.numseats.setText("Available Seats: " + str(flight['numseats']))
+            self.bookbutton.clicked.connect(lambda : self.bookingWindow(flight['id'], flight['numseats']))
+            
+
+        def bookingWindow(self, flightNo, numSeats):
+
+            def confirmBooking():
+                # self.mybackend.bookSeats(flightNo, numSeats)
+                selectedSeats = spinbox.value()
+                print("You attempted to book {} seats in Flight No: {}".format(selectedSeats, flightNo))
+                seats = self.outer.mybackendFlight.bookSeats(flightNo, selectedSeats)
+                label1 = QtWidgets.QLabel("Your seat bumbers are as follows :")
+                label2 = QtWidgets.QLabel(str(seats))
+                label.deleteLater()
+                layout.removeWidget(label)
+                spinbox.deleteLater()
+                layout.removeWidget(spinbox)
+                layout.addWidget(label)
+                submitButton.deleteLater()
+                layout.removeWidget(submitButton)
+                layout.addWidget(label1)
+                layout.addWidget(label2)
+                
+                
+                #window.close()
+                #print("Hello")
+            window = QtWidgets.QDialog()
+            window.setObjectName("Confirm Booking")
+            window.setWindowTitle("Confirm Booking")
+            layout = QtWidgets.QVBoxLayout()
+            label = QtWidgets.QLabel("Please select number of seats to be booked.")
+            layout.addWidget(label)
+            submitButton = QtWidgets.QPushButton("Submit")
+            submitButton.setObjectName("Submit")
+            submitButton.clicked.connect(confirmBooking)
+            spinbox = QtWidgets.QSpinBox(window)
+            spinbox.setMaximum(numSeats)
+            spinbox.setMinimum(1)
+            spinbox.valueChanged.connect(lambda : print(spinbox.value()))
+            
+            # print("Selected number of seats: ", selectedSeats)
+            layout.addWidget(spinbox)
+            layout.addWidget(submitButton)
+            window.setLayout(layout)
+            window.setModal(True)
+            window.exec()
+
+    class SearchBoxWidget(QtWidgets.QWidget):
+        def __init__(self,outer, countrybox, citybox, searchbutton, parent=None):
+            super(outer.SearchBoxWidget, self).__init__(parent)
+            
+            self.box = QtWidgets.QHBoxLayout()
+            self.box.addWidget(countrybox)
+            self.box.addWidget(citybox)
+            self.box.addWidget(searchbutton)
+            self.setLayout(self.box)
+
+    def airlineInitializer(self):
+        print("Hello")
+        self.searchResults = []
+
+        def sorter(flag):
+            if (flag==0):
+                self.searchResults = sorted(self.searchResults, key = lambda i : i['duration'])
+            elif (flag == 1):
+                self.searchResults = sorted(self.searchResults, key = lambda i : i['duration'], reverse = True)
+            elif (flag==2):
+                self.searchResults = sorted(self.searchResults, key = lambda i : i['departure'])
+            elif (flag == 3):
+                self.searchResults = sorted(self.searchResults, key = lambda i : i['departure'], reverse = True)
+            elif (flag== 4):
+                self.searchResults = sorted(self.searchResults, key = lambda i : i['arrival'])
+            elif (flag == 5):
+                self.searchResults = sorted(self.searchResults, key = lambda i : i['arrival'], reverse = True)
+            viewResults()
+
+        def sortMenuInitializer():
+            print()
+            sortMenu = QtWidgets.QMenu()
+            
+
+            durationAscAction = QtWidgets.QWidgetAction(sortMenu)
+            self.durationAscButton = QtWidgets.QPushButton(self.centralwidget1)
+            self.durationAscButton.setText("Duration Ascending")
+            self.durationAscButton.clicked.connect(lambda : sorter(0))
+            durationAscAction.setDefaultWidget(self.durationAscButton)
+
+            durationDescAction = QtWidgets.QWidgetAction(sortMenu)
+            self.durationDescButton = QtWidgets.QPushButton(self.centralwidget1)
+            self.durationDescButton.setText("Duration Descending")
+            self.durationDescButton.clicked.connect(lambda : sorter(1))
+            durationDescAction.setDefaultWidget(self.durationDescButton)
+
+            startTimeAscAction = QtWidgets.QWidgetAction(sortMenu)
+            self.startTimeAscButton = QtWidgets.QPushButton(self.centralwidget1)
+            self.startTimeAscButton.setText("Departure Time Ascending")
+            self.startTimeAscButton.clicked.connect(lambda : sorter(2))
+            startTimeAscAction.setDefaultWidget(self.startTimeAscButton)
+
+            startTimeDescAction = QtWidgets.QWidgetAction(sortMenu)
+            self.startTimeDescButton = QtWidgets.QPushButton(self.centralwidget1)
+            self.startTimeDescButton.setText("Departure Time Descending")
+            self.startTimeDescButton.clicked.connect(lambda : sorter(3))
+            startTimeDescAction.setDefaultWidget(self.startTimeDescButton)
+
+            arrivalAscAction = QtWidgets.QWidgetAction(sortMenu)
+            self.arrivalAscButton = QtWidgets.QPushButton(self.centralwidget1)
+            self.arrivalAscButton.setText("Arrival Time Ascending")
+            self.arrivalAscButton.clicked.connect(lambda : sorter(4))
+            arrivalAscAction.setDefaultWidget(self.arrivalAscButton)
+
+            arrivalDescAction = QtWidgets.QWidgetAction(sortMenu)
+            self.arrivalDescButton = QtWidgets.QPushButton(self.centralwidget1)
+            self.arrivalDescButton.setText("Arrival Time Descending")
+            self.arrivalDescButton.clicked.connect(lambda : sorter(5))
+            arrivalDescAction.setDefaultWidget(self.arrivalDescButton)
+
+            
+            sortMenu.addSeparator()
+            sortMenu.addAction(durationAscAction)
+            sortMenu.addAction(durationDescAction)
+            sortMenu.addSeparator()
+            sortMenu.addAction(startTimeAscAction)
+            sortMenu.addAction(startTimeDescAction)
+            sortMenu.addSeparator()
+            sortMenu.addAction(arrivalAscAction)
+            sortMenu.addAction(arrivalDescAction)
+
+            self.sortButton.setMenu(sortMenu)
+
+        def countryOptions():
+            countryBox.addItem("Country")
+            countryBox.addItems(self.mybackendFlight.countries)
+    
+        def cityOptions():
+            k = cityBox.count()
+            print("k:", k)
+            while(k>0):
+                cityBox.removeItem(0)
+                k-=1
+            cityBox.addItems(self.mybackendFlight.cities)
+
+        def printCountry():
+            print(countryBox.currentText())
+            if (countryBox.currentText() != "Country"):
+                k = cityBox.count()
+                print("k:", k)
+                while(k>0):
+                    cityBox.removeItem(0)
+                    k-=1
+                cityBox.addItems(self.mybackendFlight.city4country(countryBox.currentText()))
+            else:
+                cityOptions()
+
+        def viewResults():
+            print(self.searchResults)
+            self.listWidget.clear()
+            sb = self.SearchBoxWidget(self, countryBox, cityBox, searchButton)
+            listWidgetItem = QtWidgets.QListWidgetItem(self.listWidget)
+            listWidgetItem.setSizeHint(sb.sizeHint())
+            self.listWidget.addItem(listWidgetItem)
+            self.listWidget.setItemWidget(listWidgetItem, sb)
+
+            for i in self.searchResults:
+                print(i)
+                fw = self.FlightWidget(self)
+                fw.setTextOnAllLabel(i)
+                listWidgetItem = QtWidgets.QListWidgetItem(self.listWidget)
+                listWidgetItem.setSizeHint(fw.sizeHint())
+                self.listWidget.addItem(listWidgetItem)
+                self.listWidget.setItemWidget(listWidgetItem, fw)
+
+
+        def pushOutput():
+            
+            self.searchResults = self.mybackendFlight.getFlights(cityBox.currentText())
+            print(self.searchResults)
+            viewResults()
+
+        def displayFlightItems():
+            self.listWidget.clear()
+            
+            
+            searchButton.setGeometry(QtCore.QRect(580, 70, 161, 61))
+            searchButton.setStyleSheet("border-right-color: rgb(239, 41, 41);\n"
+                "background-AttractionWidgetcolor: rgb(252, 175, 62);")
+            searchButton.setObjectName("pushButton")
+            searchButton.clicked.connect(pushOutput)
+            ###########################
+            countryBox.setGeometry(QtCore.QRect(35, 60, 131, 41))
+            countryBox.setStyleSheet("background-color: rgb(233, 185, 110);")
+            countryBox.setObjectName("comboBox")
+            countryBox.currentTextChanged.connect(printCountry)
+            
+            ###########################
+
+            #cityBox = QtWidgets.QComboBox()
+            cityBox.setGeometry(QtCore.QRect(185, 60, 131, 41))
+            cityBox.setStyleSheet("background-color: rgb(233, 185, 110);")
+            cityBox.setObjectName("comboBox")
+            countryOptions()
+            cityOptions()
+            listWidgetItem = QtWidgets.QListWidgetItem(self.listWidget)
+            listWidgetItem.setSizeHint(sb.sizeHint())
+            self.listWidget.addItem(listWidgetItem)
+            self.listWidget.setItemWidget(listWidgetItem, sb)
+
+
+        ##########################
+        
+        sortMenuInitializer()
+        searchButton = QtWidgets.QPushButton()
+        searchButton.setText("Search")
+        countryBox = QtWidgets.QComboBox()
+        cityBox = QtWidgets.QComboBox()
+        sb = self.SearchBoxWidget(self,countryBox, cityBox, searchButton)
+        displayFlightItems()
+    ##### flight ends here ######
+
 
     def bufferFuncHotel(self):
         self.sortMenuItemsHotel()
