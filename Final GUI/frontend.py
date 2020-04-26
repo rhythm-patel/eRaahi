@@ -1,7 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from backendHotel import backendHotel
 from backendAttraction import backendAttraction
-from backendRestaurant import backendRestaurant
+from backendRestaurant import backendRestaurant, RSS
 from backendFlight import backendFlight
 
 class AttractionWidget(QtWidgets.QWidget):
@@ -661,6 +661,12 @@ class Ui_MainWindow(object):
         self.likeDescRestButton.clicked.connect(self.likeDescRest)
         likeDescRestAction.setDefaultWidget(self.likeDescRestButton)
 
+        likeDescRestAction = QtWidgets.QWidgetAction(sortMenu)
+        self.ReviewButton = QtWidgets.QPushButton(self.centralwidget1)
+        self.ReviewButton.setText("Reviews")
+        self.ReviewButton.clicked.connect(self.showRRS)
+        likeDescRestAction.setDefaultWidget(self.ReviewButton)
+
         sortMenu.addAction(allRestAction)
         sortMenu.addSeparator()
         sortMenu.addAction(costAscRestAction)
@@ -670,6 +676,10 @@ class Ui_MainWindow(object):
 
         self.sortButton.setMenu(sortMenu)
         self.displayRestaurants()
+
+    def showRRS(self):
+        self.ui = RSS()
+
 
     def displayRestaurants(self):
         self.sortButton.setText("Sort By:")

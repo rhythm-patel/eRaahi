@@ -49,6 +49,9 @@ class backendRestaurant:
         return self.Rest
 
 
+class RSS(QDialog):
+
+    # Text Cleaning
     def clean_text(self, reviews):
         res = []
         for text in reviews:
@@ -97,7 +100,7 @@ class backendRestaurant:
 
     def Process(self, text):
 
-        df = pd.read_csv("DelhiRestaurants.csv")
+        df = pd.read_csv("TEMP/DelhiRestaurants.csv")
         df['Reviews'] = self.clean_text(df['Reviews'])
         user_df = df[['User Id', 'Reviews']]
         venue_df = df[['Venue Id', 'Reviews']]
@@ -116,8 +119,8 @@ class backendRestaurant:
         # userid_rating_matrix = pd.pivot_table(df, values='Likes', index=['User Id'], columns=['Venue Id'])
         # P, Q = self.matrix_factorization(userid_rating_matrix, P, Q, steps=100, gamma=0.001,lamda=0.02)
 
-        P = pd.read_csv("P.csv")
-        Q = pd.read_csv("Q.csv")
+        P = pd.read_csv("TEMP/P.csv")
+        Q = pd.read_csv("TEMP/Q.csv")
         Q = Q.rename(Q.iloc[:, 0])
         Q = Q.iloc[:, 1:]
 
@@ -130,7 +133,7 @@ class backendRestaurant:
 
         predictItemRating = pd.DataFrame(np.dot(test_v_df.loc[0], Q.T), index=Q.index, columns=['Likes'])
         topRecommendations = pd.DataFrame.sort_values(predictItemRating, ['Likes'], ascending=[0])[:3]
-
+        final_df = []
         final_df = pd.DataFrame(columns=['Neighbourhood', 'Neighbourhood Latitude', 'Neighbourhood Longitude',
                                          'Venue', 'Venue Latitude', 'Venue Longitude', 'Venue Category',
                                          'Venue Id', 'Reviews', 'User Id', 'Likes'])
@@ -144,3 +147,46 @@ class backendRestaurant:
         str3 = final_df.iloc[2][3] + " : " + final_df.iloc[2][0]
 
         return("\n".join([str1, str2, str3]))
+
+
+    def __init__(self):
+            super(RSS, self).__init__()
+            uic.loadUi("RRS.ui", self)
+            self.show()
+            self.hello = self.findChild(QTextEdit, "Hello")
+            self.hello.setReadOnly(True)
+            self.inptag = self.findChild(QPlainTextEdit, "Req")
+            self.rectag = self.findChild(QPlainTextEdit, "Rec")
+            self.inp = self.findChild(QPlainTextEdit, "Inp")
+            self.ans = self.findChild(QPlainTextEdit, "Ans")
+            self.ans.setReadOnly(True)
+            self.inptag.setReadOnly(True)
+            self.rectag.setReadOnly(True)
+            self.submit = self.findChild(QPushButton, "Submit")
+            self.submit.clicked.connect(self.click)
+
+    def click(self):
+        text = self.inp.toPlainText()
+        if (text == ""):
+            return True
+        self.ans.insertPlainText("")
+        self.ans.insertPlainText(self.Process(text))
+
+    def matrix_factorization(self, R, P, Q, steps=100, gamma=0.001, lamda=0.02):
+        for step in range(steps):
+            for i in R.index:
+                for j in R.columns:
+                    if R.loc[i, j] > 0:
+                        eij = R.loc[i, j] - np.dot(P.loc[i], Q.loc[j])
+                        P.loc[i] = P.loc[i] + gamma * (eij * Q.loc[j] - lamda * P.loc[i])
+                        Q.loc[j] = Q.loc[j] + gamma * (eij * P.loc[i] - lamda * Q.loc[j])
+            e = 0
+            for i in R.index:
+                for j in R.columns:
+                    if R.loc[i, j] > 0:
+                        e = e + pow(R.loc[i, j] - np.dot(P.loc[i], Q.loc[j]), 2) + lamda * (
+                                pow(np.linalg.norm(P.loc[i]), 2) + pow(np.linalg.norm(Q.loc[j]), 2))
+            if e < 0.001:
+                break
+
+        return P, Q
