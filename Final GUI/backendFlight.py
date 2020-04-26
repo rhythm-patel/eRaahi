@@ -7,7 +7,7 @@ class customer:
 
 class backendFlight:
     def __init__(self):
-        self.mydb = mysql.connector.connect(host = "127.0.0.1", user = "rhuthmos", passwd = "VinayG$2303", database = "test_schema")
+        self.mydb = mysql.connector.connect(host = "127.0.0.1", user = "root", passwd = "40@Vaibhav", database = "dbms")
         self.mycursor = self.mydb.cursor()
         self.countries = []
         self.cities = []
@@ -21,20 +21,20 @@ class backendFlight:
         self.mycursor.execute("Select distinct city from airport order by city")
         for city in self.mycursor:
             self.cities.append(city[0])
-        
+
     def getFlights(self,city):
         print('selected city is {}'.format(city))
-        
+
         queryResult = []
-        
+
         self.mycursor.execute('Select * from flight where dest_airport in (Select id from airport where city = \'{}\')'.format(city))
-        
+
         for i in self.mycursor:
-                   
+
             queryResult.append(i)
-        
+
         result = []
-    
+
         for i in queryResult:
             print(type(i))
             print(i)
@@ -46,11 +46,11 @@ class backendFlight:
         mycity = []
         for city in self.mycursor:
             mycity.append(city[0])
-        
+
         return mycity
     def flightinfo(self, flight_tuple):
 
-           
+
         cursor2 = self.mydb.cursor()
         id = flight_tuple[0]
         cursor2.execute('Select Name from airlines where ID = {}'.format(flight_tuple[1]))
@@ -73,11 +73,11 @@ class backendFlight:
         entry['airline'] = airline
         entry['numseats'] = numseats
         entry['duration'] = arrival-departure
-        
-        
-        
+
+
+
         return entry
-    
+
     def bookSeats(self, flightId, numSeats):
         print("Hello")
         cost = 0
@@ -100,10 +100,10 @@ class backendFlight:
         if (numSeats>availableSeats):
 
             return 1
-        
+
         if (self.mycustomer.balance < cost ):
             return 1
-        
+
         self.mycustomer.balance -= cost
 
         # check seats available return 1 if not enough
@@ -112,7 +112,7 @@ class backendFlight:
 
         # deduct balance
         # mark seats return list of seatsNo
-        
+
         for i in r_id:
             print(i)
             try:
@@ -128,7 +128,7 @@ class AdminBackend:
     def __init__(self):
         self.mydb = mysql.connector.connect(host = "127.0.0.1", user = "rhuthmos", passwd = "VinayG$2303", database = "test_schema")
         self.mycursor = self.mydb.cursor()
-        
+
     def getPassengers(self, flightId):
         result = []
         self.mycursor.execute('select distinct Passenger_id from booking where Flight_id = \'{}\' ;'.format(flightId))
@@ -149,8 +149,7 @@ class AdminBackend:
         indx2+=1
         for i in range(numseats):
             self.mycursor.execute('insert into booking(r_id, Flight_id, Seat_No, Booked, Passenger_id, Cost) values (\'{0}\', \'{1}\',\'{2}\',\'{3}\',\'{4}\', \'{5}\') ;'.format(indx2, indx, i+1, false, NULL, price))
-        
+
     def removeFlight(self, flightid):
         self.mycursor.execute('delete from flight where flight_id =  \'{}\';'.format(flightid))
         self.mycursor.execute('delete from booking where Flight_id = \'{}\''.format(flightid))
-    

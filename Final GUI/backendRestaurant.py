@@ -12,12 +12,43 @@ from nltk.tokenize import WordPunctTokenizer
 import string
 import re
 
+class backendRestaurant:
+    def __init__(self):
+        self.cnx = mysql.connector.connect(user='root', password='40@Vaibhav',host='127.0.0.1', database='dbms')
+        self.cur = self.cnx.cursor(buffered=True)
+        self.getRestaurant()
 
-# import mysql.connector as mdb
+    def getRestaurant(self):
+        self.Rest = []
+        self.cur.execute('select Venue, Venue_Category, Cost, Likes from Venues')
+        for rest in self.cur:
+            self.Rest.append(rest)
+        return self.Rest
 
-class RSS(QDialog):
+    def likeDescRest(self):
+        self.Rest = []
+        self.cur.execute('select Venue, Venue_Category, Cost, Likes from Venues order by Likes Desc')
+        for rest in self.cur:
+            self.Rest.append(rest)
+        return self.Rest
 
-    # Text Cleaning
+    def costAscRest(self):
+        self.Rest = []
+        self.cur.execute(
+            'select Venue, Venue_Category, Cost, Likes from Venues order by Cost')
+        for rest in self.cur:
+            self.Rest.append(rest)
+        return self.Rest
+
+    def costDescRest(self):
+        self.Rest = []
+        self.cur.execute(
+            'select  Venue, Venue_Category, Cost, Likes from Venues order by Cost Desc')
+        for rest in self.cur:
+            self.Rest.append(rest)
+        return self.Rest
+
+
     def clean_text(self, reviews):
         res = []
         for text in reviews:
@@ -113,107 +144,3 @@ class RSS(QDialog):
         str3 = final_df.iloc[2][3] + " : " + final_df.iloc[2][0]
 
         return("\n".join([str1, str2, str3]))
-
-
-    def __init__(self):
-            super(RSS, self).__init__()
-            uic.loadUi("RRS.ui", self)
-            self.show()
-            self.hello = self.findChild(QTextEdit, "Hello")
-            self.hello.setReadOnly(True)
-            self.inptag = self.findChild(QPlainTextEdit, "Req")
-            self.rectag = self.findChild(QPlainTextEdit, "Rec")
-            self.inp = self.findChild(QPlainTextEdit, "Inp")
-            self.ans = self.findChild(QPlainTextEdit, "Ans")
-            self.ans.setReadOnly(True)
-            self.inptag.setReadOnly(True)
-            self.rectag.setReadOnly(True)
-            self.submit = self.findChild(QPushButton, "Submit")
-            self.submit.clicked.connect(self.click)
-
-    def click(self):
-        text = self.inp.toPlainText()
-        if (text == ""):
-            return True
-        self.ans.insertPlainText("")
-        self.ans.insertPlainText(self.Process(text))
-
-    def matrix_factorization(self, R, P, Q, steps=100, gamma=0.001, lamda=0.02):
-        for step in range(steps):
-            for i in R.index:
-                for j in R.columns:
-                    if R.loc[i, j] > 0:
-                        eij = R.loc[i, j] - np.dot(P.loc[i], Q.loc[j])
-                        P.loc[i] = P.loc[i] + gamma * (eij * Q.loc[j] - lamda * P.loc[i])
-                        Q.loc[j] = Q.loc[j] + gamma * (eij * P.loc[i] - lamda * Q.loc[j])
-            e = 0
-            for i in R.index:
-                for j in R.columns:
-                    if R.loc[i, j] > 0:
-                        e = e + pow(R.loc[i, j] - np.dot(P.loc[i], Q.loc[j]), 2) + lamda * (
-                                pow(np.linalg.norm(P.loc[i]), 2) + pow(np.linalg.norm(Q.loc[j]), 2))
-            if e < 0.001:
-                break
-
-        return P, Q
-
-
-class Register(QDialog):
-    def __init__(self):
-        super(Register, self).__init__()
-        uic.loadUi("RegisterForm.ui", self)
-        self.show()
-        self.name = self.findChild(QTextEdit, "Name")
-        self.latitude = self.findChild(QTextEdit, "Latitude")
-        self.longitude = self.findChild(QTextEdit, "Longitude")
-        self.category = self.findChild(QTextEdit, "Category")
-        self.review = self.findChild(QTextEdit, "Review")
-        self.submit = self.findChild(QPushButton, "Submit")
-        self.error = self.findChild(QPlainTextEdit, "Error")
-        self.error.setReadOnly(True)
-        self.submit.clicked.connect(self.click)
-
-    def click(self):
-        if self.name.toPlainText() == "" or self.latitude.toPlainText() == "" or self.longitude.toPlainText() == "" or self.category.toPlainText() == "" "" or self.review.toPlainText() == "":
-            self.error.insertPlainText("")
-            self.error.insertPlainText("          Incomplete        ")
-            return
-
-        try:
-            float(self.latitude.toPlainText())
-        except ValueError:
-            self.error.insertPlainText("          Latitude is not float        ")
-            return
-
-        try:
-            float(self.longitude.toPlainText())
-        except ValueError:
-            self.error.insertPlainText("          Longitude is not float        ")
-            return
-
-
-class MainWindow(QDialog):
-
-    def __init__(self):
-        super(MainWindow, self).__init__()
-        uic.loadUi("Main.ui", self)
-        self.show()
-        self.heading = self.findChild(QPlainTextEdit, "Heading")
-        self.heading.setReadOnly(True)
-        self.enterR = self.findChild(QPushButton, "EnterReview")
-        self.rrs = self.findChild(QPushButton, "RRS")
-
-        self.enterR.clicked.connect(self.showForm)
-        self.rrs.clicked.connect(self.showRRS)
-
-    def showForm(self):
-        self.ui = Register()
-
-    def showRRS(self):
-        self.ui = RSS()
-
-
-if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv)
-    MainWin = MainWindow()
-    app.exec_()

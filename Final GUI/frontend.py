@@ -1,7 +1,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from backendHotel import backendHotel
 from backendAttraction import backendAttraction
-
+from backendRestaurant import backendRestaurant
+from backendFlight import backendFlight
 
 class AttractionWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):
@@ -31,6 +32,31 @@ class AttractionWidget(QtWidgets.QWidget):
         self.startTimeLabel.setText(start)
         self.costLabel.setText(cost)
         self.summaryLabel.setText(summmary)
+
+
+class RestaurantWidget(QtWidgets.QWidget):
+    def __init__(self, parent=None):
+        super(RestaurantWidget, self).__init__(parent)
+
+        self.box = QtWidgets.QVBoxLayout()
+        self.venueLabel = QtWidgets.QLabel()
+        self.categoryLabel = QtWidgets.QLabel()
+        self.costLabel = QtWidgets.QLabel()
+        self.likeLabel = QtWidgets.QLabel()
+
+        self.box.addWidget(self.venueLabel)
+        self.box.addWidget(self.categoryLabel)
+        self.box.addWidget(self.costLabel)
+        self.box.addWidget(self.likeLabel)
+
+        self.setLayout(self.box)
+
+    def setTextOnAllLabel(self, venue, category, cost, like):
+        self.venueLabel.setText(venue)
+        self.categoryLabel.setText(category)
+        self.costLabel.setText(cost)
+        self.likeLabel.setText(like)
+
 
 
 class QCustomQWidget2(QtWidgets.QWidget):
@@ -230,12 +256,14 @@ class Ui_MainWindow(object):
 
         self.mybackendHotel = backendHotel()
         self.mybackendAttraction = backendAttraction()
+        self.mybackendRestaurant = backendRestaurant()
         self.mybackendFlight = backendFlight()
         self.sortButton.setPopupMode(QtWidgets.QToolButton.InstantPopup)
 
         # UPDATED. DYNAMIC SORT MENU
         self.hotelButton.clicked.connect(self.bufferFuncHotel)
         self.attractionButton.clicked.connect(self.sortMenuItemsAttraction)
+        self.RestaurantButton.clicked.connect(self.sortMenuItemsRestaurant)
         self.airlinesButton.clicked.connect(self.airlineInitializer)
     class FlightWidget(QtWidgets.QWidget):
         def __init__(self, outer, parent=None):
@@ -253,8 +281,6 @@ class Ui_MainWindow(object):
             self.bookbutton.setText("Book Now")
 
             self.h1 = QtWidgets.QHBoxLayout()
-            # self.box.addWidget(self.id)
-            # self.box.addWidget(self.airline)
             self.h1.addWidget(self.id)
             self.h1.addWidget(self.airline)
             self.box.addLayout(self.h1)
@@ -266,7 +292,7 @@ class Ui_MainWindow(object):
             self.box.addWidget(self.duration)
             self.box.addWidget(self.numseats)
             self.box.addWidget(self.bookbutton)
-            
+
 
             self.setLayout(self.box)
 
@@ -279,12 +305,11 @@ class Ui_MainWindow(object):
             self.duration.setText("Flight Duration: " + str(flight['duration']))
             self.numseats.setText("Available Seats: " + str(flight['numseats']))
             self.bookbutton.clicked.connect(lambda : self.bookingWindow(flight['id'], flight['numseats']))
-            
+
 
         def bookingWindow(self, flightNo, numSeats):
 
             def confirmBooking():
-                # self.mybackend.bookSeats(flightNo, numSeats)
                 selectedSeats = spinbox.value()
                 print("You attempted to book {} seats in Flight No: {}".format(selectedSeats, flightNo))
                 seats = self.outer.mybackendFlight.bookSeats(flightNo, selectedSeats)
@@ -299,10 +324,7 @@ class Ui_MainWindow(object):
                 layout.removeWidget(submitButton)
                 layout.addWidget(label1)
                 layout.addWidget(label2)
-                
-                
-                #window.close()
-                #print("Hello")
+
             window = QtWidgets.QDialog()
             window.setObjectName("Confirm Booking")
             window.setWindowTitle("Confirm Booking")
@@ -316,7 +338,7 @@ class Ui_MainWindow(object):
             spinbox.setMaximum(numSeats)
             spinbox.setMinimum(1)
             spinbox.valueChanged.connect(lambda : print(spinbox.value()))
-            
+
             # print("Selected number of seats: ", selectedSeats)
             layout.addWidget(spinbox)
             layout.addWidget(submitButton)
@@ -327,7 +349,7 @@ class Ui_MainWindow(object):
     class SearchBoxWidget(QtWidgets.QWidget):
         def __init__(self,outer, countrybox, citybox, searchbutton, parent=None):
             super(outer.SearchBoxWidget, self).__init__(parent)
-            
+
             self.box = QtWidgets.QHBoxLayout()
             self.box.addWidget(countrybox)
             self.box.addWidget(citybox)
@@ -356,7 +378,7 @@ class Ui_MainWindow(object):
         def sortMenuInitializer():
             print()
             sortMenu = QtWidgets.QMenu()
-            
+
 
             durationAscAction = QtWidgets.QWidgetAction(sortMenu)
             self.durationAscButton = QtWidgets.QPushButton(self.centralwidget1)
@@ -394,7 +416,7 @@ class Ui_MainWindow(object):
             self.arrivalDescButton.clicked.connect(lambda : sorter(5))
             arrivalDescAction.setDefaultWidget(self.arrivalDescButton)
 
-            
+
             sortMenu.addSeparator()
             sortMenu.addAction(durationAscAction)
             sortMenu.addAction(durationDescAction)
@@ -410,7 +432,7 @@ class Ui_MainWindow(object):
         def countryOptions():
             countryBox.addItem("Country")
             countryBox.addItems(self.mybackendFlight.countries)
-    
+
         def cityOptions():
             k = cityBox.count()
             print("k:", k)
@@ -451,15 +473,15 @@ class Ui_MainWindow(object):
 
 
         def pushOutput():
-            
+
             self.searchResults = self.mybackendFlight.getFlights(cityBox.currentText())
             print(self.searchResults)
             viewResults()
 
         def displayFlightItems():
             self.listWidget.clear()
-            
-            
+
+
             searchButton.setGeometry(QtCore.QRect(580, 70, 161, 61))
             searchButton.setStyleSheet("border-right-color: rgb(239, 41, 41);\n"
                 "background-AttractionWidgetcolor: rgb(252, 175, 62);")
@@ -470,7 +492,7 @@ class Ui_MainWindow(object):
             countryBox.setStyleSheet("background-color: rgb(233, 185, 110);")
             countryBox.setObjectName("comboBox")
             countryBox.currentTextChanged.connect(printCountry)
-            
+
             ###########################
 
             #cityBox = QtWidgets.QComboBox()
@@ -486,7 +508,7 @@ class Ui_MainWindow(object):
 
 
         ##########################
-        
+
         sortMenuInitializer()
         searchButton = QtWidgets.QPushButton()
         searchButton.setText("Search")
@@ -501,6 +523,9 @@ class Ui_MainWindow(object):
         self.sortMenuItemsHotel()
         self.listWidget.itemClicked.connect(self.test)
         self.listWidget.itemSelectionChanged.connect(self.selectionChanged)
+
+
+
 
     def sortMenuItemsAttraction(self):
         sortMenu = QtWidgets.QMenu()
@@ -607,6 +632,76 @@ class Ui_MainWindow(object):
             # self.listWidget.itemClicked.connect(self.test())
             self.listWidget.addItem(listWidgetItem)
             self.listWidget.setItemWidget(listWidgetItem, attractionWidget)
+
+
+    def sortMenuItemsRestaurant(self):
+        sortMenu = QtWidgets.QMenu()
+
+        allRestAction = QtWidgets.QWidgetAction(sortMenu)
+        self.allButton = QtWidgets.QPushButton(self.centralwidget1)
+        self.allButton.setText("All")
+        self.allButton.clicked.connect(self.displayRestaurants)
+        allRestAction.setDefaultWidget(self.allButton)
+
+        costAscRestAction = QtWidgets.QWidgetAction(sortMenu)
+        self.costAscRestButton = QtWidgets.QPushButton(self.centralwidget1)
+        self.costAscRestButton.setText("Cost Ascending")
+        self.costAscRestButton.clicked.connect(self.costAscRest)
+        costAscRestAction.setDefaultWidget(self.costAscRestButton)
+
+        costDescRestAction = QtWidgets.QWidgetAction(sortMenu)
+        self.costDescRestButton = QtWidgets.QPushButton(self.centralwidget1)
+        self.costDescRestButton.setText("Cost Descending")
+        self.costDescRestButton.clicked.connect(self.costDescRest)
+        costDescRestAction.setDefaultWidget(self.costDescRestButton)
+
+        likeDescRestAction = QtWidgets.QWidgetAction(sortMenu)
+        self.likeDescRestButton = QtWidgets.QPushButton(self.centralwidget1)
+        self.likeDescRestButton.setText("Likes Descending")
+        self.likeDescRestButton.clicked.connect(self.likeDescRest)
+        likeDescRestAction.setDefaultWidget(self.likeDescRestButton)
+
+        sortMenu.addAction(allRestAction)
+        sortMenu.addSeparator()
+        sortMenu.addAction(costAscRestAction)
+        sortMenu.addAction(costDescRestAction)
+        sortMenu.addSeparator()
+        sortMenu.addAction(likeDescRestAction)
+
+        self.sortButton.setMenu(sortMenu)
+        self.displayRestaurants()
+
+    def displayRestaurants(self):
+        self.sortButton.setText("Sort By:")
+        self.restaurants = self.mybackendRestaurant.getRestaurant()
+        self.displayToScreenRest(self.restaurants)
+
+    def costAscRest(self):
+        self.sortButton.setText("Cost Ascending")
+        self.restaurants = self.mybackendRestaurant.costAscRest()
+        self.displayToScreenRest(self.restaurants)
+
+    def costDescRest(self):
+        self.sortButton.setText("Cost Descending")
+        self.restaurants = self.mybackendRestaurant.costDescRest()
+        self.displayToScreenRest(self.restaurants)
+
+    def likeDescRest(self):
+        self.sortButton.setText("Likes Descending")
+        self.restaurants = self.mybackendRestaurant.likeDescRest()
+        self.displayToScreenRest(self.restaurants)
+
+    def displayToScreenRest(self, data):
+        self.listWidget.clear()
+        for venue, category, cost, likes in data:
+            restaurantWidget = RestaurantWidget()
+            restaurantWidget.setTextOnAllLabel('Name :          ' + venue, 'Type :           '+category, 'Cost :            '+str(cost), 'Likes :            '+str(likes))
+            listWidgetItem = QtWidgets.QListWidgetItem(self.listWidget)
+            listWidgetItem.setSizeHint(restaurantWidget.sizeHint())
+            # self.listWidget.itemClicked.connect(self.test())
+            self.listWidget.addItem(listWidgetItem)
+            self.listWidget.setItemWidget(listWidgetItem, restaurantWidget)
+
 
     def sortMenuItemsHotel(self):
         sortMenu = QtWidgets.QMenu()

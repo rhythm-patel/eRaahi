@@ -1,14 +1,3 @@
-create database proj;
-use proj;
-
-create user 'rhythm'@'localhost' IDENTIFIED BY 'password';
-drop user 'rhythm'@'localhost';
-GRANT ALL PRIVILEGES ON *.* To 'rhythm'@'localhost';
-flush privileges;
-select * from mysql.user;
-
-UPDATE mysql.user SET Select_priv='Y', Insert_priv='Y', Update_priv='Y' WHERE User='rhythm';
-
 CREATE TABLE Attraction(
    Attraction_ID      INTEGER  NOT NULL PRIMARY KEY 
   ,Name_of_Attraction VARCHAR(100) NOT NULL

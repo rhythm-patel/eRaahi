@@ -3,9 +3,9 @@ import mysql.connector
 
 class backendAttraction:
     def __init__(self):
-        self.cnx = mysql.connector.connect(user='rhythm', password='password',
+        self.cnx = mysql.connector.connect(user='root', password='40@Vaibhav',
                                            host='127.0.0.1',
-                                           database='proj')
+                                           database='dbms')
         self.cur = self.cnx.cursor(buffered=True)
 
         self.getAttractions()
