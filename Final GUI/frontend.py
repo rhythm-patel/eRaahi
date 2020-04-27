@@ -1703,16 +1703,7 @@ class Ui_MainWindow(object):
         self.setHotelPrice(2000)
 
     def overviewClicked(self):
-        print('In Overview')
-        self.Stack.setCurrentWidget(self.centralwidget1)
-
-    def selectionChanged(self):
-        tempCustomQWidget = self.listWidget.itemWidget(
-            self.listWidget.selectedItems()[0])
-        test = tempCustomQWidget.hotelNameLabel
-        self.testLabel.setText(test.text())
-        self.Stack.setCurrentWidget(self.centralwidget2)
-        print(test.text())
+        self.Stack.setCurrentWidget(self.overviewcentralwidget)
 
     def test(self):
         if(self.clicked == False):
@@ -1769,10 +1760,10 @@ class Ui_MainWindow(object):
         tempCustomQWidget = self.listWidget.itemWidget(self.listWidget.selectedItems()[0])
         test = tempCustomQWidget.hotelNameLabel
         self.Stack.setCurrentWidget(self.bookcentralwidget)
-        self.bookCapacity.setText("")
+        # self.bookCapacity.setText("")
         self.clicked=False
-        self.bookCostLabel.setText("")
-        self.bookIDLabel.setText("")
+        # self.bookCostLabel.setText("")
+        # self.bookIDLabel.setText("")
         self.setRooms(test.text())
     def setHotel(self,rating=0):
         self.hotels = self.mybackend.gethotelbyrating(rating)
