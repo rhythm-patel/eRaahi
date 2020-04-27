@@ -1719,32 +1719,6 @@ class Ui_MainWindow(object):
             print('clicked')
         self.clicked = True
 
-    def setHotel(self, rating=0):
-        self.hotels = self.mybackendHotel.gethotelbyrating(rating)
-        self.listWidget.clear()
-        for name, hid, loc, avg_price, booked, rating in self.hotels:
-            myQCustomQWidget = QCustomQWidget()
-            myQCustomQWidget.setTextOnAllLabel(
-                'Name : ' + name, 'Avg. Rating : '+rating, 'Locality : '+loc, 'Avg. Price : '+avg_price, 'Booked : '+booked)
-            listWidgetItem = QtWidgets.QListWidgetItem(self.listWidget)
-            listWidgetItem.setSizeHint(myQCustomQWidget.sizeHint())
-            # self.listWidget.itemClicked.connect(self.test())
-            self.listWidget.addItem(listWidgetItem)
-            self.listWidget.setItemWidget(listWidgetItem, myQCustomQWidget)
-
-    def setHotelPrice(self, price):
-        self.hotels = self.mybackendHotel.gethotelbyprice(price)
-        self.listWidget.clear()
-        for name, hid, loc, avg_price, booked, rating in self.hotels:
-            myQCustomQWidget = QCustomQWidget()
-            myQCustomQWidget.setTextOnAllLabel(
-                'Name : ' + name, 'Avg. Rating : '+rating, 'Locality : '+loc, 'Avg. Price : '+avg_price, 'Booked : '+booked)
-            listWidgetItem = QtWidgets.QListWidgetItem(self.listWidget)
-            listWidgetItem.setSizeHint(myQCustomQWidget.sizeHint())
-            # self.listWidget.itemClicked.connect(self.test())
-            self.listWidget.addItem(listWidgetItem)
-            self.listWidget.setItemWidget(listWidgetItem, myQCustomQWidget)
-
     def selectionChanged(self):
         tempCustomQWidget = self.listWidget.itemWidget(self.listWidget.selectedItems()[0])
         name = tempCustomQWidget.hotelNameLabel.text()
