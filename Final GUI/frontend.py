@@ -3,7 +3,8 @@ from backendHotel import backendHotel
 from backendAttraction import backendAttraction
 from backendRestaurant import backendRestaurant, RSS
 from backendFlight import backendFlight
-
+from frontendMovie import ReviewScreen, runn
+from PyQt5.QtWidgets import QApplication
 class AttractionWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):
         super(AttractionWidget, self).__init__(parent)
@@ -839,6 +840,7 @@ class Ui_MainWindow(object):
         self.attractionAddButton.clicked.connect(self.func007add)
 
 
+<<<<<<< HEAD
 
         self.restaurantEditWidget = QtWidgets.QWidget(MainWindow)
         self.restaurantEditWidget.setObjectName("restaurantEditWidget")
@@ -925,6 +927,8 @@ class Ui_MainWindow(object):
 
         self.restaurantUpdateButton.clicked.connect(self.func009update)
         self.restaurantAddButton.clicked.connect(self.func009add)
+=======
+>>>>>>> 6839c1ff3d7e758c94ef1d04320bf4d75bc1063f
 
 
         self.Stack.addWidget(self.logincentralwidget)
@@ -975,17 +979,21 @@ class Ui_MainWindow(object):
         self.attractionButton.clicked.connect(self.sortMenuItemsAttraction)
         self.RestaurantButton.clicked.connect(self.sortMenuItemsRestaurant)
         self.airlinesButton.clicked.connect(self.airlineInitializer)
+        self.movieButton.clicked.connect(self.startMoviesDisplay) #############
 
     def customeredit(self):
         self.Stack.setCurrentWidget(self.customereditcentralwidget)
 
     def attractionEdit(self):
         self.Stack.setCurrentWidget(self.attractionsEditWidget)
+<<<<<<< HEAD
 
     def restaurantEdit(self):
         self.Stack.setCurrentWidget(self.restaurantEditWidget)
 
 
+=======
+>>>>>>> 6839c1ff3d7e758c94ef1d04320bf4d75bc1063f
     def exitclick(self):
         os._exit(1)
     def changemodeclick(self):
@@ -1443,6 +1451,17 @@ class Ui_MainWindow(object):
             self.box.addWidget(searchbutton)
             self.setLayout(self.box)
 
+    def startMoviesDisplay(self):
+
+        runn(self, self.USER_ID)
+        #self.cams = ReviewScreen(self.USER_ID)
+        #ex=ReviewScreen(self.USER_ID)
+        #self.cams.show()
+
+
+        #os._exit(1)
+        #self.close()
+
     def airlineInitializer(self):
         print("Hello")
         self.searchResults = []
@@ -1727,7 +1746,6 @@ class Ui_MainWindow(object):
             # self.listWidget.itemClicked.connect(self.test())
             self.listWidget.addItem(listWidgetItem)
             self.listWidget.setItemWidget(listWidgetItem, attractionWidget)
-
 
     def sortMenuItemsRestaurant(self):
         sortMenu = QtWidgets.QMenu()
