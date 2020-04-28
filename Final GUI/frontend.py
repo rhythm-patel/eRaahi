@@ -3,7 +3,8 @@ from backendHotel import backendHotel
 from backendAttraction import backendAttraction
 from backendRestaurant import backendRestaurant, RSS
 from backendFlight import backendFlight
-
+from frontendMovie import ReviewScreen, runn
+from PyQt5.QtWidgets import QApplication
 class AttractionWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):
         super(AttractionWidget, self).__init__(parent)
@@ -227,7 +228,7 @@ class Ui_MainWindow(object):
         self.indentifierLabel.setScaledContents(True)
         self.indentifierLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.indentifierLabel.setObjectName("indentifierLabel")
-        
+
         self.overviewcentralwidget = QtWidgets.QWidget(MainWindow)
         self.overviewcentralwidget.setObjectName("overviewcentralwidget")
         self.ovlogoLabel = QtWidgets.QLabel(self.overviewcentralwidget)
@@ -837,7 +838,7 @@ class Ui_MainWindow(object):
         self.attractionUpdateButton.clicked.connect(self.func007update)
         self.attractionAddButton.clicked.connect(self.func007add)
 
-        
+
 
 
         self.Stack.addWidget(self.logincentralwidget)
@@ -852,7 +853,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.Stack)
 
 
-        
+
 
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
@@ -887,12 +888,13 @@ class Ui_MainWindow(object):
         self.attractionButton.clicked.connect(self.sortMenuItemsAttraction)
         self.RestaurantButton.clicked.connect(self.sortMenuItemsRestaurant)
         self.airlinesButton.clicked.connect(self.airlineInitializer)
+        self.movieButton.clicked.connect(self.startMoviesDisplay) #############
 
     def customeredit(self):
         self.Stack.setCurrentWidget(self.customereditcentralwidget)
 
     def attractionEdit(self):
-        self.Stack.setCurrentWidget(self.attractionsEditWidget)        
+        self.Stack.setCurrentWidget(self.attractionsEditWidget)
     def exitclick(self):
         os._exit(1)
     def changemodeclick(self):
@@ -1163,10 +1165,8 @@ class Ui_MainWindow(object):
         if self.clicked:
             self.clicked=False
             money = self.rbalanceLabel.text()
-            print(money[10:])
             money = int(money[10:])
             cost = self.bookCostLabel.text()
-            print(cost[7:])
             cost = int(cost[7:])
             money = money - cost
             if(money>=0):
@@ -1188,7 +1188,7 @@ class Ui_MainWindow(object):
             else:
                 choice = QtWidgets.QMessageBox.question(self.bookcentralwidget, 'Confirmation',"Add 5000?",QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
                 if choice == QtWidgets.QMessageBox.Yes:
-                    money = money + cost + 5000 
+                    money = money + cost + 5000
                     self.BALANCE = str(money)
                     self.mybackend.setBalance(self.BALANCE,self.USER_ID)
                     self.rbalanceLabel.setText("Balance : " + self.BALANCE)
@@ -1325,6 +1325,17 @@ class Ui_MainWindow(object):
             self.box.addWidget(citybox)
             self.box.addWidget(searchbutton)
             self.setLayout(self.box)
+
+    def startMoviesDisplay(self):
+
+        runn(self, self.USER_ID)
+        #self.cams = ReviewScreen(self.USER_ID)
+        #ex=ReviewScreen(self.USER_ID)
+        #self.cams.show()
+
+
+        #os._exit(1)
+        #self.close()
 
     def airlineInitializer(self):
         print("Hello")
@@ -1610,7 +1621,6 @@ class Ui_MainWindow(object):
             # self.listWidget.itemClicked.connect(self.test())
             self.listWidget.addItem(listWidgetItem)
             self.listWidget.setItemWidget(listWidgetItem, attractionWidget)
-
 
     def sortMenuItemsRestaurant(self):
         sortMenu = QtWidgets.QMenu()
