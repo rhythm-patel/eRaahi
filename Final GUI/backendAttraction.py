@@ -14,6 +14,13 @@ class backendAttraction:
 
         self.getAttractions()
 
+    def getIDs(self):
+    	self.IDs = []
+    	self.cur.execute('select Attraction_ID from attraction')
+    	for ids in self.cur:
+    		self.IDs.append(ids)
+    	return self.IDs
+
     def updateAttractions(self,Attraction_ID,Name_of_Attraction,Summary,Duration,Start_Time,Cost,Type):
         self.cur.execute('update attraction set Name_of_Attraction = %s where Attraction_ID = %s',(str(Name_of_Attraction),str(Attraction_ID)))
         self.cur.execute('update attraction set Summary = %s where Attraction_ID = %s',(str(Summary),str(Attraction_ID)))

@@ -1210,6 +1210,16 @@ class Ui_MainWindow(object):
     	except:
     		return False
 
+    def IDpresent(self,attrID):
+    	IDs = self.mybackendAttraction.getIDs()
+
+    	for ids in IDs:
+    		ID = ids[0]
+    		if (int(attrID) == ID):
+    			return True
+
+    	return False
+
     def func007update(self):
         attrID = self.attractionIDInput.text()
         attrName = self.attractionNameInput.text()
@@ -1218,6 +1228,7 @@ class Ui_MainWindow(object):
         start = self.attractionStartInput.text()
         cost = self.attractionCostInput.text()
         typeAttr = self.attractionTypeInput.text()
+
 
         if (len(attrID)==0 or len(attrName)==0 or len(summary)==0 or len(duration)==0 or len(start)==0 or len(cost)==0 or len(typeAttr)==0):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
@@ -1231,6 +1242,8 @@ class Ui_MainWindow(object):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Time must me in HH:MM:SS format",QtWidgets.QMessageBox.Ok)
         elif(not cost.isdigit() or int(cost) < 0):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Cost must be a (positive) number",QtWidgets.QMessageBox.Ok)
+        elif (not self.IDpresent(attrID)):
+        	choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Invalid ID. ID doesn't exist in table. Please enter correct ID to update fields.",QtWidgets.QMessageBox.Ok)
         else:
         	self.mybackendAttraction.updateAttractions(attrID,attrName,summary,duration,start,cost,typeAttr)
         	self.attractionIDInput.setText("")
@@ -1250,6 +1263,7 @@ class Ui_MainWindow(object):
         cost = self.attractionCostInput.text()
         typeAttr = self.attractionTypeInput.text()
 
+
         if (len(attrID)==0 or len(attrName)==0 or len(summary)==0 or len(duration)==0 or len(start)==0 or len(cost)==0 or len(typeAttr)==0):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
         elif (not attrID.isdigit()):
@@ -1262,6 +1276,8 @@ class Ui_MainWindow(object):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Time must me in HH:MM:SS format",QtWidgets.QMessageBox.Ok)
         elif(not cost.isdigit() or int(cost) < 0):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Cost must be a (positive) number",QtWidgets.QMessageBox.Ok)
+        elif (self.IDpresent(attrID)):
+        	choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"ID already exists in table. Cannot add new fields with this ID. Please enter new ID to add fields.",QtWidgets.QMessageBox.Ok)
         else:
         	self.mybackendAttraction.updateAttractions(attrID,attrName,summary,duration,start,cost,typeAttr)
         	self.attractionIDInput.setText("")
