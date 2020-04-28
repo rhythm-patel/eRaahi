@@ -1163,8 +1163,10 @@ class Ui_MainWindow(object):
         if self.clicked:
             self.clicked=False
             money = self.rbalanceLabel.text()
+            print(money[10:])
             money = int(money[10:])
             cost = self.bookCostLabel.text()
+            print(cost[7:])
             cost = int(cost[7:])
             money = money - cost
             if(money>=0):
