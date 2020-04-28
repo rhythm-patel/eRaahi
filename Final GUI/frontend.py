@@ -646,6 +646,7 @@ class Ui_MainWindow(object):
         self.adminChooseModeLabell.setObjectName("adminChooseModeLabell")
         self.adminHotelPushButton.clicked.connect(self.hoteledit)
         self.adminCustomerPushButton.clicked.connect(self.customeredit)
+        self.adminAttractionsPushButton.clicked.connect(self.attractionEdit)
         self.customereditcentralwidget = QtWidgets.QWidget(MainWindow)
         self.customereditcentralwidget.setObjectName("customereditcentralwidget")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.customereditcentralwidget)
@@ -750,6 +751,95 @@ class Ui_MainWindow(object):
         self.customerEditPushButton1.clicked.connect(self.func10)
         self.customerUpdatePushButton2.clicked.connect(self.func11)
         self.customerGoPushButton3.clicked.connect(self.func12)
+
+        self.attractionsEditWidget = QtWidgets.QWidget(MainWindow)
+        self.attractionsEditWidget.setObjectName("attractionsEditWidget")
+
+        self.attractionLayout = QtWidgets.QVBoxLayout(self.attractionsEditWidget)
+        self.attractionLayout.setContentsMargins(30, 30, 30, 30)
+        self.attractionLayout.setObjectName("attractionLayout")
+
+        # self.verticalLayoutWidgetAttr = QtWidgets.QWidget(self.attractionsEditWidget)
+        # self.verticalLayoutWidgetAttr.setGeometry(QtCore.QRect(0, 120, 800, 250))
+        # self.verticalLayoutWidgetAttr.setObjectName("verticalLayoutWidgetAttr")
+
+
+        self.attractionLabel = QtWidgets.QLabel(self.attractionsEditWidget)
+        self.attractionLabel.setObjectName("attractionLabel")
+        self.attractionLayout.addWidget(self.attractionLabel)
+
+        self.attractionIDLabel = QtWidgets.QLabel(self.attractionsEditWidget)
+        self.attractionIDLabel.setObjectName("attractionIDLabel")
+        self.attractionLayout.addWidget(self.attractionIDLabel)
+        self.attractionIDInput = QtWidgets.QLineEdit(self.attractionsEditWidget)
+        self.attractionIDInput.setObjectName("attractionIDInput")
+        self.attractionLayout.addWidget(self.attractionIDInput)
+
+        self.attractionNameLabel = QtWidgets.QLabel(self.attractionsEditWidget)
+        self.attractionNameLabel.setObjectName("attractionNameLabel")
+        self.attractionLayout.addWidget(self.attractionNameLabel)
+        self.attractionNameInput = QtWidgets.QLineEdit(self.attractionsEditWidget)
+        self.attractionNameInput.setObjectName("attractionNameInput")
+        self.attractionLayout.addWidget(self.attractionNameInput)
+
+        self.attractionSummaryLabel = QtWidgets.QLabel(self.attractionsEditWidget)
+        self.attractionSummaryLabel.setObjectName("attractionSummaryLabel")
+        self.attractionLayout.addWidget(self.attractionSummaryLabel)
+        self.attractionSummaryInput = QtWidgets.QLineEdit(self.attractionsEditWidget)
+        self.attractionSummaryInput.setObjectName("attractionSummaryInput")
+        self.attractionLayout.addWidget(self.attractionSummaryInput)
+
+        self.attractionDurationLabel = QtWidgets.QLabel(self.attractionsEditWidget)
+        self.attractionDurationLabel.setObjectName("attractionDurationLabel")
+        self.attractionLayout.addWidget(self.attractionDurationLabel)
+        self.attractionDurationInput = QtWidgets.QLineEdit(self.attractionsEditWidget)
+        self.attractionDurationInput.setObjectName("attractionDurationInput")
+        self.attractionLayout.addWidget(self.attractionDurationInput)
+
+        self.attractionStartLabel = QtWidgets.QLabel(self.attractionsEditWidget)
+        self.attractionStartLabel.setObjectName("attractionStartLabel")
+        self.attractionLayout.addWidget(self.attractionStartLabel)
+        self.attractionStartInput = QtWidgets.QLineEdit(self.attractionsEditWidget)
+        self.attractionStartInput.setObjectName("attractionStartInput")
+        self.attractionLayout.addWidget(self.attractionStartInput)
+
+        self.attractionCostLabel = QtWidgets.QLabel(self.attractionsEditWidget)
+        self.attractionCostLabel.setObjectName("attractionCostLabel")
+        self.attractionLayout.addWidget(self.attractionCostLabel)
+        self.attractionCostInput = QtWidgets.QLineEdit(self.attractionsEditWidget)
+        self.attractionCostInput.setObjectName("attractionCostInput")
+        self.attractionLayout.addWidget(self.attractionCostInput)
+
+        self.attractionTypeLabel = QtWidgets.QLabel(self.attractionsEditWidget)
+        self.attractionTypeLabel.setObjectName("attractionTypeLabel")
+        self.attractionLayout.addWidget(self.attractionTypeLabel)
+        self.attractionTypeInput = QtWidgets.QLineEdit(self.attractionsEditWidget)
+        self.attractionTypeInput.setObjectName("attractionTypeInput")
+        self.attractionLayout.addWidget(self.attractionTypeInput)
+
+        spacerItem = QtWidgets.QSpacerItem(40, 40, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.attractionLayout.addItem(spacerItem)
+
+        # self.attractionUpdateLabel = QtWidgets.QLabel(self.attractionsEditWidget)
+        # self.attractionUpdateLabel.setObjectName("attractionUpdateLabel")
+        # self.attractionLayout.addWidget(self.attractionUpdateLabel)
+        self.attractionUpdateButton = QtWidgets.QPushButton(self.attractionsEditWidget)
+        self.attractionUpdateButton.setObjectName("attractionUpdateButton")
+        self.attractionLayout.addWidget(self.attractionUpdateButton)
+
+        # self.attractionAddLabel = QtWidgets.QLabel(self.attractionsEditWidget)
+        # self.attractionAddLabel.setObjectName("attractionAddLabel")
+        # self.attractionLayout.addWidget(self.attractionAddLabel)
+        self.attractionAddButton = QtWidgets.QPushButton(self.attractionsEditWidget)
+        self.attractionAddButton.setObjectName("attractionAddButton")
+        self.attractionLayout.addWidget(self.attractionAddButton)
+
+        self.attractionUpdateButton.clicked.connect(self.func007update)
+        self.attractionAddButton.clicked.connect(self.func007add)
+
+        
+
+
         self.Stack.addWidget(self.logincentralwidget)
         self.Stack.addWidget(self.centralwidget1)
         self.Stack.addWidget(self.reviewcentralwidget)
@@ -758,7 +848,10 @@ class Ui_MainWindow(object):
         self.Stack.addWidget(self.adminchoosemodecentralwidget)
         self.Stack.addWidget(self.hoteleditcentralwidget)
         self.Stack.addWidget(self.customereditcentralwidget)
+        self.Stack.addWidget(self.attractionsEditWidget)
         MainWindow.setCentralWidget(self.Stack)
+
+
         
 
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -797,6 +890,9 @@ class Ui_MainWindow(object):
 
     def customeredit(self):
         self.Stack.setCurrentWidget(self.customereditcentralwidget)
+
+    def attractionEdit(self):
+        self.Stack.setCurrentWidget(self.attractionsEditWidget)        
     def exitclick(self):
         os._exit(1)
     def changemodeclick(self):
@@ -1012,6 +1108,55 @@ class Ui_MainWindow(object):
             self.customerContactLineEdit3.setText("")
             self.customerGenderLineEdit3.setText("")
             self.customerBalanceLineEdit3.setText("")
+
+    def func007update(self):
+        attrID = self.attractionIDInput.text()
+        attrName = self.attractionNameInput.text()
+        summary = self.attractionSummaryInput.text()
+        duration = self.attractionDurationInput.text()
+        start = self.attractionStartInput.text()
+        cost = self.attractionCostInput.text()
+        typeAttr = self.attractionTypeInput.text()
+
+        # if(len(a)==0 or len(b)==0 or len(c)==0 or len(d)==0 or len(e)==0 or len(cid)==0):
+        #     choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
+        # elif(a.isdigit() or b.isdigit()):
+        #     choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Name cannot be a number!",QtWidgets.QMessageBox.Ok)
+        # elif(c.isdigit()):
+        #     choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"contact must be an email",QtWidgets.QMessageBox.Ok)
+        # elif(not(d=="M" or d=="F")):
+        #     choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Gender must be 'M' or 'F'",QtWidgets.QMessageBox.Ok)
+        # elif(not e.isdigit() or int(e)<0):
+        #     choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Balance must be a (positive)number",QtWidgets.QMessageBox.Ok)
+        # else:
+        #     self.mybackend.updatecustomerinfo(cid,a,b,c,d,e)
+
+        self.mybackendAttraction.updateAttractions(attrID,attrName,summary,duration,start,cost,typeAttr)
+
+    def func007add(self):
+        attrID = self.attractionIDInput.text()
+        attrName = self.attractionNameInput.text()
+        summary = self.attractionSummaryInput.text()
+        duration = self.attractionDurationInput.text()
+        start = self.attractionStartInput.text()
+        cost = self.attractionCostInput.text()
+        typeAttr = self.attractionTypeInput.text()
+
+        # if(len(a)==0 or len(b)==0 or len(c)==0 or len(d)==0 or len(e)==0 or len(cid)==0):
+        #     choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
+        # elif(a.isdigit() or b.isdigit()):
+        #     choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Name cannot be a number!",QtWidgets.QMessageBox.Ok)
+        # elif(c.isdigit()):
+        #     choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"contact must be an email",QtWidgets.QMessageBox.Ok)
+        # elif(not(d=="M" or d=="F")):
+        #     choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Gender must be 'M' or 'F'",QtWidgets.QMessageBox.Ok)
+        # elif(not e.isdigit() or int(e)<0):
+        #     choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Balance must be a (positive)number",QtWidgets.QMessageBox.Ok)
+        # else:
+        #     self.mybackend.updatecustomerinfo(cid,a,b,c,d,e)
+
+        self.mybackendAttraction.addAttractions(attrID,attrName,summary,duration,start,cost,typeAttr)
+
     def adminmodeclicked(self):
         self.Stack.setCurrentWidget(self.adminchoosemodecentralwidget)
     def bookRoomButtonClicked(self):
@@ -1888,7 +2033,7 @@ class Ui_MainWindow(object):
         self.RestaurantButton.setText(_translate("MainWindow", "Restaurants"))
         self.sortButton.setText(_translate("MainWindow", "Sort By:"))
         self.balanceLabel.setText(_translate("MainWindow", "Balance : "))
-        self.indentifierLabel.setText(_translate("MainWindow", "Hotels"))
+        # self.indentifierLabel.setText(_translate("MainWindow", "Hotels"))
         self.balanceLabel.setText(_translate("MainWindow", "Balance : "))
         self.indetifierLabel.setText(_translate("MainWindow", "Hotels"))
         self.overviewButton.setText(_translate("MainWindow", "Overview"))
@@ -1924,9 +2069,13 @@ class Ui_MainWindow(object):
         self.adminCustomerPushButton.setText(_translate("MainWindow", "Customer"))
         self.adminHotelPushButton.setStatusTip(_translate("MainWindow", "Hotel Settings"))
         self.adminHotelPushButton.setText(_translate("MainWindow", "Hotel"))
+        self.adminAttractionsPushButton.setStatusTip(_translate("MainWindow", "Attractions Settings"))
         self.adminAttractionsPushButton.setText(_translate("MainWindow", "Attractions"))
+        self.adminMoviesPushButton.setStatusTip(_translate("MainWindow", "Movies Settings"))
         self.adminMoviesPushButton.setText(_translate("MainWindow", "Movies"))
+        self.adminAirlinesPushButton.setStatusTip(_translate("MainWindow", "Airlines Settings"))
         self.adminAirlinesPushButton.setText(_translate("MainWindow", "Airlines"))
+        self.adminRestaurantsPushButton.setStatusTip(_translate("MainWindow", "Restaurants Settings"))
         self.adminRestaurantsPushButton.setText(_translate("MainWindow", "Restaurants"))
         self.adminChooseModeLabell.setText(_translate("MainWindow", "CHOOSE MODE"))
         self.hotelLogoLabel1.setText(_translate("MainWindow", "HOTEL"))
@@ -1983,6 +2132,18 @@ class Ui_MainWindow(object):
         self.customerGenderLabel3.setText(_translate("MainWindow", "Gender : "))
         self.customerBalanceLabel3.setText(_translate("MainWindow", "Balance : "))
         self.customerGoPushButton3.setText(_translate("MainWindow", "Go"))
+
+        self.attractionLabel.setText(_translate("MainWindow", "You are editing the Attraction table. Please note Attraction_ID is the primary key."))
+        self.attractionIDLabel.setText(_translate("MainWindow", "Attraction ID : "))
+        self.attractionNameLabel.setText(_translate("MainWindow", "Name Of Attraction : "))
+        self.attractionSummaryLabel.setText(_translate("MainWindow", "Summary : "))
+        self.attractionDurationLabel.setText(_translate("MainWindow", "Duration : "))
+        self.attractionStartLabel.setText(_translate("MainWindow", "Start Time : "))
+        self.attractionCostLabel.setText(_translate("MainWindow", "Cost : "))
+        self.attractionTypeLabel.setText(_translate("MainWindow", "Type :"))
+
+        self.attractionUpdateButton.setText(_translate("MainWindow", "Update"))
+        self.attractionAddButton.setText(_translate("MainWindow", "Add"))
 
 
 if __name__ == "__main__":

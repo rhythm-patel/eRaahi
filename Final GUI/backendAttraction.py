@@ -6,10 +6,26 @@ class backendAttraction:
         # self.cnx = mysql.connector.connect(user='root', password='40@Vaibhav',
         #                                    host='127.0.0.1',
         #                                    database='dbms')
-        self.cnx = mysql.connector.connect(host="localhost",user="root",passwd="admin",database = 'finalproject',auth_plugin='mysql_native_password',autocommit=True)
+        # self.cnx = mysql.connector.connect(host="localhost",user="root",passwd="admin",database = 'finalproject',auth_plugin='mysql_native_password',autocommit=True)
+        self.cnx = mysql.connector.connect(user='rhythm', password='password',
+                                           host='127.0.0.1',
+                                           database='proj')
         self.cur = self.cnx.cursor(buffered=True)
 
         self.getAttractions()
+
+    def updateAttractions(self,Attraction_ID,Name_of_Attraction,Summary,Duration,Start_Time,Cost,Type):
+        self.cur.execute('update attraction set Name_of_Attraction = %s where Attraction_ID = %s',(str(Name_of_Attraction),str(Attraction_ID)))
+        self.cur.execute('update attraction set Summary = %s where Attraction_ID = %s',(str(Summary),str(Attraction_ID)))
+        self.cur.execute('update attraction set Duration = %s where Attraction_ID = %s',(str(Duration),str(Attraction_ID)))
+        self.cur.execute('update attraction set Start_Time = %s where Attraction_ID = %s',(str(Start_Time),str(Attraction_ID)))
+        self.cur.execute('update attraction set Cost = %s where Attraction_ID = %s',(str(Cost),str(Attraction_ID)))
+        self.cur.execute('update attraction set Type = %s where Attraction_ID = %s',(str(Type),str(Attraction_ID)))
+        self.cnx.commit()  
+
+    def addAttractions(self,Attraction_ID,Name_of_Attraction,Summary,Duration,Start_Time,Cost,Type):
+        self.cur.execute('INSERT INTO attraction (Attraction_ID, Name_of_Attraction, Summary, Duration, Start_Time, Cost, Type) VALUES (%s, %s, %s, %s, %s, %s, %s)',(str(Attraction_ID),str(Name_of_Attraction),str(Summary),str(Duration),str(Start_Time),str(Cost),str(Type)))
+        self.cnx.commit()
 
     def getAttractions(self):
         self.attractions = []
