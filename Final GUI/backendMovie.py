@@ -5,10 +5,10 @@ class backend:
     mydb = ''
 
     def __init__(self):
-        self.mydb = mysql.connector.connect(user='rhythm', password='password',
+        self.cnx = mysql.connector.connect(user='root', password='40@Vaibhav',
                                            host='127.0.0.1',
-                                           database='proj')
-        self.mycursor = self.mydb.cursor(buffered=True)
+                                           database='dbms')
+        self.mycursor = self.cnx.cursor(buffered=True)
 
     def getmovies(self, search_text, filter):
         movies = []
