@@ -22,6 +22,20 @@ class backendRestaurant:
         self.cur = self.cnx.cursor(buffered=True)
         self.getRestaurant()
 
+    def updateRestaurants(self,Venue,Venue_lat,Venue_long,Category,Venue_Id,Likes, Cost, Neighbourhood):
+        self.cur.execute('update Venues set Venue = %s where Venue_Id = %s',(str(Venue),str(Venue_Id)))
+        self.cur.execute('update Venues set Venue_Latitude = %s where Venue_Id = %s',(str(Venue_lat),str(Venue_Id)))
+        self.cur.execute('update Venues set Venue_Longitude = %s where Venue_Id = %s',(str(Venue_long),str(Venue_Id)))
+        self.cur.execute('update Venues set Venue_Category = %s where Venue_Id = %s',(str(Category),str(Venue_Id)))
+        self.cur.execute('update Venues set Likes = %s where Venue_Id = %s',(str(Likes),str(Venue_Id)))
+        self.cur.execute('update Venues set Cost = %s where Venue_Id = %s',(str(Cost),str(Venue_Id)))
+        self.cur.execute('update Venues set Neighbourhood = %s where Venue_Id = %s',(str(Neighbourhood),str(Venue_Id)))
+        self.cnx.commit()
+
+    def addRestaurants(self,Venue,Venue_lat,Venue_long,Category,Venue_Id,Likes, Cost, Neighbourhood):
+        self.cur.execute('INSERT INTO Venues (Venue, Venue_Latitude, Venue_Longitude, Venue_Category, Venue_Id, Likes, Cost, Neighbourhood) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)',(str(Venue),str(Venue_lat),str(Venue_long),str(Category),str(Venue_Id),str(Likes),str(Cost), str(Neighbourhood)))
+        self.cnx.commit()
+
     def getRestaurant(self):
         self.Rest = []
         self.cur.execute('select Venue, Venue_Category, Cost, Likes from Venues')

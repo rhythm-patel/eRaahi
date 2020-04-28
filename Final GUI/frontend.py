@@ -227,7 +227,7 @@ class Ui_MainWindow(object):
         self.indentifierLabel.setScaledContents(True)
         self.indentifierLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.indentifierLabel.setObjectName("indentifierLabel")
-        
+
         self.overviewcentralwidget = QtWidgets.QWidget(MainWindow)
         self.overviewcentralwidget.setObjectName("overviewcentralwidget")
         self.ovlogoLabel = QtWidgets.QLabel(self.overviewcentralwidget)
@@ -647,6 +647,7 @@ class Ui_MainWindow(object):
         self.adminHotelPushButton.clicked.connect(self.hoteledit)
         self.adminCustomerPushButton.clicked.connect(self.customeredit)
         self.adminAttractionsPushButton.clicked.connect(self.attractionEdit)
+        self.adminRestaurantsPushButton.clicked.connect(self.restaurantEdit)
         self.customereditcentralwidget = QtWidgets.QWidget(MainWindow)
         self.customereditcentralwidget.setObjectName("customereditcentralwidget")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.customereditcentralwidget)
@@ -837,7 +838,93 @@ class Ui_MainWindow(object):
         self.attractionUpdateButton.clicked.connect(self.func007update)
         self.attractionAddButton.clicked.connect(self.func007add)
 
-        
+
+
+        self.restaurantEditWidget = QtWidgets.QWidget(MainWindow)
+        self.restaurantEditWidget.setObjectName("restaurantEditWidget")
+
+        self.restaurantLayout = QtWidgets.QVBoxLayout(self.restaurantEditWidget)
+        self.restaurantLayout.setContentsMargins(30, 30, 30, 30)
+        self.restaurantLayout.setObjectName("restaurantLayout")
+
+        self.restaurantLabel = QtWidgets.QLabel(self.restaurantEditWidget)
+        self.restaurantLabel.setObjectName("restaurantLabel")
+        self.restaurantLayout.addWidget(self.restaurantLabel)
+
+        self.restaurantIDLabel = QtWidgets.QLabel(self.restaurantEditWidget)
+        self.restaurantIDLabel.setObjectName("restaurantIDLabel")
+        self.restaurantLayout.addWidget(self.restaurantIDLabel)
+        self.restaurantIDInput = QtWidgets.QLineEdit(self.restaurantEditWidget)
+        self.restaurantIDInput.setObjectName("restaurantIDInput")
+        self.restaurantLayout.addWidget(self.restaurantIDInput)
+
+        self.restaurantNameLabel = QtWidgets.QLabel(self.restaurantEditWidget)
+        self.restaurantNameLabel.setObjectName("restaurantNameLabel")
+        self.restaurantLayout.addWidget(self.restaurantNameLabel)
+        self.restaurantNameInput = QtWidgets.QLineEdit(self.restaurantEditWidget)
+        self.restaurantNameInput.setObjectName("restaurantNameInput")
+        self.restaurantLayout.addWidget(self.restaurantNameInput)
+
+        self.restaurantCostLabel = QtWidgets.QLabel(self.restaurantEditWidget)
+        self.restaurantCostLabel.setObjectName("restaurantCostLabel")
+        self.restaurantLayout.addWidget(self.restaurantCostLabel)
+        self.restaurantCostInput = QtWidgets.QLineEdit(self.restaurantEditWidget)
+        self.restaurantCostInput.setObjectName("restaurantCostInput")
+        self.restaurantLayout.addWidget(self.restaurantCostInput)
+
+        self.restaurantCategoryLabel = QtWidgets.QLabel(self.restaurantEditWidget)
+        self.restaurantCategoryLabel.setObjectName("restaurantCategoryLabel")
+        self.restaurantLayout.addWidget(self.restaurantCategoryLabel)
+        self.restaurantCategoryInput = QtWidgets.QLineEdit(self.restaurantEditWidget)
+        self.restaurantCategoryInput.setObjectName("restaurantCategoryInput")
+        self.restaurantLayout.addWidget(self.restaurantCategoryInput)
+
+        self.restaurantLikesLabel = QtWidgets.QLabel(self.restaurantEditWidget)
+        self.restaurantLikesLabel.setObjectName("restaurantLikesLabel")
+        self.restaurantLayout.addWidget(self.restaurantLikesLabel)
+        self.restaurantLikesInput = QtWidgets.QLineEdit(self.restaurantEditWidget)
+        self.restaurantLikesInput.setObjectName("restaurantLikesInput")
+        self.restaurantLayout.addWidget(self.restaurantLikesInput)
+
+        self.restaurantLatLabel = QtWidgets.QLabel(self.restaurantEditWidget)
+        self.restaurantLatLabel.setObjectName("restaurantLatLabel")
+        self.restaurantLayout.addWidget(self.restaurantLatLabel)
+        self.restaurantLatInput = QtWidgets.QLineEdit(self.restaurantEditWidget)
+        self.restaurantLatInput.setObjectName("restaurantLatInput")
+        self.restaurantLayout.addWidget(self.restaurantLatInput)
+
+        self.restaurantLongLabel = QtWidgets.QLabel(self.restaurantEditWidget)
+        self.restaurantLongLabel.setObjectName("restaurantLongLabel")
+        self.restaurantLayout.addWidget(self.restaurantLongLabel)
+        self.restaurantLongInput = QtWidgets.QLineEdit(self.restaurantEditWidget)
+        self.restaurantLongInput.setObjectName("restaurantLongInput")
+        self.restaurantLayout.addWidget(self.restaurantLongInput)
+
+        self.restaurantNeighbourhoodLabel = QtWidgets.QLabel(self.restaurantEditWidget)
+        self.restaurantNeighbourhoodLabel.setObjectName("restaurantNeighbourhoodLabel")
+        self.restaurantLayout.addWidget(self.restaurantNeighbourhoodLabel)
+        self.restaurantNeighbourhoodInput = QtWidgets.QLineEdit(self.restaurantEditWidget)
+        self.restaurantNeighbourhoodInput.setObjectName("restaurantNeighbourhoodInput")
+        self.restaurantLayout.addWidget(self.restaurantNeighbourhoodInput)
+
+
+        spacerItem = QtWidgets.QSpacerItem(40, 40, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.restaurantLayout.addItem(spacerItem)
+
+        self.restaurantUpdateButton = QtWidgets.QPushButton(self.restaurantEditWidget)
+        self.restaurantUpdateButton.setObjectName("restaurantUpdateButton")
+        self.restaurantLayout.addWidget(self.restaurantUpdateButton)
+
+        # self.attractionAddLabel = QtWidgets.QLabel(self.attractionsEditWidget)
+        # self.attractionAddLabel.setObjectName("attractionAddLabel")
+        # self.attractionLayout.addWidget(self.attractionAddLabel)
+        self.restaurantAddButton = QtWidgets.QPushButton(self.restaurantEditWidget)
+        self.restaurantAddButton.setObjectName("restaurantAddButton")
+        self.restaurantLayout.addWidget(self.restaurantAddButton)
+
+
+        self.restaurantUpdateButton.clicked.connect(self.func009update)
+        self.restaurantAddButton.clicked.connect(self.func009add)
 
 
         self.Stack.addWidget(self.logincentralwidget)
@@ -849,10 +936,11 @@ class Ui_MainWindow(object):
         self.Stack.addWidget(self.hoteleditcentralwidget)
         self.Stack.addWidget(self.customereditcentralwidget)
         self.Stack.addWidget(self.attractionsEditWidget)
+        self.Stack.addWidget(self.restaurantEditWidget)
         MainWindow.setCentralWidget(self.Stack)
 
 
-        
+
 
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
@@ -892,7 +980,12 @@ class Ui_MainWindow(object):
         self.Stack.setCurrentWidget(self.customereditcentralwidget)
 
     def attractionEdit(self):
-        self.Stack.setCurrentWidget(self.attractionsEditWidget)        
+        self.Stack.setCurrentWidget(self.attractionsEditWidget)
+
+    def restaurantEdit(self):
+        self.Stack.setCurrentWidget(self.restaurantEditWidget)
+
+
     def exitclick(self):
         os._exit(1)
     def changemodeclick(self):
@@ -1157,6 +1250,32 @@ class Ui_MainWindow(object):
 
         self.mybackendAttraction.addAttractions(attrID,attrName,summary,duration,start,cost,typeAttr)
 
+
+
+
+    def func009update(self):
+        attrID = self.restaurantIDInput.text()
+        attrName = self.restaurantNameInput.text()
+        cost = self.restaurantCostInput.text()
+        typeAttr = self.restaurantTypeInput.text()
+        Lat = self.restaurantLatInput.text()
+        Long = self.restaurantLongInput.text()
+        Likes = self.restaurantLikesInput.text()
+        Neighbourhood = self.restaurantNeighbourhoodInput.text()
+        self.mybackendRestaurant.updateRestaurants(attrName,Lat, Long,typeAttr,attrID, Likes, cost, Neighbourhood)
+
+    def func009add(self):
+        attrID = self.restaurantIDInput.text()
+        attrName = self.restaurantNameInput.text()
+        cost = self.restaurantCostInput.text()
+        typeAttr = self.restaurantTypeInput.text()
+        Lat = self.restaurantLatInput.text()
+        Long = self.restaurantLongInput.text()
+        Likes = self.restaurantLikesInput.text()
+        Neighbourhood = self.restaurantNeighbourhoodInput.text()
+        self.mybackendRestaurant.addRestaurants(attrName,Lat, Long,typeAttr,attrID, Likes, cost, Neighbourhood)
+
+
     def adminmodeclicked(self):
         self.Stack.setCurrentWidget(self.adminchoosemodecentralwidget)
     def bookRoomButtonClicked(self):
@@ -1186,7 +1305,7 @@ class Ui_MainWindow(object):
             else:
                 choice = QtWidgets.QMessageBox.question(self.bookcentralwidget, 'Confirmation',"Add 5000?",QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
                 if choice == QtWidgets.QMessageBox.Yes:
-                    money = money + cost + 5000 
+                    money = money + cost + 5000
                     self.BALANCE = str(money)
                     self.mybackend.setBalance(self.BALANCE,self.USER_ID)
                     self.rbalanceLabel.setText("Balance : " + self.BALANCE)
@@ -2144,6 +2263,21 @@ class Ui_MainWindow(object):
 
         self.attractionUpdateButton.setText(_translate("MainWindow", "Update"))
         self.attractionAddButton.setText(_translate("MainWindow", "Add"))
+
+
+        self.restaurantLabel.setText(_translate("MainWindow", "You are editing the Restaurant table. Please note Venue_ID is the primary key."))
+        self.restaurantIDLabel.setText(_translate("MainWindow", "Restaurant ID : "))
+        self.restaurantNameLabel.setText(_translate("MainWindow", "Name Of Restaurant : "))
+        self.restaurantLatLabel.setText(_translate("MainWindow", "Latitude : "))
+        self.restaurantLongLabel.setText(_translate("MainWindow", "Longitude : "))
+        self.restaurantCategoryLabel.setText(_translate("MainWindow", "Category : "))
+        self.restaurantCostLabel.setText(_translate("MainWindow", "Cost : "))
+        self.restaurantLikesLabel.setText(_translate("MainWindow", "Likes :"))
+        self.restaurantNeighbourhoodLabel.setText(_translate("MainWindow", "Neighbourhood :"))
+
+        self.restaurantUpdateButton.setText(_translate("MainWindow", "Update"))
+        self.restaurantAddButton.setText(_translate("MainWindow", "Add"))
+
 
 
 if __name__ == "__main__":
