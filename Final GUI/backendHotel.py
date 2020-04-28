@@ -3,9 +3,9 @@ import mysql.connector
 class backendHotel:
 	def __init__(self):
 		# self.mydb = mysql.connector.connect(host="localhost",user="root",passwd="admin",database = 'finalproject',auth_plugin='mysql_native_password',autocommit=True)
-		self.mydb = mysql.connector.connect(user='rhythm', password='password',
+		self.mydb = mysql.connector.connect(user='root', password='40@Vaibhav',
                                            host='127.0.0.1',
-                                           database='proj')
+                                           database='dbms')
 		self.mycursor = self.mydb.cursor(buffered=True)
 		self.hotels = []
 		self.all_hotel_list=[]
@@ -35,18 +35,18 @@ class backendHotel:
 		self.mycursor.execute('update customer set contact = %s where id = %s',(str(contact),str(cid)))
 		self.mycursor.execute('update customer set gender = %s where id = %s',(str(gender),str(cid)))
 		self.mycursor.execute('update customer set balance = %s where id = %s',(str(bal),str(cid)))
-		self.mydb.commit()		
+		self.mydb.commit()
 
 
 	def updatehotelinfo(self,hid,name,lid,contact):
 		self.mycursor.execute('update hotel set name = %s where id = %s',(str(name),str(hid)))
 		self.mycursor.execute('update hotel set loc_id = %s where id = %s',(str(lid),str(hid)))
 		self.mycursor.execute('update hotel set contact = %s where id = %s',(str(contact),str(hid)))
-		self.mydb.commit()		
+		self.mydb.commit()
 
 	def addintohotel(self,name,lid,contact):
 		self.mycursor.execute('INSERT INTO hotel (Name, loc_id, contact) VALUES (%s, %s, %s)',(str(name),str(lid),str(contact)))
-		self.mydb.commit()		
+		self.mydb.commit()
 
 	def addintolocation(self,name,x,y):
 		self.mycursor.execute('INSERT INTO locations (Name, x, y) VALUES (%s, %s, %s)',(str(name),str(x),str(y)))
@@ -88,7 +88,7 @@ class backendHotel:
 			d = str(temp[4])
 			e = str(temp[5])
 
-		return a,b,c,d,e		
+		return a,b,c,d,e
 
 
 	def getinfolocation(self,lid):
@@ -187,7 +187,7 @@ class backendHotel:
 			self.mycursor.execute('select name from hotel where id = \'{}\''.format(temp[4]))
 			for a in self.mycursor:
 				temp.append(a[0])
-			
+
 	def getReview(self,hotel_name):
 		ans=[]
 		for temp in self.all_reviews:
