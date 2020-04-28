@@ -5,6 +5,8 @@ from backendRestaurant import backendRestaurant, RSS
 from backendFlight import backendFlight
 from frontendMovie import ReviewScreen, runn
 from PyQt5.QtWidgets import QApplication
+from datetime import datetime
+
 class AttractionWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):
         super(AttractionWidget, self).__init__(parent)
@@ -839,9 +841,6 @@ class Ui_MainWindow(object):
         self.attractionUpdateButton.clicked.connect(self.func007update)
         self.attractionAddButton.clicked.connect(self.func007add)
 
-
-<<<<<<< HEAD
-
         self.restaurantEditWidget = QtWidgets.QWidget(MainWindow)
         self.restaurantEditWidget.setObjectName("restaurantEditWidget")
 
@@ -927,8 +926,6 @@ class Ui_MainWindow(object):
 
         self.restaurantUpdateButton.clicked.connect(self.func009update)
         self.restaurantAddButton.clicked.connect(self.func009add)
-=======
->>>>>>> 6839c1ff3d7e758c94ef1d04320bf4d75bc1063f
 
 
         self.Stack.addWidget(self.logincentralwidget)
@@ -986,14 +983,10 @@ class Ui_MainWindow(object):
 
     def attractionEdit(self):
         self.Stack.setCurrentWidget(self.attractionsEditWidget)
-<<<<<<< HEAD
 
     def restaurantEdit(self):
         self.Stack.setCurrentWidget(self.restaurantEditWidget)
 
-
-=======
->>>>>>> 6839c1ff3d7e758c94ef1d04320bf4d75bc1063f
     def exitclick(self):
         os._exit(1)
     def changemodeclick(self):
@@ -1210,6 +1203,13 @@ class Ui_MainWindow(object):
             self.customerGenderLineEdit3.setText("")
             self.customerBalanceLineEdit3.setText("")
 
+    def timeCheck(self,t):
+    	try:
+    		datetime.strptime(t,'%H:%M:%S')
+    		return True
+    	except:
+    		return False
+
     def func007update(self):
         attrID = self.attractionIDInput.text()
         attrName = self.attractionNameInput.text()
@@ -1219,20 +1219,27 @@ class Ui_MainWindow(object):
         cost = self.attractionCostInput.text()
         typeAttr = self.attractionTypeInput.text()
 
-        # if(len(a)==0 or len(b)==0 or len(c)==0 or len(d)==0 or len(e)==0 or len(cid)==0):
-        #     choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
-        # elif(a.isdigit() or b.isdigit()):
-        #     choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Name cannot be a number!",QtWidgets.QMessageBox.Ok)
-        # elif(c.isdigit()):
-        #     choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"contact must be an email",QtWidgets.QMessageBox.Ok)
-        # elif(not(d=="M" or d=="F")):
-        #     choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Gender must be 'M' or 'F'",QtWidgets.QMessageBox.Ok)
-        # elif(not e.isdigit() or int(e)<0):
-        #     choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Balance must be a (positive)number",QtWidgets.QMessageBox.Ok)
-        # else:
-        #     self.mybackend.updatecustomerinfo(cid,a,b,c,d,e)
-
-        self.mybackendAttraction.updateAttractions(attrID,attrName,summary,duration,start,cost,typeAttr)
+        if (len(attrID)==0 or len(attrName)==0 or len(summary)==0 or len(duration)==0 or len(start)==0 or len(cost)==0 or len(typeAttr)==0):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
+        elif (not attrID.isdigit()):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"ID cannot be alphabetic!",QtWidgets.QMessageBox.Ok)
+        # elif(attrName.isdigit()):
+            # choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Name cannot be a number!",QtWidgets.QMessageBox.Ok)
+        elif(not duration.isdigit() or int(duration) < 0):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Duration must be a (positive) number",QtWidgets.QMessageBox.Ok)
+        elif(not self.timeCheck(start)):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Time must me in HH:MM:SS format",QtWidgets.QMessageBox.Ok)
+        elif(not cost.isdigit() or int(cost) < 0):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Cost must be a (positive) number",QtWidgets.QMessageBox.Ok)
+        else:
+        	self.mybackendAttraction.updateAttractions(attrID,attrName,summary,duration,start,cost,typeAttr)
+        	self.attractionIDInput.setText("")
+        	self.attractionNameInput.setText("")
+        	self.attractionSummaryInput.setText("")
+        	self.attractionDurationInput.setText("")
+        	self.attractionStartInput.setText("")
+        	self.attractionCostInput.setText("")
+        	self.attractionTypeInput.setText("")
 
     def func007add(self):
         attrID = self.attractionIDInput.text()
@@ -1243,20 +1250,27 @@ class Ui_MainWindow(object):
         cost = self.attractionCostInput.text()
         typeAttr = self.attractionTypeInput.text()
 
-        # if(len(a)==0 or len(b)==0 or len(c)==0 or len(d)==0 or len(e)==0 or len(cid)==0):
-        #     choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
-        # elif(a.isdigit() or b.isdigit()):
-        #     choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Name cannot be a number!",QtWidgets.QMessageBox.Ok)
-        # elif(c.isdigit()):
-        #     choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"contact must be an email",QtWidgets.QMessageBox.Ok)
-        # elif(not(d=="M" or d=="F")):
-        #     choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Gender must be 'M' or 'F'",QtWidgets.QMessageBox.Ok)
-        # elif(not e.isdigit() or int(e)<0):
-        #     choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Balance must be a (positive)number",QtWidgets.QMessageBox.Ok)
-        # else:
-        #     self.mybackend.updatecustomerinfo(cid,a,b,c,d,e)
-
-        self.mybackendAttraction.addAttractions(attrID,attrName,summary,duration,start,cost,typeAttr)
+        if (len(attrID)==0 or len(attrName)==0 or len(summary)==0 or len(duration)==0 or len(start)==0 or len(cost)==0 or len(typeAttr)==0):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
+        elif (not attrID.isdigit()):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"ID cannot be alphabetic!",QtWidgets.QMessageBox.Ok)
+        # elif(attrName.isdigit()):
+            # choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Name cannot be a number!",QtWidgets.QMessageBox.Ok)
+        elif(not duration.isdigit() or int(duration) < 0):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Duration must be a (positive) number",QtWidgets.QMessageBox.Ok)
+        elif(not self.timeCheck(start)):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Time must me in HH:MM:SS format",QtWidgets.QMessageBox.Ok)
+        elif(not cost.isdigit() or int(cost) < 0):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Cost must be a (positive) number",QtWidgets.QMessageBox.Ok)
+        else:
+        	self.mybackendAttraction.updateAttractions(attrID,attrName,summary,duration,start,cost,typeAttr)
+        	self.attractionIDInput.setText("")
+        	self.attractionNameInput.setText("")
+        	self.attractionSummaryInput.setText("")
+        	self.attractionDurationInput.setText("")
+        	self.attractionStartInput.setText("")
+        	self.attractionCostInput.setText("")
+        	self.attractionTypeInput.setText("")
 
 
 
