@@ -6,6 +6,7 @@ from backendFlight import backendFlight
 from frontendMovie import ReviewScreen, runn
 from PyQt5.QtWidgets import QApplication
 from datetime import datetime
+from adminMode import adminmovieRun
 
 class AttractionWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):
@@ -657,6 +658,7 @@ class Ui_MainWindow(object):
         self.adminCustomerPushButton.clicked.connect(self.customeredit)
         self.adminAttractionsPushButton.clicked.connect(self.attractionEdit)
         self.adminRestaurantsPushButton.clicked.connect(self.restaurantEdit)
+        self.adminMoviesPushButton.clicked.connect(self.movieEdit)
         self.customereditcentralwidget = QtWidgets.QWidget(MainWindow)
         self.customereditcentralwidget.setObjectName("customereditcentralwidget")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.customereditcentralwidget)
@@ -1524,6 +1526,9 @@ class Ui_MainWindow(object):
     def restaurantEdit(self):
         self.Stack.setCurrentWidget(self.restaurantEditWidget)
 
+    def movieEdit(self):
+        adminmovieRun(self)
+
     def exitclick(self):
         os._exit(1)
     def changemodeclick(self):
@@ -1741,21 +1746,21 @@ class Ui_MainWindow(object):
             self.customerBalanceLineEdit3.setText("")
 
     def timeCheck(self,t):
-    	try:
-    		datetime.strptime(t,'%H:%M:%S')
-    		return True
-    	except:
-    		return False
+        try:
+            datetime.strptime(t,'%H:%M:%S')
+            return True
+        except:
+            return False
 
     def IDpresent(self,attrID):
-    	IDs = self.mybackendAttraction.getIDs()
+        IDs = self.mybackendAttraction.getIDs()
 
-    	for ids in IDs:
-    		ID = ids[0]
-    		if (int(attrID) == ID):
-    			return True
+        for ids in IDs:
+            ID = ids[0]
+            if (int(attrID) == ID):
+                return True
 
-    	return False
+        return False
 
     def func007update(self):
         attrID = self.attractionIDInput.text()
@@ -1780,16 +1785,16 @@ class Ui_MainWindow(object):
         elif(not cost.isdigit() or int(cost) < 0):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Cost must be a (positive) number",QtWidgets.QMessageBox.Ok)
         elif (not self.IDpresent(attrID)):
-        	choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Invalid ID. ID doesn't exist in table. Please enter correct ID to update fields.",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Invalid ID. ID doesn't exist in table. Please enter correct ID to update fields.",QtWidgets.QMessageBox.Ok)
         else:
-        	self.mybackendAttraction.updateAttractions(attrID,attrName,summary,duration,start,cost,typeAttr)
-        	self.attractionIDInput.setText("")
-        	self.attractionNameInput.setText("")
-        	self.attractionSummaryInput.setText("")
-        	self.attractionDurationInput.setText("")
-        	self.attractionStartInput.setText("")
-        	self.attractionCostInput.setText("")
-        	self.attractionTypeInput.setText("")
+            self.mybackendAttraction.updateAttractions(attrID,attrName,summary,duration,start,cost,typeAttr)
+            self.attractionIDInput.setText("")
+            self.attractionNameInput.setText("")
+            self.attractionSummaryInput.setText("")
+            self.attractionDurationInput.setText("")
+            self.attractionStartInput.setText("")
+            self.attractionCostInput.setText("")
+            self.attractionTypeInput.setText("")
 
     def func007add(self):
         attrID = self.attractionIDInput.text()
@@ -1814,16 +1819,16 @@ class Ui_MainWindow(object):
         elif(not cost.isdigit() or int(cost) < 0):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Cost must be a (positive) number",QtWidgets.QMessageBox.Ok)
         elif (self.IDpresent(attrID)):
-        	choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"ID already exists in table. Cannot add new fields with this ID. Please enter new ID to add fields.",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"ID already exists in table. Cannot add new fields with this ID. Please enter new ID to add fields.",QtWidgets.QMessageBox.Ok)
         else:
-        	self.mybackendAttraction.updateAttractions(attrID,attrName,summary,duration,start,cost,typeAttr)
-        	self.attractionIDInput.setText("")
-        	self.attractionNameInput.setText("")
-        	self.attractionSummaryInput.setText("")
-        	self.attractionDurationInput.setText("")
-        	self.attractionStartInput.setText("")
-        	self.attractionCostInput.setText("")
-        	self.attractionTypeInput.setText("")
+            self.mybackendAttraction.updateAttractions(attrID,attrName,summary,duration,start,cost,typeAttr)
+            self.attractionIDInput.setText("")
+            self.attractionNameInput.setText("")
+            self.attractionSummaryInput.setText("")
+            self.attractionDurationInput.setText("")
+            self.attractionStartInput.setText("")
+            self.attractionCostInput.setText("")
+            self.attractionTypeInput.setText("")
 
 
 
