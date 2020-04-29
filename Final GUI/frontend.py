@@ -143,6 +143,7 @@ class Ui_MainWindow(object):
     BALANCE = 0
 
     def setupUi(self, MainWindow):
+        self.MainWindow = MainWindow
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 600)
         self.Stack = QtWidgets.QStackedWidget(MainWindow)
