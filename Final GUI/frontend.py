@@ -359,7 +359,7 @@ class Ui_MainWindow(object):
         self.loginModeLabel.setFont(font)
         self.loginModeLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.loginModeLabel.setObjectName("loginModeLabel")
-        self.loginModeLabel.setText("Customer Mode")
+        self.loginModeLabel.setText("Welcome to e-Raahi")
         self.loginIDTextEdit = QtWidgets.QLineEdit(self.logincentralwidget)
         self.loginIDTextEdit.setGeometry(QtCore.QRect(320, 270, 201, 25))
         self.loginIDTextEdit.setObjectName("loginIDTextEdit")
@@ -371,18 +371,18 @@ class Ui_MainWindow(object):
         self.loginadminPushButton = QtWidgets.QPushButton(self.logincentralwidget)
         self.loginadminPushButton.setGeometry(QtCore.QRect(440, 370, 131, 31))
         self.loginadminPushButton.setObjectName("loginadminPushButton")
-        self.loginadminPushButton.setText("Admin Mode")
+        self.loginadminPushButton.setText("Admin Login")
         self.logincustomerPushButton = QtWidgets.QPushButton(self.logincentralwidget)
         self.logincustomerPushButton.setGeometry(QtCore.QRect(230, 370, 121, 31))
         self.logincustomerPushButton.setObjectName("logincustomerPushButton")
-        self.logincustomerPushButton.setText("Customer Mode")
-        self.loginPushButton = QtWidgets.QPushButton(self.logincentralwidget)
-        self.loginPushButton.setGeometry(QtCore.QRect(360, 320, 111, 31))
-        self.loginPushButton.setObjectName("loginPushButton")
-        self.loginPushButton.setText("Login")
+        self.logincustomerPushButton.setText("Customer Login")
+        # self.loginPushButton = QtWidgets.QPushButton(self.logincentralwidget)
+        # self.loginPushButton.setGeometry(QtCore.QRect(360, 320, 111, 31))
+        # self.loginPushButton.setObjectName("loginPushButton")
+        # self.loginPushButton.setText("Login")
         self.loginadminPushButton.clicked.connect(self.adminPushButtonClicked)
         self.logincustomerPushButton.clicked.connect(self.customerPushButtonClicked)
-        self.loginPushButton.clicked.connect(self.loginPushButtonClicked)
+        # self.loginPushButton.clicked.connect(self.loginPushButtonClicked)
         self.hoteleditcentralwidget = QtWidgets.QWidget(MainWindow)
         self.hoteleditcentralwidget.setObjectName("hoteleditcentralwidget")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.hoteleditcentralwidget)
@@ -1966,12 +1966,14 @@ class Ui_MainWindow(object):
         self.ADMIN_MODE=True
         self.CUSTOMER_MODE=False
         print('ADMIN_MODE')
-        self.loginModeLabel.setText("Admin Mode")
+        self.loginModeLabel.setText("Admin Login")
+        self.loginPushButtonClicked()
     def customerPushButtonClicked(self):
         self.ADMIN_MODE=False
         self.CUSTOMER_MODE=True
         print('CUSTOMER_MODE')
-        self.loginModeLabel.setText("Customer Mode")
+        self.loginModeLabel.setText("Customer Login")
+        self.loginPushButtonClicked()
 
     def startMoviesDisplay(self):
 
