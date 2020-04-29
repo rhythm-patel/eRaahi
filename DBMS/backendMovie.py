@@ -5,7 +5,9 @@ class backend:
     mydb = ''
 
     def __init__(self):
-        self.mydb = mysql.connector.connect(host="localhost",user="newuser",passwd="password",database = 'final',auth_plugin='mysql_native_password')
+        self.mydb = mysql.connector.connect(user='newuser', password='password',
+                                           host='localhost',
+                                           database='final')
         self.mycursor = self.mydb.cursor(buffered=True)
 
     def getmovies(self, search_text, filter):
@@ -50,7 +52,7 @@ class backend:
 
     def get_booking_details(self, movie_id):
         available_bookings = []
-        self.mycursor.execute("select * from booking where Movie_id = "+ str(movie_id))
+        self.mycursor.execute("select * from movie_booking where Movie_id = "+ str(movie_id))
         myresult = self.mycursor.fetchall()
         for book_option in myresult:
             book_info = {}
@@ -100,7 +102,7 @@ class backend:
 
     def getMovieFromBook(self, book_id):
 
-        self.mycursor.execute("select Movie_Id from booking where Book_id = "+ str(book_id))
+        self.mycursor.execute("select Movie_Id from movie_booking where Book_id = "+ str(book_id))
         myresult = self.mycursor.fetchall()
         movieid = myresult[0][0]
 
@@ -116,7 +118,6 @@ class backend:
         movies_booked = {}
         for book_info in myresult:
             movies_booked.update(self.getMovieFromBook(book_info[0]))
-
         self.mycursor.execute("select Movie_Id from reviews where customer_id = "+ customer_id )
         myresult = self.mycursor.fetchall()
 
@@ -135,3 +136,68 @@ class backend:
 
         self.mycursor.executemany(sql, to_insert)
         self.mydb.commit()
+
+
+
+    #########################################
+    #########################################
+
+    def adminMovies(self, vals, addorupdate):
+        try:
+            if addorupdate == "Add":
+                sql = "INSERT INTO Movies (Movie_name, Genres, Age) VALUES {}".format(tuple(vals))
+
+                self.mycursor.execute(sql)
+                self.mydb.commit()
+
+            else:
+                sql = "UPDATE Movies SET Movie_name='{}', Genres='{}', Age='{}' WHERE Movie_Id={}".format(vals[1],vals[2],vals[3],vals[0])
+                print(sql)
+                self.mycursor.execute(sql)
+                self.mydb.commit()
+        except:
+            print("Bhap Bhenchod")
+
+    def adminhall(self, vals, addorupdate):
+        try:
+            if addorupdate == "Add":
+                sql = "INSERT INTO hall (Hall_name, Available_seats, Location) VALUES {}".format(tuple(vals))
+                self.mycursor.execute(sql)
+                self.mydb.commit()
+
+            else:
+                sql = "UPDATE hall SET Hall_name = '{}', Available_seats= '{}', Location='{}' WHERE Hall_id = {}".format(vals[1],vals[2],vals[3],vals[0])
+                self.mycursor.execute(sql)
+                self.mydb.commit()
+        except:
+            print("hello")
+
+    def adminbooking(self, vals, addorupdate):
+        vals.append(1)
+        try:
+            if addorupdate == "Add":
+                sql = "INSERT INTO booking (Movie_Id, Hall_id, date, Cost, Slots) VALUES {}".format(tuple(vals))
+                self.mycursor.execute(sql)
+                self.mydb.commit()
+
+            else:
+                sql = "UPDATE booking SET Movie_Id = '{}', Hall_id= '{}', date='{}', Cost='{}', Slots='{}'   WHERE Movie_Id = {}".format(vals[1],vals[2],vals[3],vals[4],vals[5],vals[0])
+                self.mycursor.execute(sql)
+                self.mydb.commit()
+        except:
+            print("hello")
+
+
+    def adminseats(self, vals, addorupdate):
+        try:
+            if addorupdate == "Add":
+                sql = "INSERT INTO seats (Book_id, available_seats) VALUES {}".format(tuple(vals))
+                self.mycursor.execute(sql)
+                self.mydb.commit()
+
+            else:
+                sql = "UPDATE seats SET available_seats = '{}' WHERE Book_id = {}".format(vals[1], vals[0])
+                self.mycursor.execute(sql)
+                self.mydb.commit()
+        except:
+            print("hello")
