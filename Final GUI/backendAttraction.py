@@ -6,10 +6,10 @@ class backendAttraction:
         # self.cnx = mysql.connector.connect(user='root', password='40@Vaibhav',
         #                                    host='127.0.0.1',
         #                                    database='dbms')
-        # self.cnx = mysql.connector.connect(host="localhost",user="root",passwd="admin",database = 'finalproject',auth_plugin='mysql_native_password',autocommit=True)
-        self.cnx = mysql.connector.connect(user='rhythm', password='password',
-                                           host='127.0.0.1',
-                                           database='proj')
+        self.cnx = mysql.connector.connect(host="localhost",user="root",passwd="admin",database = 'finalproject',auth_plugin='mysql_native_password',autocommit=True)
+        # self.cnx = mysql.connector.connect(user='rhythm', password='password',
+        #                                    host='127.0.0.1',
+        #                                    database='proj')
         self.cur = self.cnx.cursor(buffered=True)
 
         self.getAttractions()
