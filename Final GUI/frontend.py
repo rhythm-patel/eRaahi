@@ -1300,18 +1300,68 @@ class Ui_MainWindow(object):
         Long = self.restaurantLongInput.text()
         Likes = self.restaurantLikesInput.text()
         Neighbourhood = self.restaurantNeighbourhoodInput.text()
-        self.mybackendRestaurant.updateRestaurants(attrName,Lat, Long,typeAttr,attrID, Likes, cost, Neighbourhood)
+
+
+        if (len(attrID)==0 or len(attrName)==0 or len(cost)==0 or len(typeAttr)==0 or len(Lat)==0 or len(Long)==0 or len(Likes)==0 or len(Neighbourhood) == 0):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
+
+        elif(not attrID.isdigit()):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"ID cannot be alphabetic",QtWidgets.QMessageBox.Ok)
+
+        elif(not cost.isdigit() or int(cost) < 0):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect cost",QtWidgets.QMessageBox.Ok)
+        elif(not Likes.isdigit() or int(Likes) < 0):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect cost",QtWidgets.QMessageBox.Ok)
+
+        elif(typeAttr.isdigit()):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Category",QtWidgets.QMessageBox.Ok)
+        elif(not Lat.isdigit()):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Latitude",QtWidgets.QMessageBox.Ok)
+        elif(not Long.isdigit()):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Longitude",QtWidgets.QMessageBox.Ok)
+
+        elif(Neighbourhood.isdigit()):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Neighbourhood",QtWidgets.QMessageBox.Ok)
+        elif(not self.mybackendRestaurant.getIDs(attrID)):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect ID/ ID not present",QtWidgets.QMessageBox.Ok)
+        else:
+            self.mybackendRestaurant.updateRestaurants(attrName,Lat, Long,typeAttr,attrID, Likes, cost, Neighbourhood)
 
     def func009add(self):
         attrID = self.restaurantIDInput.text()
         attrName = self.restaurantNameInput.text()
         cost = self.restaurantCostInput.text()
-        typeAttr = self.restaurantCategoryInput.text()
+        typeAttr = self.restaurantTypeInput.text()
         Lat = self.restaurantLatInput.text()
         Long = self.restaurantLongInput.text()
         Likes = self.restaurantLikesInput.text()
         Neighbourhood = self.restaurantNeighbourhoodInput.text()
-        self.mybackendRestaurant.addRestaurants(attrName,Lat, Long,typeAttr,attrID, Likes, cost, Neighbourhood)
+
+
+        if (len(attrID)==0 or len(attrName)==0 or len(cost)==0 or len(typeAttr)==0 or len(Lat)==0 or len(Long)==0 or len(Likes)==0 or len(Neighbourhood) == 0):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
+
+        elif(not attrID.isdigit()):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"ID cannot be alphabetic",QtWidgets.QMessageBox.Ok)
+
+        elif(not cost.isdigit() or int(cost) < 0):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect cost",QtWidgets.QMessageBox.Ok)
+        elif(not Likes.isdigit() or int(Likes) < 0):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect cost",QtWidgets.QMessageBox.Ok)
+
+        elif(typeAttr.isdigit()):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Category",QtWidgets.QMessageBox.Ok)
+        elif(not Lat.isdigit()):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Latitude",QtWidgets.QMessageBox.Ok)
+        elif(not Long.isdigit()):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Longitude",QtWidgets.QMessageBox.Ok)
+
+        elif(Neighbourhood.isdigit()):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Neighbourhood",QtWidgets.QMessageBox.Ok)
+        elif(self.mybackendRestaurant.getIDs(attrID)):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect ID/ ID present",QtWidgets.QMessageBox.Ok)
+        else:
+            self.mybackendRestaurant.addRestaurants(attrName,Lat, Long,typeAttr,attrID, Likes, cost, Neighbourhood)
 
 
     def adminmodeclicked(self):

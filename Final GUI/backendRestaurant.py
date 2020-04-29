@@ -12,6 +12,16 @@ from nltk.tokenize import WordPunctTokenizer
 import string
 import re
 
+class PUM(QDialog):
+    def __init__(self, message):
+        super(PUM, self).__init__()
+        uic.loadUi("ErrorBoxRest.ui", self)
+        self.show()
+        self.error = self.findChild(QPlainTextEdit, "errorBox")
+        error.insertPlainText(message);
+
+
+
 class backendRestaurant:
     def __init__(self):
         # self.cnx = mysql.connector.connect(user='root', password='40@Vaibhav',host='127.0.0.1', database='dbms')
@@ -22,13 +32,37 @@ class backendRestaurant:
         self.cur = self.cnx.cursor(buffered=True)
         self.getRestaurant()
 
+
+    def getIDs(self, id):
+    	self.cur.execute('select Venue_Id from Venues')
+    	for ids in self.cur:
+            if(int(id) == ids[0]):
+                return True
+    	return False
+
+
     def updateRestaurants(self,Venue,Venue_lat,Venue_long,Category,Venue_Id,Likes, Cost, Neighbourhood):
+        # self.cur.execute('select count (Venue_Id) from Venues where Venue_Id = %s', (str(Venue_Id)))
+        # ans = int(self.curr[0])
+        # if(ans == 0):
+        #     PUM("Wrong Key");
+        #     return;
         self.cur.execute('update Venues set Venue = %s where Venue_Id = %s',(str(Venue),str(Venue_Id)))
+
+
         self.cur.execute('update Venues set Venue_Latitude = %s where Venue_Id = %s',(str(Venue_lat),str(Venue_Id)))
+
         self.cur.execute('update Venues set Venue_Longitude = %s where Venue_Id = %s',(str(Venue_long),str(Venue_Id)))
+
+
         self.cur.execute('update Venues set Venue_Category = %s where Venue_Id = %s',(str(Category),str(Venue_Id)))
+
+
         self.cur.execute('update Venues set Likes = %s where Venue_Id = %s',(str(Likes),str(Venue_Id)))
-        self.cur.execute('update Venues set Cost = %s where Venue_Id = %s',(str(Cost),str(Venue_Id)))
+
+
+        self.cur.execute('update Venues set Likes = %s where Venue_Id = %s',(str(Cost),str(Venue_Id)))
+
         self.cur.execute('update Venues set Neighbourhood = %s where Venue_Id = %s',(str(Neighbourhood),str(Venue_Id)))
         self.cnx.commit()
 
