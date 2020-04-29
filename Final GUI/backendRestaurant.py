@@ -24,8 +24,8 @@ class PUM(QDialog):
 
 class backendRestaurant:
     def __init__(self):
-        # self.cnx = mysql.connector.connect(user='root', password='40@Vaibhav',host='127.0.0.1', database='dbms')
-        self.cnx = mysql.connector.connect(host="localhost",user="root",passwd="admin",database = 'finalproject',auth_plugin='mysql_native_password',autocommit=True)
+        self.cnx = mysql.connector.connect(user='root', password='40@Vaibhav',host='127.0.0.1', database='dbms')
+        # self.cnx = mysql.connector.connect(host="localhost",user="root",passwd="admin",database = 'finalproject',auth_plugin='mysql_native_password',autocommit=True)
         # self.cnx = mysql.connector.connect(user='rhythm', password='password',
         #                                    host='127.0.0.1',
         #                                    database='proj')
@@ -42,28 +42,29 @@ class backendRestaurant:
 
 
     def updateRestaurants(self,Venue,Venue_lat,Venue_long,Category,Venue_Id,Likes, Cost, Neighbourhood):
-        # self.cur.execute('select count (Venue_Id) from Venues where Venue_Id = %s', (str(Venue_Id)))
-        # ans = int(self.curr[0])
-        # if(ans == 0):
-        #     PUM("Wrong Key");
-        #     return;
-        self.cur.execute('update Venues set Venue = %s where Venue_Id = %s',(str(Venue),str(Venue_Id)))
+        if(len(Venue) is not 0):
+
+            self.cur.execute('update Venues set Venue = %s where Venue_Id = %s',(str(Venue),str(Venue_Id)))
+
+        if(len(Venue_lat) is not 0):
+            self.cur.execute('update Venues set Venue_Latitude = %s where Venue_Id = %s',(str(Venue_lat),str(Venue_Id)))
+
+        if(len(Venue_long) is not 0):
+            self.cur.execute('update Venues set Venue_Longitude = %s where Venue_Id = %s',(str(Venue_long),str(Venue_Id)))
+
+        if(len(Category) is not 0):
+            self.cur.execute('update Venues set Venue_Category = %s where Venue_Id = %s',(str(Category),str(Venue_Id)))
+
+        if(len(Likes) is not 0):
+            self.cur.execute('update Venues set Likes = %s where Venue_Id = %s',(str(Likes),str(Venue_Id)))
+
+        if(len(Cost) is not 0):
+            self.cur.execute('update Venues set Likes = %s where Venue_Id = %s',(str(Cost),str(Venue_Id)))
+
+        if(len(Neighbourhood) is not 0):
+            self.cur.execute('update Venues set Neighbourhood = %s where Venue_Id = %s',(str(Neighbourhood),str(Venue_Id)))
 
 
-        self.cur.execute('update Venues set Venue_Latitude = %s where Venue_Id = %s',(str(Venue_lat),str(Venue_Id)))
-
-        self.cur.execute('update Venues set Venue_Longitude = %s where Venue_Id = %s',(str(Venue_long),str(Venue_Id)))
-
-
-        self.cur.execute('update Venues set Venue_Category = %s where Venue_Id = %s',(str(Category),str(Venue_Id)))
-
-
-        self.cur.execute('update Venues set Likes = %s where Venue_Id = %s',(str(Likes),str(Venue_Id)))
-
-
-        self.cur.execute('update Venues set Likes = %s where Venue_Id = %s',(str(Cost),str(Venue_Id)))
-
-        self.cur.execute('update Venues set Neighbourhood = %s where Venue_Id = %s',(str(Neighbourhood),str(Venue_Id)))
         self.cnx.commit()
 
     def addRestaurants(self,Venue,Venue_lat,Venue_long,Category,Venue_Id,Likes, Cost, Neighbourhood):
@@ -221,7 +222,7 @@ class RSS(QDialog):
         text = self.inp.toPlainText()
         if (text == ""):
             return True
-        self.ans.insertPlainText("")
+        self.ans.setPlainText("")
         self.ans.insertPlainText(self.Process(text))
 
     def matrix_factorization(self, R, P, Q, steps=100, gamma=0.001, lamda=0.02):

@@ -994,13 +994,13 @@ class Ui_MainWindow(object):
 
 
     ######## Flights Part Starts Here ################
-    
+
     class FlightWidget(QtWidgets.QWidget):
         def __init__(self, outer, parent=None):
             super(outer.FlightWidget, self).__init__(parent)
             self.outer = outer
             self.box = QtWidgets.QVBoxLayout()
-            
+
             self.id = QtWidgets.QLabel()
             self.airline = QtWidgets.QLabel()
             self.airport = QtWidgets.QLabel()
@@ -1053,7 +1053,7 @@ class Ui_MainWindow(object):
                     window.reject()
                     return
                 selectedSeats = spinbox.value()
-                
+
                 print("You attempted to book {} seats in Flight No: {}".format(selectedSeats, flightNo))
                 seats = self.outer.mybackendFlight.bookSeats(flightNo, selectedSeats, int(self.outer.USER_ID), int(self.outer.BALANCE))
                 if (seats[0]==-1):
@@ -1116,13 +1116,13 @@ class Ui_MainWindow(object):
             self.box.addWidget(searchbutton)
             self.setLayout(self.box)
 
-    
+
     class airlineAdminMode:
         def __init__(self, outer):
             outer.flightAdminWindow = QtWidgets.QWidget(outer.MainWindow)
             self.outer = outer
             mainVertLayout = QtWidgets.QVBoxLayout()
-            
+
             ## add airline ##
             airlineAdder = QtWidgets.QVBoxLayout()
             airlineAdder.addWidget(QtWidgets.QLabel("Add Airline"))
@@ -1164,7 +1164,7 @@ class Ui_MainWindow(object):
             flightAdder.addWidget(QtWidgets.QLabel("Add FLight"))
             flightAdderH = QtWidgets.QHBoxLayout()
             flightAdderH2 = QtWidgets.QHBoxLayout()
-            
+
             self.addFlightAirline = QtWidgets.QComboBox()
             self.addFlightAirline.addItems(outer.mybackendFlight.getAirlines())
             self.addFlightAirport = QtWidgets.QComboBox()
@@ -1188,10 +1188,10 @@ class Ui_MainWindow(object):
             flightAdderH2.addWidget(addFlightBtn)
             flightAdderH2.addWidget(QtWidgets.QLabel("Flight Id: "))
             flightAdderH2.addWidget(self.addFlightResult)
-            
+
             flightAdder.addLayout(flightAdderH)
             flightAdder.addLayout(flightAdderH2)
-            
+
 
             ## add tickets ##
             ticketAdder = QtWidgets.QVBoxLayout()
@@ -1202,7 +1202,7 @@ class Ui_MainWindow(object):
             val1 = QtGui.QIntValidator()
             val1.setBottom(1)
             self.addTicketFlightId.setValidator(val1)
-           
+
             self.addTicketNumSeats = QtWidgets.QLineEdit()
             self.addTicketNumSeats.setValidator(QtGui.QIntValidator(1,500))
             self.addTicketNumSeats.setPlaceholderText("Number of Seats")
@@ -1267,11 +1267,11 @@ class Ui_MainWindow(object):
             k = self.airlineRemoveName.count()
             while(k>0):
                 self.airlineRemoveName.removeItem(0)
-                self.addFlightAirline.removeItem(0)                
+                self.addFlightAirline.removeItem(0)
                 k-=1
             self.airlineRemoveName.addItems(self.outer.mybackendFlight.getAirlines())
             self.addFlightAirline.addItems(self.outer.mybackendFlight.getAirlines())
-            
+
         def addAirport(self):
             name = self.addAirportName.text()
             country = self.addAirportCountry.text()
@@ -1285,10 +1285,10 @@ class Ui_MainWindow(object):
             self.outer.mybackendFlight.addAirport(name, country, city)
             k = self.addFlightAirport.count()
             while(k>0):
-                self.addFlightAirport.removeItem(0)          
+                self.addFlightAirport.removeItem(0)
                 k-=1
             self.addFlightAirport.addItems(self.outer.mybackendFlight.getAllAirports())
-            
+
         def addFlight(self):
             airline = self.addFlightAirline.currentText()
             airport = self.addFlightAirport.currentText()
@@ -1298,12 +1298,12 @@ class Ui_MainWindow(object):
                 choice = QtWidgets.QMessageBox.information(self.outer.flightAdminWindow, 'Wrong DateTime',"Arrival DateTime should be after Departure DateTime",QtWidgets.QMessageBox.Ok)
                 return
             idx = self.outer.mybackendFlight.addFlight(airline, airport, departure, arrival)
-            
+
             self.addFlightResult.setText(str(idx))
             k = self.addTicketFlightId.count()
             while(k>0):
                 self.addTicketFlightId.removeItem(0)
-                self.removeFlightId.removeItem(0)          
+                self.removeFlightId.removeItem(0)
                 k-=1
             self.addTicketFlightId.addItems(self.outer.mybackendFlight.getFlightIDs())
             self.removeFlightId.addItems(self.outer.mybackendFlight.getFlightIDs())
@@ -1315,9 +1315,9 @@ class Ui_MainWindow(object):
             if not(numtickets>0 and price>0):
                 choice = QtWidgets.QMessageBox.information(self.outer.flightAdminWindow, 'Non Positive Value',"Only Positive Values are Allowed",QtWidgets.QMessageBox.Ok)
                 return
-            
+
             self.outer.mybackendFlight.addTickets(int(flightid), numtickets, price)
-            
+
         def removeFlight(self):
             id = int(self.removeFlightId.currentText())
             choice = QtWidgets.QMessageBox.information(self.outer.flightAdminWindow, 'Confirmaton',"Are you sure, you want to remove the chosen flight",QtWidgets.QMessageBox.Yes  |QtWidgets.QMessageBox.No)
@@ -1326,7 +1326,7 @@ class Ui_MainWindow(object):
             k = self.addTicketFlightId.count()
             while(k>0):
                 self.addTicketFlightId.removeItem(0)
-                self.removeFlightId.removeItem(0)          
+                self.removeFlightId.removeItem(0)
                 k-=1
             self.addTicketFlightId.addItems(self.outer.mybackendFlight.getFlightIDs())
             self.removeFlightId.addItems(self.outer.mybackendFlight.getFlightIDs())
@@ -1339,13 +1339,13 @@ class Ui_MainWindow(object):
             k = self.airlineRemoveName.count()
             while(k>0):
                 self.airlineRemoveName.removeItem(0)
-                self.addFlightAirline.removeItem(0)                
+                self.addFlightAirline.removeItem(0)
                 k-=1
             self.airlineRemoveName.addItems(self.outer.mybackendFlight.getAirlines())
             self.addFlightAirline.addItems(self.outer.mybackendFlight.getAirlines())
-                        
-      
-    
+
+
+
     def runAirlineAdminMode(self):
         self.Stack.setCurrentWidget(self.flightAdminWindow)
     def airlineInitializer(self):
@@ -1839,26 +1839,27 @@ class Ui_MainWindow(object):
         Neighbourhood = self.restaurantNeighbourhoodInput.text()
 
 
-        if (len(attrID)==0 or len(attrName)==0 or len(cost)==0 or len(typeAttr)==0 or len(Lat)==0 or len(Long)==0 or len(Likes)==0 or len(Neighbourhood) == 0):
+        if (len(attrID)==0 and len(attrName)==0 and len(cost)==0 and len(typeAttr)==0 and len(Lat)==0 and len(Long)==0 and len(Likes)==0 and len(Neighbourhood) == 0):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
 
-        elif(not attrID.isdigit()):
+        elif(len(attrID) is not 0 and not attrID.isdigit()):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"ID cannot be alphabetic",QtWidgets.QMessageBox.Ok)
 
-        elif(not cost.isdigit() or int(cost) < 0):
+        elif(len(cost) is not 0 and (not cost.isdigit() or int(cost) < 0)):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect cost",QtWidgets.QMessageBox.Ok)
-        elif(not Likes.isdigit() or int(Likes) < 0):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect cost",QtWidgets.QMessageBox.Ok)
+        elif(len(Likes) is not 0) and (not Likes.isdigit() or int(Likes) < 0):
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect likes",QtWidgets.QMessageBox.Ok)
 
-        elif(typeAttr.isdigit()):
+        elif len(typeAttr) is not 0 and (typeAttr.isdigit()):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Category",QtWidgets.QMessageBox.Ok)
-        elif(not Lat.isdigit()):
+        elif len(Lat) is not 0 and (not Lat.isdigit()):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Latitude",QtWidgets.QMessageBox.Ok)
-        elif(not Long.isdigit()):
+        elif len(Long) is not 0 and (not Long.isdigit()):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Longitude",QtWidgets.QMessageBox.Ok)
 
-        elif(Neighbourhood.isdigit()):
+        elif len(Neighbourhood) is not 0 and (Neighbourhood.isdigit()):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Neighbourhood",QtWidgets.QMessageBox.Ok)
+
         elif(not self.mybackendRestaurant.getIDs(attrID)):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect ID/ ID not present",QtWidgets.QMessageBox.Ok)
         else:
