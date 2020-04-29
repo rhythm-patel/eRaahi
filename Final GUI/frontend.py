@@ -1857,9 +1857,15 @@ class Ui_MainWindow(object):
 
         elif len(typeAttr)!= 0 and (typeAttr.isdigit()):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Category",QtWidgets.QMessageBox.Ok)
-        elif len(Lat) != 0 and (not Lat.isdigit()):
+# <<<<<<< HEAD
+#         elif len(Lat) != 0 and (not Lat.isdigit()):
+#             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Latitude",QtWidgets.QMessageBox.Ok)
+#         elif len(Long) != 0 and (not Long.isdigit()):
+# =======
+        elif len(Lat) is not 0 and (not Lat.replace('.', '', 1).isdigit()):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Latitude",QtWidgets.QMessageBox.Ok)
-        elif len(Long) != 0 and (not Long.isdigit()):
+        elif len(Long) is not 0 and (not Long.replace('.', '', 1).isdigit()):
+# >>>>>>> f89cecae8f7d11b88564107b1ef1afca091a26f8
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Longitude",QtWidgets.QMessageBox.Ok)
 
         elif len(Neighbourhood) != 0 and (Neighbourhood.isdigit()):
@@ -1894,9 +1900,9 @@ class Ui_MainWindow(object):
 
         elif(typeAttr.isdigit()):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Category",QtWidgets.QMessageBox.Ok)
-        elif(not Lat.isdigit()):
+        elif(not Lat.replace('.', '', 1).isdigit()):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Latitude",QtWidgets.QMessageBox.Ok)
-        elif(not Long.isdigit()):
+        elif(not Long.replace('.', '', 1).isdigit()):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Longitude",QtWidgets.QMessageBox.Ok)
 
         elif(Neighbourhood.isdigit()):
