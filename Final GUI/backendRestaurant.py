@@ -57,6 +57,7 @@ class backendRestaurant:
 
         if(len(Likes) is not 0):
             self.cur.execute('update Venues set Likes = %s where Venue_Id = %s',(str(Likes),str(Venue_Id)))
+            self.cur.execute('update Reviews set Likes = %s where Venue_Id = %s',(str(Likes),str(Venue_Id)))
 
         if(len(Cost) is not 0):
             self.cur.execute('update Venues set Likes = %s where Venue_Id = %s',(str(Cost),str(Venue_Id)))
