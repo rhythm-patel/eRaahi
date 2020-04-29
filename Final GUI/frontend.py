@@ -143,6 +143,7 @@ class Ui_MainWindow(object):
     BALANCE = 0
 
     def setupUi(self, MainWindow):
+        self.MainWindow = MainWindow
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 600)
         self.Stack = QtWidgets.QStackedWidget(MainWindow)
@@ -981,7 +982,7 @@ class Ui_MainWindow(object):
         self.mybackendHotel = backendHotel()
         self.mybackendAttraction = backendAttraction()
         self.mybackendRestaurant = backendRestaurant()
-        
+
         self.sortButton.setPopupMode(QtWidgets.QToolButton.InstantPopup)
 
         # UPDATED. DYNAMIC SORT MENU
@@ -993,7 +994,7 @@ class Ui_MainWindow(object):
 
 
     ######## Flights Part Starts Here ################
-    
+
     class FlightWidget(QtWidgets.QWidget):
         def __init__(self, outer, parent=None):
             super(outer.FlightWidget, self).__init__(parent)
@@ -1051,7 +1052,7 @@ class Ui_MainWindow(object):
                     window.reject()
                     return
                 selectedSeats = spinbox.value()
-                
+
                 print("You attempted to book {} seats in Flight No: {}".format(selectedSeats, flightNo))
                 seats = self.outer.mybackendFlight.bookSeats(flightNo, selectedSeats, int(self.outer.USER_ID), int(self.outer.BALANCE))
                 if (seats[0]==-1):
@@ -1114,7 +1115,7 @@ class Ui_MainWindow(object):
             self.box.addWidget(searchbutton)
             self.setLayout(self.box)
 
-    
+
     class airlineAdminMode:
         def __init__(self, outer):
             outer.flightAdminWindow = QtWidgets.QWidget(outer.MainWindow)
@@ -1183,7 +1184,7 @@ class Ui_MainWindow(object):
             flightAdderH.addWidget(addFlightBtn)
             flightAdderH.addWidget(QtWidgets.QLabel("Flight Id: "))
             flightAdderH.addWidget(self.addFlightResult)
-            
+
             flightAdder.addLayout(flightAdderH)
 
             ## add tickets ##
@@ -1260,11 +1261,11 @@ class Ui_MainWindow(object):
             k = self.airlineRemoveName.count()
             while(k>0):
                 self.airlineRemoveName.removeItem(0)
-                self.addFlightAirline.removeItem(0)                
+                self.addFlightAirline.removeItem(0)
                 k-=1
             self.airlineRemoveName.addItems(self.outer.mybackendFlight.getAirlines())
             self.addFlightAirline.addItems(self.outer.mybackendFlight.getAirlines())
-            
+
         def addAirport(self):
             name = self.addAirportName.text()
             country = self.addAirportCountry.text()
@@ -1278,10 +1279,10 @@ class Ui_MainWindow(object):
             self.outer.mybackendFlight.addAirport(name, country, city)
             k = self.addFlightAirport.count()
             while(k>0):
-                self.addFlightAirport.removeItem(0)          
+                self.addFlightAirport.removeItem(0)
                 k-=1
             self.addFlightAirport.addItems(self.outer.mybackendFlight.getAllAirports())
-            
+
         def addFlight(self):
             airline = self.addFlightAirline.currentText()
             airport = self.addFlightAirport.currentText()
@@ -1291,12 +1292,12 @@ class Ui_MainWindow(object):
                 choice = QtWidgets.QMessageBox.information(self.outer.flightAdminWindow, 'Wrong DateTime',"Arrival DateTime should be after Departure DateTime",QtWidgets.QMessageBox.Ok)
                 return
             idx = self.outer.mybackendFlight.addFlight(airline, airport, departure, arrival)
-            
+
             self.addFlightResult.setText(str(idx))
             k = self.addTicketFlightId.count()
             while(k>0):
                 self.addTicketFlightId.removeItem(0)
-                self.removeFlightId.removeItem(0)          
+                self.removeFlightId.removeItem(0)
                 k-=1
             self.addTicketFlightId.addItems(self.outer.mybackendFlight.getFlightIDs())
             self.removeFlightId.addItems(self.outer.mybackendFlight.getFlightIDs())
@@ -1308,9 +1309,9 @@ class Ui_MainWindow(object):
             if not(numtickets>0 and price>0):
                 choice = QtWidgets.QMessageBox.information(self.outer.flightAdminWindow, 'Non Positive Value',"Only Positive Values are Allowed",QtWidgets.QMessageBox.Ok)
                 return
-            
+
             self.outer.mybackendFlight.addTickets(int(flightid), numtickets, price)
-            
+
         def removeFlight(self):
             id = int(self.removeFlightId.currentText())
             choice = QtWidgets.QMessageBox.information(self.outer.flightAdminWindow, 'Confirmaton',"Are you sure, you want to remove the chosen flight",QtWidgets.QMessageBox.Yes  |QtWidgets.QMessageBox.No)
@@ -1319,7 +1320,7 @@ class Ui_MainWindow(object):
             k = self.addTicketFlightId.count()
             while(k>0):
                 self.addTicketFlightId.removeItem(0)
-                self.removeFlightId.removeItem(0)          
+                self.removeFlightId.removeItem(0)
                 k-=1
             self.addTicketFlightId.addItems(self.outer.mybackendFlight.getFlightIDs())
             self.removeFlightId.addItems(self.outer.mybackendFlight.getFlightIDs())
@@ -1332,13 +1333,13 @@ class Ui_MainWindow(object):
             k = self.airlineRemoveName.count()
             while(k>0):
                 self.airlineRemoveName.removeItem(0)
-                self.addFlightAirline.removeItem(0)                
+                self.addFlightAirline.removeItem(0)
                 k-=1
             self.airlineRemoveName.addItems(self.outer.mybackendFlight.getAirlines())
             self.addFlightAirline.addItems(self.outer.mybackendFlight.getAirlines())
-                        
-      
-    
+
+
+
     def runAirlineAdminMode(self):
         self.Stack.setCurrentWidget(self.flightAdminWindow)
     def airlineInitializer(self):
@@ -1971,7 +1972,7 @@ class Ui_MainWindow(object):
         self.CUSTOMER_MODE=True
         print('CUSTOMER_MODE')
         self.loginModeLabel.setText("Customer Mode")
-    
+
     def startMoviesDisplay(self):
 
         runn(self, self.USER_ID)
@@ -1983,7 +1984,7 @@ class Ui_MainWindow(object):
         #os._exit(1)
         #self.close()
 
-    
+
 
     def bufferFuncHotel(self):
         self.sortMenuItemsHotel()
