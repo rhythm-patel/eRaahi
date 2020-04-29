@@ -1847,22 +1847,22 @@ class Ui_MainWindow(object):
         if (len(attrID)==0 and len(attrName)==0 and len(cost)==0 and len(typeAttr)==0 and len(Lat)==0 and len(Long)==0 and len(Likes)==0 and len(Neighbourhood) == 0):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
 
-        elif(len(attrID) is not 0 and not attrID.isdigit()):
+        elif(len(attrID) != 0 and not attrID.isdigit()):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"ID cannot be alphabetic",QtWidgets.QMessageBox.Ok)
 
-        elif(len(cost) is not 0 and (not cost.isdigit() or int(cost) < 0)):
+        elif(len(cost) != 0 and (not cost.isdigit() or int(cost) < 0)):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect cost",QtWidgets.QMessageBox.Ok)
-        elif(len(Likes) is not 0) and (not Likes.isdigit() or int(Likes) < 0):
+        elif(len(Likes) != 0) and (not Likes.isdigit() or int(Likes) < 0):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect likes",QtWidgets.QMessageBox.Ok)
 
-        elif len(typeAttr) is not 0 and (typeAttr.isdigit()):
+        elif len(typeAttr)!= 0 and (typeAttr.isdigit()):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Category",QtWidgets.QMessageBox.Ok)
-        elif len(Lat) is not 0 and (not Lat.isdigit()):
+        elif len(Lat) != 0 and (not Lat.isdigit()):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Latitude",QtWidgets.QMessageBox.Ok)
-        elif len(Long) is not 0 and (not Long.isdigit()):
+        elif len(Long) != 0 and (not Long.isdigit()):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Longitude",QtWidgets.QMessageBox.Ok)
 
-        elif len(Neighbourhood) is not 0 and (Neighbourhood.isdigit()):
+        elif len(Neighbourhood) != 0 and (Neighbourhood.isdigit()):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Neighbourhood",QtWidgets.QMessageBox.Ok)
 
         elif(not self.mybackendRestaurant.getIDs(attrID)):
@@ -2062,11 +2062,17 @@ class Ui_MainWindow(object):
 
         sortMenu.addAction(allAction)
         sortMenu.addSeparator()
+        sortMenu.addSeparator()
+        sortMenu.addSeparator()
         sortMenu.addAction(durationAscAction)
         sortMenu.addAction(durationDescAction)
         sortMenu.addSeparator()
+        sortMenu.addSeparator()
+        sortMenu.addSeparator()
         sortMenu.addAction(startTimeAscAction)
         sortMenu.addAction(startTimeDescAction)
+        sortMenu.addSeparator()
+        sortMenu.addSeparator()
         sortMenu.addSeparator()
         sortMenu.addAction(costAscAction)
         sortMenu.addAction(costDescAction)
@@ -2675,8 +2681,9 @@ class Ui_MainWindow(object):
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
+    app.setStyle('fusion')
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
+    ui.setupUi(MainWindow) 
     MainWindow.show()
     sys.exit(app.exec_())

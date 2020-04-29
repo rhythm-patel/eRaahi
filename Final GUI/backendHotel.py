@@ -2,10 +2,10 @@ import mysql.connector
 
 class backendHotel:
 	def __init__(self):
-		# self.mydb = mysql.connector.connect(host="localhost",user="root",passwd="admin",database = 'finalproject',auth_plugin='mysql_native_password',autocommit=True)
-		self.mydb = mysql.connector.connect(user='root', password='40@Vaibhav',
-                                           host='127.0.0.1',
-                                           database='dbms')
+		self.mydb = mysql.connector.connect(host="localhost",user="root",passwd="admin",database = 'finalproject',auth_plugin='mysql_native_password',autocommit=True)
+		# self.mydb = mysql.connector.connect(user='root', password='40@Vaibhav',
+  #                                          host='127.0.0.1',
+  #                                          database='dbms')
 		self.mycursor = self.mydb.cursor(buffered=True)
 		self.hotels = []
 		self.all_hotel_list=[]
@@ -229,7 +229,7 @@ class backendHotel:
 				if(ans[0]==0):
 					temp.append(str(0)+'%')
 				else:
-					temp.append(str((100*booked/ans[0]))+'%')
+					temp.append(str((100*booked/ans[0]))[:4]+'%')
 
 		# adding avg rating
 		for temp in self.all_hotel_list:
