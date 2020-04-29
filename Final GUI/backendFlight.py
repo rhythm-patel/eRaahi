@@ -2,14 +2,11 @@ import mysql.connector
 
 class backendFlight:
     def __init__(self):
-# <<<<<<< HEAD
         # self.mydb = mysql.connector.connect(host="localhost",user="root",passwd="40@Vaibhav",database = 'dbms',autocommit=True)
-        self.mydb = mysql.connector.connect(host="localhost",user="root",passwd="admin",database = 'finalproject',auth_plugin='mysql_native_password',autocommit=True)
-# =======
-        # self.mydb = mysql.connector.connect(user='rhythm', password='password',
-        #                                    host='127.0.0.1',
-        #                                    database='proj')
-# >>>>>>> 5393b04722f025c83b896657ef01b9a830997cba
+        # self.mydb = mysql.connector.connect(host="localhost",user="root",passwd="admin",database = 'finalproject',auth_plugin='mysql_native_password',autocommit=True)
+        self.mydb = mysql.connector.connect(user='rhythm', password='password',
+                                           host='127.0.0.1',
+                                           database='proj')
         self.mycursor = self.mydb.cursor()
         self.countries = []
         self.cities = []
