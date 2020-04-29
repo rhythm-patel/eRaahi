@@ -359,7 +359,7 @@ class Ui_MainWindow(object):
         self.loginModeLabel.setFont(font)
         self.loginModeLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.loginModeLabel.setObjectName("loginModeLabel")
-        self.loginModeLabel.setText("Welcome to e-Raahi")
+        self.loginModeLabel.setText("e-Raahi")
         self.loginIDTextEdit = QtWidgets.QLineEdit(self.logincentralwidget)
         self.loginIDTextEdit.setGeometry(QtCore.QRect(320, 270, 201, 25))
         self.loginIDTextEdit.setObjectName("loginIDTextEdit")
