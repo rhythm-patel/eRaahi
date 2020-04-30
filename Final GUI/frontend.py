@@ -7,6 +7,7 @@ from frontendMovie import ReviewScreen, runn
 from PyQt5.QtWidgets import QApplication
 from datetime import datetime
 from adminMode import adminmovieRun
+import os
 
 class AttractionWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):
@@ -959,7 +960,8 @@ class Ui_MainWindow(object):
 
 
 
-        self.menubar = QtWidgets.QMenuBar()
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setNativeMenuBar(False)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
         self.menubar.setObjectName("menubar")
         self.menuMode = QtWidgets.QMenu(self.menubar)
@@ -1990,13 +1992,13 @@ class Ui_MainWindow(object):
         self.ADMIN_MODE=True
         self.CUSTOMER_MODE=False
         print('ADMIN_MODE')
-        self.loginModeLabel.setText("Admin Login")
+        # self.loginModeLabel.setText("Admin Login")
         self.loginPushButtonClicked()
     def customerPushButtonClicked(self):
         self.ADMIN_MODE=False
         self.CUSTOMER_MODE=True
         print('CUSTOMER_MODE')
-        self.loginModeLabel.setText("Customer Login")
+        # self.loginModeLabel.setText("Customer Login")
         self.loginPushButtonClicked()
 
     def startMoviesDisplay(self):
@@ -2552,8 +2554,8 @@ class Ui_MainWindow(object):
         self.custNameLabel.setText(_translate("MainWindow", "Customer Name"))
         self.label.setText(_translate("MainWindow", "Review"))
         self.sortReviewButton.setText(_translate("MainWindow", "View :"))
-        self.menuMode.setTitle(_translate("MainWindow", "Mode"))
-        self.actionChangeMode.setText(_translate("MainWindow", "ChangeMode"))
+        self.menuMode.setTitle(_translate("MainWindow", "Option"))
+        self.actionChangeMode.setText(_translate("MainWindow", "Change Mode"))
         self.actionExit.setText(_translate("MainWindow", "Exit"))
         self.hotelButton.setStatusTip(_translate("MainWindow", "Search for Hotels"))
         self.hotelButton.setText(_translate("MainWindow", "Hotels"))
