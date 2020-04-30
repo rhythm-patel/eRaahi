@@ -4,7 +4,7 @@ CREATE TABLE booked(
   ,customer_id INTEGER  NOT NULL
   ,seats       INTEGER  NOT NULL,
   PRIMARY KEY(id),
-  FOREIGN KEY(Book_id) REFERENCES booking(Book_id)
+  FOREIGN KEY(Book_id) REFERENCES movie_booking(Book_id)
 
 );
 INSERT INTO booked(Book_id,customer_id,seats) VALUES (1,1,3);
