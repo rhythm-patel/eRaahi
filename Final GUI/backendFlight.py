@@ -4,9 +4,9 @@ class backendFlight:
     def __init__(self):
         # self.mydb = mysql.connector.connect(host="localhost",user="root",passwd="40@Vaibhav",database = 'dbms',autocommit=True)
         self.mydb = mysql.connector.connect(host="localhost",user="root",passwd="admin",database = 'finalproject',auth_plugin='mysql_native_password',autocommit=True)
-#         self.mydb = mysql.connector.connect(user='rhythm', password='password',
-#                                            host='127.0.0.1',
-#                                            database='proj')
+        #self.mydb = mysql.connector.connect(user='rhythm', password='password',
+                                        #    host='127.0.0.1',
+                                        #    database='proj')
         self.mycursor = self.mydb.cursor()
         self.countries = []
         self.cities = []
@@ -65,10 +65,9 @@ class backendFlight:
     def flightinfo(self, flight_tuple):
 
 
-        cursor2 = self.mydb.cursor()
         id = flight_tuple[0]
-        cursor2.execute('Select Name from airlines where ID = {}'.format(flight_tuple[1]))
-        for i in cursor2:
+        self.mycursor.execute('Select Name from airlines where ID = {}'.format(flight_tuple[1]))
+        for i in self.mycursor:
             airline =i[0]
         self.mycursor.execute('select Cost from booking where Flight_id = \'{}\' and Booked = 0'.format(flight_tuple[0]))
         numseats = 0
@@ -76,8 +75,8 @@ class backendFlight:
         for i in self.mycursor:
             numseats+=1
             cost+=i[0]
-        cursor2.execute('Select distinct name from airport where id = \'{}\''.format(flight_tuple[2]))
-        for i in cursor2:
+        self.mycursor.execute('Select distinct name from airport where id = \'{}\''.format(flight_tuple[2]))
+        for i in self.mycursor:
             airport =i[0]
         departure = flight_tuple[3]
         arrival = flight_tuple[4]
@@ -96,7 +95,7 @@ class backendFlight:
 
     def addBalance(self, userid, balance):
         balance += 10000
-        self.mycursor.execute('update Customer set balance = \'{0}\' where id = \'{1}\''.format(balance, userid))
+        self.mycursor.execute('update customer set balance = \'{0}\' where id = \'{1}\''.format(balance, userid))
         self.mydb.commit()
     def bookSeats(self, flightId, numSeats, userid, balance):
         print("Hello")
@@ -122,7 +121,7 @@ class backendFlight:
             return [-1]
 
         seatlist[0] -= cost
-        self.mycursor.execute('update Customer set balance = \'{0}\' where id = \'{1}\''.format(seatlist[0], userid))
+        self.mycursor.execute('update customer set balance = \'{0}\' where id = \'{1}\''.format(seatlist[0], userid))
         self.mydb.commit()
 
         for i in r_id:
@@ -217,4 +216,12 @@ class backendFlight:
 
     def removeAirline(self, name):
         print("I will delete Airline : {0}".format(name))
+        self.mycursor.execute('select ID from airlines where Name = \'{0}\''.format(name))
+        id = 0
+        for i in self.mycursor:
+            id = i[0]
+        self.mycursor.execute('select flight_id from flight where airline = \'{0}\''.format(id))
+        arr = [i[0] for i in self.mycursor]
+        for i in arr:
+            self.removeFlight(i)
         self.mycursor.execute('delete from airlines where Name = \'{0}\''.format(name))

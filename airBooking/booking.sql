@@ -5,7 +5,11 @@ CREATE TABLE booking(
   ,Booked       BOOLEAN  NOT NULL
   ,Passenger_id INTEGER 
   ,Cost         INTEGER  NOT NULL
+  ,CHECK (cost > 0)
   ,FOREIGN KEY (Flight_id) REFERENCES flight(flight_id)
+  ,FOREIGN KEY (Passenger_id) REFERENCES customer(id)
+  
+  
 );
 INSERT INTO booking(r_id,Flight_id,Seat_No,Booked,Passenger_id,Cost) VALUES (1,1,1,false,NULL,6076);
 INSERT INTO booking(r_id,Flight_id,Seat_No,Booked,Passenger_id,Cost) VALUES (2,1,2,false,NULL,5374);
