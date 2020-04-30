@@ -959,7 +959,7 @@ class Ui_MainWindow(object):
 
 
 
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar = QtWidgets.QMenuBar()
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
         self.menubar.setObjectName("menubar")
         self.menuMode = QtWidgets.QMenu(self.menubar)
@@ -1828,7 +1828,7 @@ class Ui_MainWindow(object):
         elif (self.IDpresent(attrID)):
             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"ID already exists in table. Cannot add new fields with this ID. Please enter new ID to add fields.",QtWidgets.QMessageBox.Ok)
         else:
-            self.mybackendAttraction.updateAttractions(attrID,attrName,summary,duration,start,cost,typeAttr)
+            self.mybackendAttraction.addAttractions(attrID,attrName,summary,duration,start,cost,typeAttr)
             self.attractionIDInput.setText("")
             self.attractionNameInput.setText("")
             self.attractionSummaryInput.setText("")

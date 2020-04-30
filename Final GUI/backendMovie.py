@@ -143,8 +143,8 @@ class backend:
 	mydb = ''
 
 	def __init__(self):
-		self.mydb = mysql.connector.connect(host="localhost",user="root",passwd="admin",database = 'finalproject',auth_plugin='mysql_native_password',autocommit=True)
-		# self.mydb = mysql.connector.connect(user='root', password='40@Vaibhav',host='127.0.0.1', database='dbms')
+		# self.mydb = mysql.connector.connect(host="localhost",user="root",passwd="admin",database = 'finalproject',auth_plugin='mysql_native_password',autocommit=True)
+		self.mydb = mysql.connector.connect(user='rhythm', password='password',host='127.0.0.1', database='proj')
 		self.mycursor = self.mydb.cursor(buffered=True)
 
 	def getmovies(self, search_text, filter):
@@ -277,7 +277,8 @@ class backend:
 		mydb = ''
 
 	def __init__(self):
-		self.mydb = mysql.connector.connect(host="localhost",user="root",passwd="admin",database = 'finalproject',auth_plugin='mysql_native_password',autocommit=True)
+		# self.mydb = mysql.connector.connect(host="localhost",user="root",passwd="admin",database = 'finalproject',auth_plugin='mysql_native_password',autocommit=True)
+		self.mydb = mysql.connector.connect(user='rhythm', password='password',host='127.0.0.1', database='proj')
 		self.mycursor = self.mydb.cursor(buffered=True)
 
 	def getmovies(self, search_text, filter):
