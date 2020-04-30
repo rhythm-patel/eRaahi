@@ -9,6 +9,7 @@ from datetime import datetime
 from adminMode import adminmovieRun
 import os
 
+
 class AttractionWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):
         super(AttractionWidget, self).__init__(parent)
@@ -63,84 +64,86 @@ class RestaurantWidget(QtWidgets.QWidget):
         self.likeLabel.setText(like)
 
 
-
 class QCustomQWidget2(QtWidgets.QWidget):
-    def __init__ (self, parent = None):
+    def __init__(self, parent=None):
         super(QCustomQWidget2, self).__init__(parent)
         self.QHBoxLayout = QtWidgets.QHBoxLayout()
         self.customerNameLabel = QtWidgets.QLabel()
         self.starsLabel = QtWidgets.QLabel()
         self.reviewLabel = QtWidgets.QLabel()
-        self.QHBoxLayout.addWidget(self.customerNameLabel,0)
+        self.QHBoxLayout.addWidget(self.customerNameLabel, 0)
         self.QHBoxLayout.addStretch()
-        self.QHBoxLayout.addWidget(self.reviewLabel,1)
+        self.QHBoxLayout.addWidget(self.reviewLabel, 1)
         self.reviewLabel.setAlignment(QtCore.Qt.AlignRight)
         self.setLayout(self.QHBoxLayout)
 
-    def setTextOnAllLabel(self, customerName,review):
+    def setTextOnAllLabel(self, customerName, review):
         self.customerNameLabel.setText(customerName)
         self.reviewLabel.setText(review)
 
 
 class QCustomQWidget (QtWidgets.QWidget):
-    def __init__ (self, parent = None):
+    def __init__(self, parent=None):
         super(QCustomQWidget, self).__init__(parent)
 
         self.textQVBoxRightLayout = QtWidgets.QVBoxLayout()
         self.averagePriceLabel = QtWidgets.QLabel()
         self.percentageBookedLabel = QtWidgets.QLabel()
-        self.textQVBoxRightLayout.addWidget(self.averagePriceLabel,0)
-        self.textQVBoxRightLayout.addWidget(self.percentageBookedLabel,1)
+        self.textQVBoxRightLayout.addWidget(self.averagePriceLabel, 0)
+        self.textQVBoxRightLayout.addWidget(self.percentageBookedLabel, 1)
         self.textQVBoxRightLayout.setAlignment(QtCore.Qt.AlignRight)
 
         self.insideQHBoxLayout = QtWidgets.QHBoxLayout()
         self.averageRatingLabel = QtWidgets.QLabel()
         self.localityLabel = QtWidgets.QLabel()
-        self.insideQHBoxLayout.addWidget(self.averageRatingLabel,0)
-        self.insideQHBoxLayout.addWidget(self.localityLabel,1)
+        self.insideQHBoxLayout.addWidget(self.averageRatingLabel, 0)
+        self.insideQHBoxLayout.addWidget(self.localityLabel, 1)
 
         self.textQVBoxLeftLayout = QtWidgets.QVBoxLayout()
         self.hotelNameLabel = QtWidgets.QLabel()
-        self.textQVBoxLeftLayout.addWidget(self.hotelNameLabel,0)
-        self.textQVBoxLeftLayout.addLayout(self.insideQHBoxLayout,1)
+        self.textQVBoxLeftLayout.addWidget(self.hotelNameLabel, 0)
+        self.textQVBoxLeftLayout.addLayout(self.insideQHBoxLayout, 1)
 
         self.allQHBoxLayout = QtWidgets.QHBoxLayout()
         self.allQHBoxLayout.addLayout(self.textQVBoxLeftLayout, 0)
         self.allQHBoxLayout.addLayout(self.textQVBoxRightLayout, 1)
         self.setLayout(self.allQHBoxLayout)
-    def setTextOnAllLabel (self, hotelNameLabel,averageRatingLabel,localityLabel,averagePriceLabel,percentageBookedLabel):
+
+    def setTextOnAllLabel(self, hotelNameLabel, averageRatingLabel, localityLabel, averagePriceLabel, percentageBookedLabel):
         self.hotelNameLabel.setText(hotelNameLabel)
         self.averageRatingLabel.setText(averageRatingLabel)
         self.localityLabel.setText(localityLabel)
         self.averagePriceLabel.setText(averagePriceLabel)
         self.percentageBookedLabel.setText(percentageBookedLabel)
+
+
 class QCustomQWidget3 (QtWidgets.QWidget):
-    def __init__ (self, parent = None):
+    def __init__(self, parent=None):
         super(QCustomQWidget3, self).__init__(parent)
 
         self.booktextQVBoxRightLayout = QtWidgets.QVBoxLayout()
         self.bookCapacityLabel = QtWidgets.QLabel()
         self.bookCostLabel = QtWidgets.QLabel()
-        self.booktextQVBoxRightLayout.addWidget(self.bookCostLabel,1)
-        self.booktextQVBoxRightLayout.addWidget(self.bookCapacityLabel,0)
+        self.booktextQVBoxRightLayout.addWidget(self.bookCostLabel, 1)
+        self.booktextQVBoxRightLayout.addWidget(self.bookCapacityLabel, 0)
         self.booktextQVBoxRightLayout.setAlignment(QtCore.Qt.AlignRight)
         self.booktextQVBoxLeftLayout = QtWidgets.QVBoxLayout()
         self.bookRoomIDLabel = QtWidgets.QLabel()
-        self.booktextQVBoxLeftLayout.addWidget(self.bookRoomIDLabel,0)
+        self.booktextQVBoxLeftLayout.addWidget(self.bookRoomIDLabel, 0)
         self.allQHBoxLayout = QtWidgets.QHBoxLayout()
         self.allQHBoxLayout.addLayout(self.booktextQVBoxLeftLayout, 0)
         self.allQHBoxLayout.addLayout(self.booktextQVBoxRightLayout, 1)
         self.setLayout(self.allQHBoxLayout)
 
-    def setTextOnAllLabel (self, cost,cap,room_id):
+    def setTextOnAllLabel(self, cost, cap, room_id):
         self.bookCostLabel.setText(cost)
         self.bookCapacityLabel.setText(cap)
         self.bookRoomIDLabel.setText(room_id)
 
 
 class Ui_MainWindow(object):
-    ADMIN_MODE=False
-    CUSTOMER_MODE=True
+    ADMIN_MODE = False
+    CUSTOMER_MODE = True
     USER_ID = 0
     BALANCE = 0
 
@@ -250,7 +253,8 @@ class Ui_MainWindow(object):
         self.ovindetifierLabel.setScaledContents(True)
         self.ovindetifierLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.ovindetifierLabel.setObjectName("ovindetifierLabel")
-        self.ovoverviewButton = QtWidgets.QPushButton(self.overviewcentralwidget)
+        self.ovoverviewButton = QtWidgets.QPushButton(
+            self.overviewcentralwidget)
         self.ovoverviewButton.setGeometry(QtCore.QRect(0, 130, 266, 25))
         self.ovoverviewButton.setObjectName("ovoverviewButton")
         self.ovbookButton = QtWidgets.QPushButton(self.overviewcentralwidget)
@@ -370,12 +374,15 @@ class Ui_MainWindow(object):
         self.loginIDLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.loginIDLabel.setObjectName("loginIDLabel")
         self.loginIDLabel.setText("ID")
-        self.loginadminPushButton = QtWidgets.QPushButton(self.logincentralwidget)
+        self.loginadminPushButton = QtWidgets.QPushButton(
+            self.logincentralwidget)
         self.loginadminPushButton.setGeometry(QtCore.QRect(440, 370, 131, 31))
         self.loginadminPushButton.setObjectName("loginadminPushButton")
         self.loginadminPushButton.setText("Admin Login")
-        self.logincustomerPushButton = QtWidgets.QPushButton(self.logincentralwidget)
-        self.logincustomerPushButton.setGeometry(QtCore.QRect(230, 370, 121, 31))
+        self.logincustomerPushButton = QtWidgets.QPushButton(
+            self.logincentralwidget)
+        self.logincustomerPushButton.setGeometry(
+            QtCore.QRect(230, 370, 121, 31))
         self.logincustomerPushButton.setObjectName("logincustomerPushButton")
         self.logincustomerPushButton.setText("Customer Login")
         # self.loginPushButton = QtWidgets.QPushButton(self.logincentralwidget)
@@ -383,14 +390,17 @@ class Ui_MainWindow(object):
         # self.loginPushButton.setObjectName("loginPushButton")
         # self.loginPushButton.setText("Login")
         self.loginadminPushButton.clicked.connect(self.adminPushButtonClicked)
-        self.logincustomerPushButton.clicked.connect(self.customerPushButtonClicked)
+        self.logincustomerPushButton.clicked.connect(
+            self.customerPushButtonClicked)
         # self.loginPushButton.clicked.connect(self.loginPushButtonClicked)
         self.hoteleditcentralwidget = QtWidgets.QWidget(MainWindow)
         self.hoteleditcentralwidget.setObjectName("hoteleditcentralwidget")
-        self.verticalLayoutWidget = QtWidgets.QWidget(self.hoteleditcentralwidget)
+        self.verticalLayoutWidget = QtWidgets.QWidget(
+            self.hoteleditcentralwidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(0, 0, 800, 559))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
-        self.hotelVerticalLayout1 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
+        self.hotelVerticalLayout1 = QtWidgets.QVBoxLayout(
+            self.verticalLayoutWidget)
         self.hotelVerticalLayout1.setContentsMargins(0, 0, 0, 0)
         self.hotelVerticalLayout1.setObjectName("hotelVerticalLayout1")
         self.hotelLogoLabel1 = QtWidgets.QLabel(self.verticalLayoutWidget)
@@ -399,7 +409,8 @@ class Ui_MainWindow(object):
         self.hotelVerticalLayout1.addWidget(self.hotelLogoLabel1)
         self.hotelHorizontalLayout11 = QtWidgets.QHBoxLayout()
         self.hotelHorizontalLayout11.setObjectName("hotelHorizontalLayout11")
-        self.hotelEditPushButton11 = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.hotelEditPushButton11 = QtWidgets.QPushButton(
+            self.verticalLayoutWidget)
         self.hotelEditPushButton11.setObjectName("hotelEditPushButton11")
         self.hotelHorizontalLayout11.addWidget(self.hotelEditPushButton11)
         self.hotelIDLabel11 = QtWidgets.QLabel(self.verticalLayoutWidget)
@@ -414,28 +425,34 @@ class Ui_MainWindow(object):
         self.hotelNameLabel12 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.hotelNameLabel12.setObjectName("hotelNameLabel12")
         self.hotelHorizontalLayout12.addWidget(self.hotelNameLabel12)
-        self.hotelNameLineEdit12 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.hotelNameLineEdit12 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.hotelNameLineEdit12.setObjectName("hotelNameLineEdit12")
         self.hotelHorizontalLayout12.addWidget(self.hotelNameLineEdit12)
         self.hotelLocIDLabel12 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.hotelLocIDLabel12.setObjectName("hotelLocIDLabel12")
         self.hotelHorizontalLayout12.addWidget(self.hotelLocIDLabel12)
-        self.hotelLocIDLineEdit12 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.hotelLocIDLineEdit12 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.hotelLocIDLineEdit12.setObjectName("hotelLocIDLineEdit12")
         self.hotelHorizontalLayout12.addWidget(self.hotelLocIDLineEdit12)
         self.hotelContactLabel12 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.hotelContactLabel12.setObjectName("hotelContactLabel12")
         self.hotelHorizontalLayout12.addWidget(self.hotelContactLabel12)
-        self.hotelContactLineEdit12 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.hotelContactLineEdit12 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.hotelContactLineEdit12.setObjectName("hotelContactLineEdit12")
         self.hotelHorizontalLayout12.addWidget(self.hotelContactLineEdit12)
         self.hotelVerticalLayout1.addLayout(self.hotelHorizontalLayout12)
-        self.hotelUpdatePushButton12 = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.hotelUpdatePushButton12 = QtWidgets.QPushButton(
+            self.verticalLayoutWidget)
         self.hotelUpdatePushButton12.setObjectName("hotelUpdatePushButton12")
         self.hotelHorizontalLayout12.addWidget(self.hotelUpdatePushButton12)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem = QtWidgets.QSpacerItem(
+            40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.hotelVerticalLayout1.addItem(spacerItem)
-        self.hotelAddPushButton1 = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.hotelAddPushButton1 = QtWidgets.QPushButton(
+            self.verticalLayoutWidget)
         self.hotelAddPushButton1.setObjectName("hotelAddPushButton1")
         self.hotelVerticalLayout1.addWidget(self.hotelAddPushButton1)
         self.hotelHorizontalLayout13 = QtWidgets.QHBoxLayout()
@@ -443,22 +460,26 @@ class Ui_MainWindow(object):
         self.hotelNameLabel13 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.hotelNameLabel13.setObjectName("hotelNameLabel13")
         self.hotelHorizontalLayout13.addWidget(self.hotelNameLabel13)
-        self.hotelNameLineEdit13 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.hotelNameLineEdit13 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.hotelNameLineEdit13.setObjectName("hotelNameLineEdit13")
         self.hotelHorizontalLayout13.addWidget(self.hotelNameLineEdit13)
         self.hotelLocIDLabel13 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.hotelLocIDLabel13.setObjectName("hotelLocIDLabel13")
         self.hotelHorizontalLayout13.addWidget(self.hotelLocIDLabel13)
-        self.hotelLocIDLineEdit13 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.hotelLocIDLineEdit13 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.hotelLocIDLineEdit13.setObjectName("hotelLocIDLineEdit13")
         self.hotelHorizontalLayout13.addWidget(self.hotelLocIDLineEdit13)
         self.hotelContactLabel13 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.hotelContactLabel13.setObjectName("hotelContactLabel13")
         self.hotelHorizontalLayout13.addWidget(self.hotelContactLabel13)
-        self.hotelContactLineEdit13 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.hotelContactLineEdit13 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.hotelContactLineEdit13.setObjectName("hotelContactLineEdit13")
         self.hotelHorizontalLayout13.addWidget(self.hotelContactLineEdit13)
-        self.hotelGoPushButton13 = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.hotelGoPushButton13 = QtWidgets.QPushButton(
+            self.verticalLayoutWidget)
         self.hotelGoPushButton13.setObjectName("hotelGoPushButton13")
         self.hotelHorizontalLayout13.addWidget(self.hotelGoPushButton13)
         self.hotelVerticalLayout1.addLayout(self.hotelHorizontalLayout13)
@@ -468,7 +489,8 @@ class Ui_MainWindow(object):
         self.hotelVerticalLayout1.addWidget(self.hotelLogoLabel2)
         self.hotelHorizontalLayout21 = QtWidgets.QHBoxLayout()
         self.hotelHorizontalLayout21.setObjectName("hotelHorizontalLayout21")
-        self.hotelEditPushButton21 = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.hotelEditPushButton21 = QtWidgets.QPushButton(
+            self.verticalLayoutWidget)
         self.hotelEditPushButton21.setObjectName("hotelEditPushButton21")
         self.hotelHorizontalLayout21.addWidget(self.hotelEditPushButton21)
         self.hotelIDLabel21 = QtWidgets.QLabel(self.verticalLayoutWidget)
@@ -483,28 +505,34 @@ class Ui_MainWindow(object):
         self.hotelNameLabel22 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.hotelNameLabel22.setObjectName("hotelNameLabel22")
         self.hotelHorizontalLayout22.addWidget(self.hotelNameLabel22)
-        self.hotelNameLineEdit22 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.hotelNameLineEdit22 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.hotelNameLineEdit22.setObjectName("hotelNameLineEdit22")
         self.hotelHorizontalLayout22.addWidget(self.hotelNameLineEdit22)
         self.hotelLocIDLabel22 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.hotelLocIDLabel22.setObjectName("hotelLocIDLabel22")
         self.hotelHorizontalLayout22.addWidget(self.hotelLocIDLabel22)
-        self.hotelLocIDLineEdit22 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.hotelLocIDLineEdit22 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.hotelLocIDLineEdit22.setObjectName("hotelLocIDLineEdit22")
         self.hotelHorizontalLayout22.addWidget(self.hotelLocIDLineEdit22)
         self.hotelContactLabel22 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.hotelContactLabel22.setObjectName("hotelContactLabel22")
         self.hotelHorizontalLayout22.addWidget(self.hotelContactLabel22)
-        self.hotelContactLineEdit22 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.hotelContactLineEdit22 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.hotelContactLineEdit22.setObjectName("hotelContactLineEdit22")
         self.hotelHorizontalLayout22.addWidget(self.hotelContactLineEdit22)
         self.hotelVerticalLayout1.addLayout(self.hotelHorizontalLayout22)
-        self.hotelUpdatePushButton22 = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.hotelUpdatePushButton22 = QtWidgets.QPushButton(
+            self.verticalLayoutWidget)
         self.hotelUpdatePushButton22.setObjectName("hotelUpdatePushButton22")
         self.hotelHorizontalLayout22.addWidget(self.hotelUpdatePushButton22)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem1 = QtWidgets.QSpacerItem(
+            40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.hotelVerticalLayout1.addItem(spacerItem1)
-        self.hotelAddPushButton2 = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.hotelAddPushButton2 = QtWidgets.QPushButton(
+            self.verticalLayoutWidget)
         self.hotelAddPushButton2.setObjectName("hotelAddPushButton2")
         self.hotelVerticalLayout1.addWidget(self.hotelAddPushButton2)
         self.hotelHorizontalLayout23 = QtWidgets.QHBoxLayout()
@@ -512,22 +540,26 @@ class Ui_MainWindow(object):
         self.hotelNameLabel23 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.hotelNameLabel23.setObjectName("hotelNameLabel23")
         self.hotelHorizontalLayout23.addWidget(self.hotelNameLabel23)
-        self.hotelNameLineEdit23 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.hotelNameLineEdit23 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.hotelNameLineEdit23.setObjectName("hotelNameLineEdit23")
         self.hotelHorizontalLayout23.addWidget(self.hotelNameLineEdit23)
         self.hotelLocIDLabel23 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.hotelLocIDLabel23.setObjectName("hotelLocIDLabel23")
         self.hotelHorizontalLayout23.addWidget(self.hotelLocIDLabel23)
-        self.hotelLocIDLineEdit23 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.hotelLocIDLineEdit23 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.hotelLocIDLineEdit23.setObjectName("hotelLocIDLineEdit23")
         self.hotelHorizontalLayout23.addWidget(self.hotelLocIDLineEdit23)
         self.hotelContactLabel23 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.hotelContactLabel23.setObjectName("hotelContactLabel23")
         self.hotelHorizontalLayout23.addWidget(self.hotelContactLabel23)
-        self.hotelContactLineEdit23 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.hotelContactLineEdit23 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.hotelContactLineEdit23.setObjectName("hotelContactLineEdit23")
         self.hotelHorizontalLayout23.addWidget(self.hotelContactLineEdit23)
-        self.hotelGoPushButton23 = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.hotelGoPushButton23 = QtWidgets.QPushButton(
+            self.verticalLayoutWidget)
         self.hotelGoPushButton23.setObjectName("hotelGoPushButton23")
         self.hotelHorizontalLayout23.addWidget(self.hotelGoPushButton23)
         self.hotelVerticalLayout1.addLayout(self.hotelHorizontalLayout23)
@@ -537,7 +569,8 @@ class Ui_MainWindow(object):
         self.hotelVerticalLayout1.addWidget(self.hotelLogoLabel3)
         self.hotelHorizontalLayout31 = QtWidgets.QHBoxLayout()
         self.hotelHorizontalLayout31.setObjectName("hotelHorizontalLayout31")
-        self.hotelEditPushButton31 = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.hotelEditPushButton31 = QtWidgets.QPushButton(
+            self.verticalLayoutWidget)
         self.hotelEditPushButton31.setObjectName("hotelEditPushButton31")
         self.hotelHorizontalLayout31.addWidget(self.hotelEditPushButton31)
         self.hotelIDLabel31 = QtWidgets.QLabel(self.verticalLayoutWidget)
@@ -552,34 +585,41 @@ class Ui_MainWindow(object):
         self.hotelNameLabel32 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.hotelNameLabel32.setObjectName("hotelNameLabel32")
         self.hotelHorizontalLayout32.addWidget(self.hotelNameLabel32)
-        self.hotelNameLineEdit32 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.hotelNameLineEdit32 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.hotelNameLineEdit32.setObjectName("hotelNameLineEdit32")
         self.hotelHorizontalLayout32.addWidget(self.hotelNameLineEdit32)
         self.hotelLocIDLabel32 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.hotelLocIDLabel32.setObjectName("hotelLocIDLabel32")
         self.hotelHorizontalLayout32.addWidget(self.hotelLocIDLabel32)
-        self.hotelLocIDLineEdit32 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.hotelLocIDLineEdit32 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.hotelLocIDLineEdit32.setObjectName("hotelLocIDLineEdit32")
         self.hotelHorizontalLayout32.addWidget(self.hotelLocIDLineEdit32)
         self.hotelContactLabel32 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.hotelContactLabel32.setObjectName("hotelContactLabel32")
         self.hotelHorizontalLayout32.addWidget(self.hotelContactLabel32)
-        self.hotelContactLineEdit32 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.hotelContactLineEdit32 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.hotelContactLineEdit32.setObjectName("hotelContactLineEdit32")
         self.hotelHorizontalLayout32.addWidget(self.hotelContactLineEdit32)
         self.hotelVerticalLayout1.addLayout(self.hotelHorizontalLayout32)
         self.hotelBookedLabel32 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.hotelBookedLabel32.setObjectName("hotelBookedLabel32")
         self.hotelHorizontalLayout32.addWidget(self.hotelBookedLabel32)
-        self.hotelBookedLineEdit32 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.hotelBookedLineEdit32 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.hotelBookedLineEdit32.setObjectName("hotelBookedLineEdit32")
         self.hotelHorizontalLayout32.addWidget(self.hotelBookedLineEdit32)
-        self.hotelUpdatePushButton32 = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.hotelUpdatePushButton32 = QtWidgets.QPushButton(
+            self.verticalLayoutWidget)
         self.hotelUpdatePushButton32.setObjectName("hotelUpdatePushButton32")
         self.hotelHorizontalLayout32.addWidget(self.hotelUpdatePushButton32)
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem2 = QtWidgets.QSpacerItem(
+            40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.hotelVerticalLayout1.addItem(spacerItem2)
-        self.hotelAddPushButton3 = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.hotelAddPushButton3 = QtWidgets.QPushButton(
+            self.verticalLayoutWidget)
         self.hotelAddPushButton3.setObjectName("hotelAddPushButton3")
         self.hotelVerticalLayout1.addWidget(self.hotelAddPushButton3)
         self.hotelHorizontalLayout33 = QtWidgets.QHBoxLayout()
@@ -587,28 +627,33 @@ class Ui_MainWindow(object):
         self.hotelNameLabel33 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.hotelNameLabel33.setObjectName("hotelNameLabel33")
         self.hotelHorizontalLayout33.addWidget(self.hotelNameLabel33)
-        self.hotelNameLineEdit33 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.hotelNameLineEdit33 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.hotelNameLineEdit33.setObjectName("hotelNameLineEdit33")
         self.hotelHorizontalLayout33.addWidget(self.hotelNameLineEdit33)
         self.hotelLocIDLabel33 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.hotelLocIDLabel33.setObjectName("hotelLocIDLabel33")
         self.hotelHorizontalLayout33.addWidget(self.hotelLocIDLabel33)
-        self.hotelLocIDLineEdit33 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.hotelLocIDLineEdit33 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.hotelLocIDLineEdit33.setObjectName("hotelLocIDLineEdit33")
         self.hotelHorizontalLayout33.addWidget(self.hotelLocIDLineEdit33)
         self.hotelContactLabel33 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.hotelContactLabel33.setObjectName("hotelContactLabel33")
         self.hotelHorizontalLayout33.addWidget(self.hotelContactLabel33)
-        self.hotelContactLineEdit33 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.hotelContactLineEdit33 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.hotelContactLineEdit33.setObjectName("hotelContactLineEdit33")
         self.hotelHorizontalLayout33.addWidget(self.hotelContactLineEdit33)
         self.hotelBookedLabel33 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.hotelBookedLabel33.setObjectName("hotelBookedLabel33")
         self.hotelHorizontalLayout33.addWidget(self.hotelBookedLabel33)
-        self.hotelBookedLineEdit33 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.hotelBookedLineEdit33 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.hotelBookedLineEdit33.setObjectName("hotelBookedLineEdit33")
         self.hotelHorizontalLayout33.addWidget(self.hotelBookedLineEdit33)
-        self.hotelGoPushButton33 = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.hotelGoPushButton33 = QtWidgets.QPushButton(
+            self.verticalLayoutWidget)
         self.hotelGoPushButton33.setObjectName("hotelGoPushButton33")
         self.hotelHorizontalLayout33.addWidget(self.hotelGoPushButton33)
         self.hotelVerticalLayout1.addLayout(self.hotelHorizontalLayout33)
@@ -622,32 +667,46 @@ class Ui_MainWindow(object):
         self.hotelGoPushButton23.clicked.connect(self.func6)
         self.hotelGoPushButton33.clicked.connect(self.func9)
         self.adminchoosemodecentralwidget = QtWidgets.QWidget(MainWindow)
-        self.adminchoosemodecentralwidget.setObjectName("adminchoosemodecentralwidget")
-        self.adminCustomerPushButton = QtWidgets.QPushButton(self.adminchoosemodecentralwidget)
+        self.adminchoosemodecentralwidget.setObjectName(
+            "adminchoosemodecentralwidget")
+        self.adminCustomerPushButton = QtWidgets.QPushButton(
+            self.adminchoosemodecentralwidget)
         self.adminCustomerPushButton.setGeometry(QtCore.QRect(0, 260, 133, 80))
         self.adminCustomerPushButton.setObjectName("adminCustomerPushButton")
-        self.adminHotelPushButton = QtWidgets.QPushButton(self.adminchoosemodecentralwidget)
+        self.adminHotelPushButton = QtWidgets.QPushButton(
+            self.adminchoosemodecentralwidget)
         self.adminHotelPushButton.setGeometry(QtCore.QRect(133, 260, 133, 80))
         self.adminHotelPushButton.setObjectName("adminHotelPushButton")
-        self.adminAttractionsPushButton = QtWidgets.QPushButton(self.adminchoosemodecentralwidget)
-        self.adminAttractionsPushButton.setGeometry(QtCore.QRect(533, 260, 133, 80))
-        self.adminAttractionsPushButton.setObjectName("adminAttractionsPushButton")
-        self.adminMoviesPushButton = QtWidgets.QPushButton(self.adminchoosemodecentralwidget)
+        self.adminAttractionsPushButton = QtWidgets.QPushButton(
+            self.adminchoosemodecentralwidget)
+        self.adminAttractionsPushButton.setGeometry(
+            QtCore.QRect(533, 260, 133, 80))
+        self.adminAttractionsPushButton.setObjectName(
+            "adminAttractionsPushButton")
+        self.adminMoviesPushButton = QtWidgets.QPushButton(
+            self.adminchoosemodecentralwidget)
         self.adminMoviesPushButton.setGeometry(QtCore.QRect(400, 260, 133, 80))
         self.adminMoviesPushButton.setObjectName("adminMoviesPushButton")
-        self.adminAirlinesPushButton = QtWidgets.QPushButton(self.adminchoosemodecentralwidget)
-        self.adminAirlinesPushButton.setGeometry(QtCore.QRect(267, 260, 133, 80))
+        self.adminAirlinesPushButton = QtWidgets.QPushButton(
+            self.adminchoosemodecentralwidget)
+        self.adminAirlinesPushButton.setGeometry(
+            QtCore.QRect(267, 260, 133, 80))
         self.adminAirlinesPushButton.setObjectName("adminAirlinesPushButton")
 
-        ##flight edits
+        # flight edits
         self.adminAirlinesPushButton.clicked.connect(self.runAirlineAdminMode)
 
-        ##flight edits end
-        self.adminRestaurantsPushButton = QtWidgets.QPushButton(self.adminchoosemodecentralwidget)
-        self.adminRestaurantsPushButton.setGeometry(QtCore.QRect(667, 260, 133, 80))
-        self.adminRestaurantsPushButton.setObjectName("adminRestaurantsPushButton")
-        self.adminChooseModeLabell = QtWidgets.QLabel(self.adminchoosemodecentralwidget)
-        self.adminChooseModeLabell.setGeometry(QtCore.QRect(275, 100, 250, 100))
+        # flight edits end
+        self.adminRestaurantsPushButton = QtWidgets.QPushButton(
+            self.adminchoosemodecentralwidget)
+        self.adminRestaurantsPushButton.setGeometry(
+            QtCore.QRect(667, 260, 133, 80))
+        self.adminRestaurantsPushButton.setObjectName(
+            "adminRestaurantsPushButton")
+        self.adminChooseModeLabell = QtWidgets.QLabel(
+            self.adminchoosemodecentralwidget)
+        self.adminChooseModeLabell.setGeometry(
+            QtCore.QRect(275, 100, 250, 100))
         font = QtGui.QFont()
         font.setFamily("KacstOffice")
         font.setPointSize(22)
@@ -661,11 +720,14 @@ class Ui_MainWindow(object):
         self.adminRestaurantsPushButton.clicked.connect(self.restaurantEdit)
         self.adminMoviesPushButton.clicked.connect(self.movieEdit)
         self.customereditcentralwidget = QtWidgets.QWidget(MainWindow)
-        self.customereditcentralwidget.setObjectName("customereditcentralwidget")
-        self.verticalLayoutWidget = QtWidgets.QWidget(self.customereditcentralwidget)
+        self.customereditcentralwidget.setObjectName(
+            "customereditcentralwidget")
+        self.verticalLayoutWidget = QtWidgets.QWidget(
+            self.customereditcentralwidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(0, 120, 800, 250))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
-        self.customerVerticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
+        self.customerVerticalLayout = QtWidgets.QVBoxLayout(
+            self.verticalLayoutWidget)
         self.customerVerticalLayout.setContentsMargins(0, 0, 0, 0)
         self.customerVerticalLayout.setObjectName("customerVerticalLayout")
         self.customerLogoLabel1 = QtWidgets.QLabel(self.verticalLayoutWidget)
@@ -673,91 +735,128 @@ class Ui_MainWindow(object):
         self.customerLogoLabel1.setObjectName("customerLogoLabel1")
         self.customerVerticalLayout.addWidget(self.customerLogoLabel1)
         self.customerHorizontalLayout1 = QtWidgets.QHBoxLayout()
-        self.customerHorizontalLayout1.setObjectName("customerHorizontalLayout1")
-        self.customerEditPushButton1 = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.customerHorizontalLayout1.setObjectName(
+            "customerHorizontalLayout1")
+        self.customerEditPushButton1 = QtWidgets.QPushButton(
+            self.verticalLayoutWidget)
         self.customerEditPushButton1.setObjectName("customerEditPushButton1")
         self.customerHorizontalLayout1.addWidget(self.customerEditPushButton1)
         self.customerIDLabel1 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.customerIDLabel1.setObjectName("customerIDLabel1")
         self.customerHorizontalLayout1.addWidget(self.customerIDLabel1)
-        self.customerIDLineEdit1 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.customerIDLineEdit1 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.customerIDLineEdit1.setObjectName("customerIDLineEdit1")
         self.customerHorizontalLayout1.addWidget(self.customerIDLineEdit1)
         self.customerVerticalLayout.addLayout(self.customerHorizontalLayout1)
         self.customerHorizontalLayout2 = QtWidgets.QHBoxLayout()
-        self.customerHorizontalLayout2.setObjectName("customerHorizontalLayout2")
-        self.customerFirstNameLabel2 = QtWidgets.QLabel(self.verticalLayoutWidget)
+        self.customerHorizontalLayout2.setObjectName(
+            "customerHorizontalLayout2")
+        self.customerFirstNameLabel2 = QtWidgets.QLabel(
+            self.verticalLayoutWidget)
         self.customerFirstNameLabel2.setObjectName("customerFirstNameLabel2")
         self.customerHorizontalLayout2.addWidget(self.customerFirstNameLabel2)
-        self.customerFirstNameLineEdit2 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
-        self.customerFirstNameLineEdit2.setObjectName("customerFirstNameLineEdit2")
-        self.customerHorizontalLayout2.addWidget(self.customerFirstNameLineEdit2)
-        self.customerLastNameLabel2 = QtWidgets.QLabel(self.verticalLayoutWidget)
+        self.customerFirstNameLineEdit2 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
+        self.customerFirstNameLineEdit2.setObjectName(
+            "customerFirstNameLineEdit2")
+        self.customerHorizontalLayout2.addWidget(
+            self.customerFirstNameLineEdit2)
+        self.customerLastNameLabel2 = QtWidgets.QLabel(
+            self.verticalLayoutWidget)
         self.customerLastNameLabel2.setObjectName("customerLastNameLabel2")
         self.customerHorizontalLayout2.addWidget(self.customerLastNameLabel2)
-        self.customerLastNameLineEdit2 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
-        self.customerLastNameLineEdit2.setObjectName("customerLastNameLineEdit2")
-        self.customerHorizontalLayout2.addWidget(self.customerLastNameLineEdit2)
-        self.customerContactLabel2 = QtWidgets.QLabel(self.verticalLayoutWidget)
+        self.customerLastNameLineEdit2 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
+        self.customerLastNameLineEdit2.setObjectName(
+            "customerLastNameLineEdit2")
+        self.customerHorizontalLayout2.addWidget(
+            self.customerLastNameLineEdit2)
+        self.customerContactLabel2 = QtWidgets.QLabel(
+            self.verticalLayoutWidget)
         self.customerContactLabel2.setObjectName("customerContactLabel2")
         self.customerHorizontalLayout2.addWidget(self.customerContactLabel2)
-        self.customerContactLineEdit2 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.customerContactLineEdit2 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.customerContactLineEdit2.setObjectName("customerContactLineEdit2")
         self.customerHorizontalLayout2.addWidget(self.customerContactLineEdit2)
         self.customerGenderLabel2 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.customerGenderLabel2.setObjectName("customerGenderLabel2")
         self.customerHorizontalLayout2.addWidget(self.customerGenderLabel2)
-        self.customerGenderLineEdit2 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.customerGenderLineEdit2 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.customerGenderLineEdit2.setObjectName("customerGenderLineEdit2")
         self.customerHorizontalLayout2.addWidget(self.customerGenderLineEdit2)
-        self.customerBalanceLabel2 = QtWidgets.QLabel(self.verticalLayoutWidget)
+        self.customerBalanceLabel2 = QtWidgets.QLabel(
+            self.verticalLayoutWidget)
         self.customerBalanceLabel2.setObjectName("customerBalanceLabel2")
         self.customerHorizontalLayout2.addWidget(self.customerBalanceLabel2)
-        self.customerBalanceLineEdit2 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.customerBalanceLineEdit2 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.customerBalanceLineEdit2.setObjectName("customerBalanceLineEdit2")
         self.customerHorizontalLayout2.addWidget(self.customerBalanceLineEdit2)
-        self.customerUpdatePushButton2 = QtWidgets.QPushButton(self.verticalLayoutWidget)
-        self.customerUpdatePushButton2.setObjectName("customerUpdatePushButton2")
-        self.customerHorizontalLayout2.addWidget(self.customerUpdatePushButton2)
+        self.customerUpdatePushButton2 = QtWidgets.QPushButton(
+            self.verticalLayoutWidget)
+        self.customerUpdatePushButton2.setObjectName(
+            "customerUpdatePushButton2")
+        self.customerHorizontalLayout2.addWidget(
+            self.customerUpdatePushButton2)
         self.customerVerticalLayout.addLayout(self.customerHorizontalLayout2)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem = QtWidgets.QSpacerItem(
+            40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.customerVerticalLayout.addItem(spacerItem)
-        self.customerAddPushButton1 = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.customerAddPushButton1 = QtWidgets.QPushButton(
+            self.verticalLayoutWidget)
         self.customerAddPushButton1.setObjectName("customerAddPushButton1")
         self.customerVerticalLayout.addWidget(self.customerAddPushButton1)
         self.customerHorizontalLayout3 = QtWidgets.QHBoxLayout()
-        self.customerHorizontalLayout3.setObjectName("customerHorizontalLayout3")
-        self.customerFirstNameLabel3 = QtWidgets.QLabel(self.verticalLayoutWidget)
+        self.customerHorizontalLayout3.setObjectName(
+            "customerHorizontalLayout3")
+        self.customerFirstNameLabel3 = QtWidgets.QLabel(
+            self.verticalLayoutWidget)
         self.customerFirstNameLabel3.setObjectName("customerFirstNameLabel3")
         self.customerHorizontalLayout3.addWidget(self.customerFirstNameLabel3)
-        self.customerFirstNameLineEdit3 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
-        self.customerFirstNameLineEdit3.setObjectName("customerFirstNameLineEdit3")
-        self.customerHorizontalLayout3.addWidget(self.customerFirstNameLineEdit3)
-        self.customerLastNameLabel3 = QtWidgets.QLabel(self.verticalLayoutWidget)
+        self.customerFirstNameLineEdit3 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
+        self.customerFirstNameLineEdit3.setObjectName(
+            "customerFirstNameLineEdit3")
+        self.customerHorizontalLayout3.addWidget(
+            self.customerFirstNameLineEdit3)
+        self.customerLastNameLabel3 = QtWidgets.QLabel(
+            self.verticalLayoutWidget)
         self.customerLastNameLabel3.setObjectName("customerLastNameLabel3")
         self.customerHorizontalLayout3.addWidget(self.customerLastNameLabel3)
-        self.customerLastNameLineEdit3 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
-        self.customerLastNameLineEdit3.setObjectName("customerLastNameLineEdit3")
-        self.customerHorizontalLayout3.addWidget(self.customerLastNameLineEdit3)
-        self.customerContactLabel3 = QtWidgets.QLabel(self.verticalLayoutWidget)
+        self.customerLastNameLineEdit3 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
+        self.customerLastNameLineEdit3.setObjectName(
+            "customerLastNameLineEdit3")
+        self.customerHorizontalLayout3.addWidget(
+            self.customerLastNameLineEdit3)
+        self.customerContactLabel3 = QtWidgets.QLabel(
+            self.verticalLayoutWidget)
         self.customerContactLabel3.setObjectName("customerContactLabel3")
         self.customerHorizontalLayout3.addWidget(self.customerContactLabel3)
-        self.customerContactLineEdit3 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.customerContactLineEdit3 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.customerContactLineEdit3.setObjectName("customerContactLineEdit3")
         self.customerHorizontalLayout3.addWidget(self.customerContactLineEdit3)
         self.customerGenderLabel3 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.customerGenderLabel3.setObjectName("customerGenderLabel3")
         self.customerHorizontalLayout3.addWidget(self.customerGenderLabel3)
-        self.customerGenderLineEdit3 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.customerGenderLineEdit3 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.customerGenderLineEdit3.setObjectName("customerGenderLineEdit3")
         self.customerHorizontalLayout3.addWidget(self.customerGenderLineEdit3)
-        self.customerBalanceLabel3 = QtWidgets.QLabel(self.verticalLayoutWidget)
+        self.customerBalanceLabel3 = QtWidgets.QLabel(
+            self.verticalLayoutWidget)
         self.customerBalanceLabel3.setObjectName("customerBalanceLabel3")
         self.customerHorizontalLayout3.addWidget(self.customerBalanceLabel3)
-        self.customerBalanceLineEdit3 = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.customerBalanceLineEdit3 = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget)
         self.customerBalanceLineEdit3.setObjectName("customerBalanceLineEdit3")
         self.customerHorizontalLayout3.addWidget(self.customerBalanceLineEdit3)
-        self.customerGoPushButton3 = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.customerGoPushButton3 = QtWidgets.QPushButton(
+            self.verticalLayoutWidget)
         self.customerGoPushButton3.setObjectName("customerGoPushButton3")
         self.customerHorizontalLayout3.addWidget(self.customerGoPushButton3)
         self.customerVerticalLayout.addLayout(self.customerHorizontalLayout3)
@@ -768,14 +867,14 @@ class Ui_MainWindow(object):
         self.attractionsEditWidget = QtWidgets.QWidget(MainWindow)
         self.attractionsEditWidget.setObjectName("attractionsEditWidget")
 
-        self.attractionLayout = QtWidgets.QVBoxLayout(self.attractionsEditWidget)
+        self.attractionLayout = QtWidgets.QVBoxLayout(
+            self.attractionsEditWidget)
         self.attractionLayout.setContentsMargins(30, 30, 30, 30)
         self.attractionLayout.setObjectName("attractionLayout")
 
         # self.verticalLayoutWidgetAttr = QtWidgets.QWidget(self.attractionsEditWidget)
         # self.verticalLayoutWidgetAttr.setGeometry(QtCore.QRect(0, 120, 800, 250))
         # self.verticalLayoutWidgetAttr.setObjectName("verticalLayoutWidgetAttr")
-
 
         self.attractionLabel = QtWidgets.QLabel(self.attractionsEditWidget)
         self.attractionLabel.setObjectName("attractionLabel")
@@ -784,66 +883,79 @@ class Ui_MainWindow(object):
         self.attractionIDLabel = QtWidgets.QLabel(self.attractionsEditWidget)
         self.attractionIDLabel.setObjectName("attractionIDLabel")
         self.attractionLayout.addWidget(self.attractionIDLabel)
-        self.attractionIDInput = QtWidgets.QLineEdit(self.attractionsEditWidget)
+        self.attractionIDInput = QtWidgets.QLineEdit(
+            self.attractionsEditWidget)
         self.attractionIDInput.setObjectName("attractionIDInput")
         self.attractionLayout.addWidget(self.attractionIDInput)
 
         self.attractionNameLabel = QtWidgets.QLabel(self.attractionsEditWidget)
         self.attractionNameLabel.setObjectName("attractionNameLabel")
         self.attractionLayout.addWidget(self.attractionNameLabel)
-        self.attractionNameInput = QtWidgets.QLineEdit(self.attractionsEditWidget)
+        self.attractionNameInput = QtWidgets.QLineEdit(
+            self.attractionsEditWidget)
         self.attractionNameInput.setObjectName("attractionNameInput")
         self.attractionLayout.addWidget(self.attractionNameInput)
 
-        self.attractionSummaryLabel = QtWidgets.QLabel(self.attractionsEditWidget)
+        self.attractionSummaryLabel = QtWidgets.QLabel(
+            self.attractionsEditWidget)
         self.attractionSummaryLabel.setObjectName("attractionSummaryLabel")
         self.attractionLayout.addWidget(self.attractionSummaryLabel)
-        self.attractionSummaryInput = QtWidgets.QLineEdit(self.attractionsEditWidget)
+        self.attractionSummaryInput = QtWidgets.QLineEdit(
+            self.attractionsEditWidget)
         self.attractionSummaryInput.setObjectName("attractionSummaryInput")
         self.attractionLayout.addWidget(self.attractionSummaryInput)
 
-        self.attractionDurationLabel = QtWidgets.QLabel(self.attractionsEditWidget)
+        self.attractionDurationLabel = QtWidgets.QLabel(
+            self.attractionsEditWidget)
         self.attractionDurationLabel.setObjectName("attractionDurationLabel")
         self.attractionLayout.addWidget(self.attractionDurationLabel)
-        self.attractionDurationInput = QtWidgets.QLineEdit(self.attractionsEditWidget)
+        self.attractionDurationInput = QtWidgets.QLineEdit(
+            self.attractionsEditWidget)
         self.attractionDurationInput.setObjectName("attractionDurationInput")
         self.attractionLayout.addWidget(self.attractionDurationInput)
 
-        self.attractionStartLabel = QtWidgets.QLabel(self.attractionsEditWidget)
+        self.attractionStartLabel = QtWidgets.QLabel(
+            self.attractionsEditWidget)
         self.attractionStartLabel.setObjectName("attractionStartLabel")
         self.attractionLayout.addWidget(self.attractionStartLabel)
-        self.attractionStartInput = QtWidgets.QLineEdit(self.attractionsEditWidget)
+        self.attractionStartInput = QtWidgets.QLineEdit(
+            self.attractionsEditWidget)
         self.attractionStartInput.setObjectName("attractionStartInput")
         self.attractionLayout.addWidget(self.attractionStartInput)
 
         self.attractionCostLabel = QtWidgets.QLabel(self.attractionsEditWidget)
         self.attractionCostLabel.setObjectName("attractionCostLabel")
         self.attractionLayout.addWidget(self.attractionCostLabel)
-        self.attractionCostInput = QtWidgets.QLineEdit(self.attractionsEditWidget)
+        self.attractionCostInput = QtWidgets.QLineEdit(
+            self.attractionsEditWidget)
         self.attractionCostInput.setObjectName("attractionCostInput")
         self.attractionLayout.addWidget(self.attractionCostInput)
 
         self.attractionTypeLabel = QtWidgets.QLabel(self.attractionsEditWidget)
         self.attractionTypeLabel.setObjectName("attractionTypeLabel")
         self.attractionLayout.addWidget(self.attractionTypeLabel)
-        self.attractionTypeInput = QtWidgets.QLineEdit(self.attractionsEditWidget)
+        self.attractionTypeInput = QtWidgets.QLineEdit(
+            self.attractionsEditWidget)
         self.attractionTypeInput.setObjectName("attractionTypeInput")
         self.attractionLayout.addWidget(self.attractionTypeInput)
 
-        spacerItem = QtWidgets.QSpacerItem(40, 40, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem = QtWidgets.QSpacerItem(
+            40, 40, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.attractionLayout.addItem(spacerItem)
 
         # self.attractionUpdateLabel = QtWidgets.QLabel(self.attractionsEditWidget)
         # self.attractionUpdateLabel.setObjectName("attractionUpdateLabel")
         # self.attractionLayout.addWidget(self.attractionUpdateLabel)
-        self.attractionUpdateButton = QtWidgets.QPushButton(self.attractionsEditWidget)
+        self.attractionUpdateButton = QtWidgets.QPushButton(
+            self.attractionsEditWidget)
         self.attractionUpdateButton.setObjectName("attractionUpdateButton")
         self.attractionLayout.addWidget(self.attractionUpdateButton)
 
         # self.attractionAddLabel = QtWidgets.QLabel(self.attractionsEditWidget)
         # self.attractionAddLabel.setObjectName("attractionAddLabel")
         # self.attractionLayout.addWidget(self.attractionAddLabel)
-        self.attractionAddButton = QtWidgets.QPushButton(self.attractionsEditWidget)
+        self.attractionAddButton = QtWidgets.QPushButton(
+            self.attractionsEditWidget)
         self.attractionAddButton.setObjectName("attractionAddButton")
         self.attractionLayout.addWidget(self.attractionAddButton)
 
@@ -853,7 +965,8 @@ class Ui_MainWindow(object):
         self.restaurantEditWidget = QtWidgets.QWidget(MainWindow)
         self.restaurantEditWidget.setObjectName("restaurantEditWidget")
 
-        self.restaurantLayout = QtWidgets.QVBoxLayout(self.restaurantEditWidget)
+        self.restaurantLayout = QtWidgets.QVBoxLayout(
+            self.restaurantEditWidget)
         self.restaurantLayout.setContentsMargins(30, 30, 30, 30)
         self.restaurantLayout.setObjectName("restaurantLayout")
 
@@ -871,71 +984,82 @@ class Ui_MainWindow(object):
         self.restaurantNameLabel = QtWidgets.QLabel(self.restaurantEditWidget)
         self.restaurantNameLabel.setObjectName("restaurantNameLabel")
         self.restaurantLayout.addWidget(self.restaurantNameLabel)
-        self.restaurantNameInput = QtWidgets.QLineEdit(self.restaurantEditWidget)
+        self.restaurantNameInput = QtWidgets.QLineEdit(
+            self.restaurantEditWidget)
         self.restaurantNameInput.setObjectName("restaurantNameInput")
         self.restaurantLayout.addWidget(self.restaurantNameInput)
 
         self.restaurantCostLabel = QtWidgets.QLabel(self.restaurantEditWidget)
         self.restaurantCostLabel.setObjectName("restaurantCostLabel")
         self.restaurantLayout.addWidget(self.restaurantCostLabel)
-        self.restaurantCostInput = QtWidgets.QLineEdit(self.restaurantEditWidget)
+        self.restaurantCostInput = QtWidgets.QLineEdit(
+            self.restaurantEditWidget)
         self.restaurantCostInput.setObjectName("restaurantCostInput")
         self.restaurantLayout.addWidget(self.restaurantCostInput)
 
-        self.restaurantCategoryLabel = QtWidgets.QLabel(self.restaurantEditWidget)
+        self.restaurantCategoryLabel = QtWidgets.QLabel(
+            self.restaurantEditWidget)
         self.restaurantCategoryLabel.setObjectName("restaurantCategoryLabel")
         self.restaurantLayout.addWidget(self.restaurantCategoryLabel)
-        self.restaurantCategoryInput = QtWidgets.QLineEdit(self.restaurantEditWidget)
+        self.restaurantCategoryInput = QtWidgets.QLineEdit(
+            self.restaurantEditWidget)
         self.restaurantCategoryInput.setObjectName("restaurantCategoryInput")
         self.restaurantLayout.addWidget(self.restaurantCategoryInput)
 
         self.restaurantLikesLabel = QtWidgets.QLabel(self.restaurantEditWidget)
         self.restaurantLikesLabel.setObjectName("restaurantLikesLabel")
         self.restaurantLayout.addWidget(self.restaurantLikesLabel)
-        self.restaurantLikesInput = QtWidgets.QLineEdit(self.restaurantEditWidget)
+        self.restaurantLikesInput = QtWidgets.QLineEdit(
+            self.restaurantEditWidget)
         self.restaurantLikesInput.setObjectName("restaurantLikesInput")
         self.restaurantLayout.addWidget(self.restaurantLikesInput)
 
         self.restaurantLatLabel = QtWidgets.QLabel(self.restaurantEditWidget)
         self.restaurantLatLabel.setObjectName("restaurantLatLabel")
         self.restaurantLayout.addWidget(self.restaurantLatLabel)
-        self.restaurantLatInput = QtWidgets.QLineEdit(self.restaurantEditWidget)
+        self.restaurantLatInput = QtWidgets.QLineEdit(
+            self.restaurantEditWidget)
         self.restaurantLatInput.setObjectName("restaurantLatInput")
         self.restaurantLayout.addWidget(self.restaurantLatInput)
 
         self.restaurantLongLabel = QtWidgets.QLabel(self.restaurantEditWidget)
         self.restaurantLongLabel.setObjectName("restaurantLongLabel")
         self.restaurantLayout.addWidget(self.restaurantLongLabel)
-        self.restaurantLongInput = QtWidgets.QLineEdit(self.restaurantEditWidget)
+        self.restaurantLongInput = QtWidgets.QLineEdit(
+            self.restaurantEditWidget)
         self.restaurantLongInput.setObjectName("restaurantLongInput")
         self.restaurantLayout.addWidget(self.restaurantLongInput)
 
-        self.restaurantNeighbourhoodLabel = QtWidgets.QLabel(self.restaurantEditWidget)
-        self.restaurantNeighbourhoodLabel.setObjectName("restaurantNeighbourhoodLabel")
+        self.restaurantNeighbourhoodLabel = QtWidgets.QLabel(
+            self.restaurantEditWidget)
+        self.restaurantNeighbourhoodLabel.setObjectName(
+            "restaurantNeighbourhoodLabel")
         self.restaurantLayout.addWidget(self.restaurantNeighbourhoodLabel)
-        self.restaurantNeighbourhoodInput = QtWidgets.QLineEdit(self.restaurantEditWidget)
-        self.restaurantNeighbourhoodInput.setObjectName("restaurantNeighbourhoodInput")
+        self.restaurantNeighbourhoodInput = QtWidgets.QLineEdit(
+            self.restaurantEditWidget)
+        self.restaurantNeighbourhoodInput.setObjectName(
+            "restaurantNeighbourhoodInput")
         self.restaurantLayout.addWidget(self.restaurantNeighbourhoodInput)
 
-
-        spacerItem = QtWidgets.QSpacerItem(40, 40, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem = QtWidgets.QSpacerItem(
+            40, 40, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.restaurantLayout.addItem(spacerItem)
 
-        self.restaurantUpdateButton = QtWidgets.QPushButton(self.restaurantEditWidget)
+        self.restaurantUpdateButton = QtWidgets.QPushButton(
+            self.restaurantEditWidget)
         self.restaurantUpdateButton.setObjectName("restaurantUpdateButton")
         self.restaurantLayout.addWidget(self.restaurantUpdateButton)
 
         # self.attractionAddLabel = QtWidgets.QLabel(self.attractionsEditWidget)
         # self.attractionAddLabel.setObjectName("attractionAddLabel")
         # self.attractionLayout.addWidget(self.attractionAddLabel)
-        self.restaurantAddButton = QtWidgets.QPushButton(self.restaurantEditWidget)
+        self.restaurantAddButton = QtWidgets.QPushButton(
+            self.restaurantEditWidget)
         self.restaurantAddButton.setObjectName("restaurantAddButton")
         self.restaurantLayout.addWidget(self.restaurantAddButton)
 
-
         self.restaurantUpdateButton.clicked.connect(self.func009update)
         self.restaurantAddButton.clicked.connect(self.func009add)
-
 
         self.Stack.addWidget(self.logincentralwidget)
         self.Stack.addWidget(self.centralwidget1)
@@ -948,17 +1072,13 @@ class Ui_MainWindow(object):
         self.Stack.addWidget(self.attractionsEditWidget)
         self.Stack.addWidget(self.restaurantEditWidget)
 
-        ####flight edits
+        # flight edits
         self.mybackendFlight = backendFlight()
         aAM = self.airlineAdminMode(self)
 
-        #######flight edits end
-
+        # flight edits end
 
         MainWindow.setCentralWidget(self.Stack)
-
-
-
 
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setNativeMenuBar(False)
@@ -994,8 +1114,7 @@ class Ui_MainWindow(object):
         self.attractionButton.clicked.connect(self.sortMenuItemsAttraction)
         self.RestaurantButton.clicked.connect(self.sortMenuItemsRestaurant)
         self.airlinesButton.clicked.connect(self.airlineInitializer)
-        self.movieButton.clicked.connect(self.startMoviesDisplay) #############
-
+        self.movieButton.clicked.connect(self.startMoviesDisplay)
 
     ######## Flights Part Starts Here ################
 
@@ -1032,35 +1151,41 @@ class Ui_MainWindow(object):
             self.box.addLayout(self.h3)
             self.box.addWidget(self.bookbutton)
 
-
             self.setLayout(self.box)
 
         def setTextOnAllLabel(self, flight):
             self.id.setText("Flight No : " + str(flight['id']))
             self.airline.setText("Airline : " + flight['airline'])
             self.airport.setText("Destination Airport: " + flight['airport'])
-            self.departure.setText("Departure Time: " + str(flight['departure']))
+            self.departure.setText(
+                "Departure Time: " + str(flight['departure']))
             self.arrival.setText("Arrival Time: " + str(flight['arrival']))
-            self.duration.setText("Flight Duration: " + str(flight['duration']))
-            self.numseats.setText("Available Seats: " + str(flight['numseats']))
+            self.duration.setText("Flight Duration: " +
+                                  str(flight['duration']))
+            self.numseats.setText("Available Seats: " +
+                                  str(flight['numseats']))
             self.cost.setText("Cost per seat: " + str(flight['avgCost']))
-            self.bookbutton.clicked.connect(lambda : self.bookingWindow(flight['id'], flight['numseats']))
-
+            self.bookbutton.clicked.connect(
+                lambda: self.bookingWindow(flight['id'], flight['numseats']))
 
         def bookingWindow(self, flightNo, numSeats):
 
             def confirmBooking():
                 def addBal():
-                    self.outer.mybackendFlight.addBalance(int(self.outer.USER_ID), int(self.outer.BALANCE))
+                    self.outer.mybackendFlight.addBalance(
+                        int(self.outer.USER_ID), int(self.outer.BALANCE))
                     self.outer.BALANCE = str(int(self.outer.BALANCE) + 10000)
-                    self.outer.balanceLabel.setText("Balance : " + self.outer.BALANCE)
+                    self.outer.balanceLabel.setText(
+                        "Balance : " + self.outer.BALANCE)
                     window.reject()
                     return
                 selectedSeats = spinbox.value()
 
-                print("You attempted to book {} seats in Flight No: {}".format(selectedSeats, flightNo))
-                seats = self.outer.mybackendFlight.bookSeats(flightNo, selectedSeats, int(self.outer.USER_ID), int(self.outer.BALANCE))
-                if (seats[0]==-1):
+                print("You attempted to book {} seats in Flight No: {}".format(
+                    selectedSeats, flightNo))
+                seats = self.outer.mybackendFlight.bookSeats(
+                    flightNo, selectedSeats, int(self.outer.USER_ID), int(self.outer.BALANCE))
+                if (seats[0] == -1):
                     label1 = QtWidgets.QLabel("Not enough balance !!!")
                     label.deleteLater()
                     layout.removeWidget(label)
@@ -1075,8 +1200,10 @@ class Ui_MainWindow(object):
                     layout.addWidget(addBalBtn)
                 else:
                     self.outer.BALANCE = str(seats[0])
-                    self.outer.balanceLabel.setText("Balance : " + self.outer.BALANCE)
-                    label1 = QtWidgets.QLabel("Your seat bumbers are as follows :")
+                    self.outer.balanceLabel.setText(
+                        "Balance : " + self.outer.BALANCE)
+                    label1 = QtWidgets.QLabel(
+                        "Your seat bumbers are as follows :")
                     label2 = QtWidgets.QLabel(str(seats[1:]))
                     label.deleteLater()
                     layout.removeWidget(label)
@@ -1093,15 +1220,16 @@ class Ui_MainWindow(object):
             window.setObjectName("Confirm Booking")
             window.setWindowTitle("Confirm Booking")
             layout = QtWidgets.QVBoxLayout()
-            label = QtWidgets.QLabel("Please select number of seats to be booked.")
+            label = QtWidgets.QLabel(
+                "Please select number of seats to be booked.")
             layout.addWidget(label)
             submitButton = QtWidgets.QPushButton("Submit")
             submitButton.setObjectName("Submit")
-            submitButton.clicked.connect(lambda:confirmBooking())
+            submitButton.clicked.connect(lambda: confirmBooking())
             spinbox = QtWidgets.QSpinBox(window)
             spinbox.setMaximum(numSeats)
             spinbox.setMinimum(1)
-            spinbox.valueChanged.connect(lambda : print(spinbox.value()))
+            spinbox.valueChanged.connect(lambda: print(spinbox.value()))
 
             # print("Selected number of seats: ", selectedSeats)
             layout.addWidget(spinbox)
@@ -1111,7 +1239,7 @@ class Ui_MainWindow(object):
             window.exec()
 
     class SearchBoxWidget(QtWidgets.QWidget):
-        def __init__(self,outer, countrybox, citybox, searchbutton, parent=None):
+        def __init__(self, outer, countrybox, citybox, searchbutton, parent=None):
             super(outer.SearchBoxWidget, self).__init__(parent)
 
             self.box = QtWidgets.QHBoxLayout()
@@ -1119,7 +1247,6 @@ class Ui_MainWindow(object):
             self.box.addWidget(citybox)
             self.box.addWidget(searchbutton)
             self.setLayout(self.box)
-
 
     class airlineAdminMode:
         def __init__(self, outer):
@@ -1172,7 +1299,8 @@ class Ui_MainWindow(object):
             self.addFlightAirline = QtWidgets.QComboBox()
             self.addFlightAirline.addItems(outer.mybackendFlight.getAirlines())
             self.addFlightAirport = QtWidgets.QComboBox()
-            self.addFlightAirport.addItems(outer.mybackendFlight.getAllAirports())
+            self.addFlightAirport.addItems(
+                outer.mybackendFlight.getAllAirports())
             currTime = QtCore.QDateTime.currentDateTime()
             self.addFlightDeparture = QtWidgets.QDateTimeEdit(currTime)
             self.addFlightArrival = QtWidgets.QDateTimeEdit(currTime)
@@ -1196,19 +1324,19 @@ class Ui_MainWindow(object):
             flightAdder.addLayout(flightAdderH)
             flightAdder.addLayout(flightAdderH2)
 
-
             ## add tickets ##
             ticketAdder = QtWidgets.QVBoxLayout()
             ticketAdder.addWidget(QtWidgets.QLabel("Add Tickets"))
             ticketAdderH = QtWidgets.QHBoxLayout()
             self.addTicketFlightId = QtWidgets.QComboBox()
-            self.addTicketFlightId.addItems(self.outer.mybackendFlight.getFlightIDs())
+            self.addTicketFlightId.addItems(
+                self.outer.mybackendFlight.getFlightIDs())
             val1 = QtGui.QIntValidator()
             val1.setBottom(1)
             self.addTicketFlightId.setValidator(val1)
 
             self.addTicketNumSeats = QtWidgets.QLineEdit()
-            self.addTicketNumSeats.setValidator(QtGui.QIntValidator(1,500))
+            self.addTicketNumSeats.setValidator(QtGui.QIntValidator(1, 500))
             self.addTicketNumSeats.setPlaceholderText("Number of Seats")
             self.addTicketPrice = QtWidgets.QLineEdit()
             self.addTicketPrice.setPlaceholderText("Ticket Price")
@@ -1229,10 +1357,11 @@ class Ui_MainWindow(object):
             airlineRemover.addWidget(QtWidgets.QLabel("Remove Airline"))
             airlineRemoverH = QtWidgets.QHBoxLayout()
             self.airlineRemoveName = QtWidgets.QComboBox()
-            self.airlineRemoveName.addItems(self.outer.mybackendFlight.getAirlines())
+            self.airlineRemoveName.addItems(
+                self.outer.mybackendFlight.getAirlines())
             removeAirlineBtn = QtWidgets.QPushButton()
             removeAirlineBtn.setText("Remove")
-            removeAirlineBtn.clicked.connect(lambda : self.removeAirline())
+            removeAirlineBtn.clicked.connect(lambda: self.removeAirline())
             airlineRemoverH.addWidget(self.airlineRemoveName)
             airlineRemoverH.addWidget(removeAirlineBtn)
             airlineRemover.addLayout(airlineRemoverH)
@@ -1242,16 +1371,17 @@ class Ui_MainWindow(object):
             flightRemover.addWidget(QtWidgets.QLabel("Remove Flight"))
             flightRemoverH = QtWidgets.QHBoxLayout()
             self.removeFlightId = QtWidgets.QComboBox()
-            self.removeFlightId.addItems(self.outer.mybackendFlight.getFlightIDs())
+            self.removeFlightId.addItems(
+                self.outer.mybackendFlight.getFlightIDs())
 
             removeFlightBtn = QtWidgets.QPushButton()
             removeFlightBtn.setText("Remove")
-            removeFlightBtn.clicked.connect(lambda : self.removeFlight())
+            removeFlightBtn.clicked.connect(lambda: self.removeFlight())
             flightRemoverH.addWidget(QtWidgets.QLabel("Flight Id: "))
             flightRemoverH.addWidget(self.removeFlightId)
             flightRemoverH.addWidget(removeFlightBtn)
             flightRemover.addLayout(flightRemoverH)
-            ##add all widgets
+            # add all widgets
             mainVertLayout.addLayout(airlineAdder)
             mainVertLayout.addLayout(airportAdder)
             mainVertLayout.addLayout(flightAdder)
@@ -1260,38 +1390,45 @@ class Ui_MainWindow(object):
             mainVertLayout.addLayout(flightRemover)
             outer.Stack.addWidget(outer.flightAdminWindow)
             outer.flightAdminWindow.setLayout(mainVertLayout)
+
         def addAirline(self):
             #print("function called")
             name = self.addAirlineName.text()
             mail = self.addAirlineMail.text()
-            if (len(name)==0 or len(mail)==0):
-                choice = QtWidgets.QMessageBox.information(self.outer.flightAdminWindow, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
+            if (len(name) == 0 or len(mail) == 0):
+                choice = QtWidgets.QMessageBox.information(
+                    self.outer.flightAdminWindow, 'Empty Fields', "Fields cannot be Empty!", QtWidgets.QMessageBox.Ok)
                 return
             self.outer.mybackendFlight.addAirline(name, mail)
             k = self.airlineRemoveName.count()
-            while(k>0):
+            while(k > 0):
                 self.airlineRemoveName.removeItem(0)
                 self.addFlightAirline.removeItem(0)
-                k-=1
-            self.airlineRemoveName.addItems(self.outer.mybackendFlight.getAirlines())
-            self.addFlightAirline.addItems(self.outer.mybackendFlight.getAirlines())
+                k -= 1
+            self.airlineRemoveName.addItems(
+                self.outer.mybackendFlight.getAirlines())
+            self.addFlightAirline.addItems(
+                self.outer.mybackendFlight.getAirlines())
 
         def addAirport(self):
             name = self.addAirportName.text()
             country = self.addAirportCountry.text()
             city = self.addAirportCity.text()
-            if (len(name)==0 or len(country)==0 or len(city)==0):
-                choice = QtWidgets.QMessageBox.information(self.outer.flightAdminWindow, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
+            if (len(name) == 0 or len(country) == 0 or len(city) == 0):
+                choice = QtWidgets.QMessageBox.information(
+                    self.outer.flightAdminWindow, 'Empty Fields', "Fields cannot be Empty!", QtWidgets.QMessageBox.Ok)
                 return
             if not(self.outer.mybackendFlight.validateAirport(name)):
-                choice = QtWidgets.QMessageBox.information(self.outer.flightAdminWindow, 'Repeated Entry',"Airport Name cannot repeat!",QtWidgets.QMessageBox.Yes)
+                choice = QtWidgets.QMessageBox.information(
+                    self.outer.flightAdminWindow, 'Repeated Entry', "Airport Name cannot repeat!", QtWidgets.QMessageBox.Yes)
                 return
             self.outer.mybackendFlight.addAirport(name, country, city)
             k = self.addFlightAirport.count()
-            while(k>0):
+            while(k > 0):
                 self.addFlightAirport.removeItem(0)
-                k-=1
-            self.addFlightAirport.addItems(self.outer.mybackendFlight.getAllAirports())
+                k -= 1
+            self.addFlightAirport.addItems(
+                self.outer.mybackendFlight.getAllAirports())
 
         def addFlight(self):
             airline = self.addFlightAirline.currentText()
@@ -1299,126 +1436,148 @@ class Ui_MainWindow(object):
             departure = self.addFlightDeparture.dateTime().toPyDateTime()
             arrival = self.addFlightArrival.dateTime().toPyDateTime()
             if not(arrival > departure):
-                choice = QtWidgets.QMessageBox.information(self.outer.flightAdminWindow, 'Wrong DateTime',"Arrival DateTime should be after Departure DateTime",QtWidgets.QMessageBox.Ok)
+                choice = QtWidgets.QMessageBox.information(
+                    self.outer.flightAdminWindow, 'Wrong DateTime', "Arrival DateTime should be after Departure DateTime", QtWidgets.QMessageBox.Ok)
                 return
-            idx = self.outer.mybackendFlight.addFlight(airline, airport, departure, arrival)
+            idx = self.outer.mybackendFlight.addFlight(
+                airline, airport, departure, arrival)
 
             self.addFlightResult.setText(str(idx))
             k = self.addTicketFlightId.count()
-            while(k>0):
+            while(k > 0):
                 self.addTicketFlightId.removeItem(0)
                 self.removeFlightId.removeItem(0)
-                k-=1
-            self.addTicketFlightId.addItems(self.outer.mybackendFlight.getFlightIDs())
-            self.removeFlightId.addItems(self.outer.mybackendFlight.getFlightIDs())
+                k -= 1
+            self.addTicketFlightId.addItems(
+                self.outer.mybackendFlight.getFlightIDs())
+            self.removeFlightId.addItems(
+                self.outer.mybackendFlight.getFlightIDs())
 
         def addTickets(self):
             flightid = self.addTicketFlightId.currentText()
-            numtickets = int(self.addTicketNumSeats.text()) if len(self.addTicketNumSeats.text())>0 else 0
-            price = int(self.addTicketPrice.text()) if len(self.addTicketPrice.text())>0 else 0
-            if not(numtickets>0 and price>0):
-                choice = QtWidgets.QMessageBox.information(self.outer.flightAdminWindow, 'Non Positive Value',"Only Positive Values are Allowed",QtWidgets.QMessageBox.Ok)
+            numtickets = int(self.addTicketNumSeats.text()) if len(
+                self.addTicketNumSeats.text()) > 0 else 0
+            price = int(self.addTicketPrice.text()) if len(
+                self.addTicketPrice.text()) > 0 else 0
+            if not(numtickets > 0 and price > 0):
+                choice = QtWidgets.QMessageBox.information(
+                    self.outer.flightAdminWindow, 'Non Positive Value', "Only Positive Values are Allowed", QtWidgets.QMessageBox.Ok)
                 return
 
-            self.outer.mybackendFlight.addTickets(int(flightid), numtickets, price)
+            self.outer.mybackendFlight.addTickets(
+                int(flightid), numtickets, price)
 
         def removeFlight(self):
             id = int(self.removeFlightId.currentText())
-            choice = QtWidgets.QMessageBox.information(self.outer.flightAdminWindow, 'Confirmaton',"Are you sure, you want to remove the chosen flight",QtWidgets.QMessageBox.Yes  |QtWidgets.QMessageBox.No)
+            choice = QtWidgets.QMessageBox.information(
+                self.outer.flightAdminWindow, 'Confirmaton', "Are you sure, you want to remove the chosen flight", QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
             if (choice == 16384):
                 self.outer.mybackendFlight.removeFlight(id)
             k = self.addTicketFlightId.count()
-            while(k>0):
+            while(k > 0):
                 self.addTicketFlightId.removeItem(0)
                 self.removeFlightId.removeItem(0)
-                k-=1
-            self.addTicketFlightId.addItems(self.outer.mybackendFlight.getFlightIDs())
-            self.removeFlightId.addItems(self.outer.mybackendFlight.getFlightIDs())
+                k -= 1
+            self.addTicketFlightId.addItems(
+                self.outer.mybackendFlight.getFlightIDs())
+            self.removeFlightId.addItems(
+                self.outer.mybackendFlight.getFlightIDs())
 
         def removeAirline(self):
             name = self.airlineRemoveName.currentText()
-            choice = QtWidgets.QMessageBox.information(self.outer.flightAdminWindow, 'Confirmaton',"Are you sure, you want to remove the chosen airline",QtWidgets.QMessageBox.Yes  |QtWidgets.QMessageBox.No)
+            choice = QtWidgets.QMessageBox.information(
+                self.outer.flightAdminWindow, 'Confirmaton', "Are you sure, you want to remove the chosen airline", QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
             if (choice == 16384):
                 self.outer.mybackendFlight.removeAirline(name)
             k = self.airlineRemoveName.count()
-            while(k>0):
+            while(k > 0):
                 self.airlineRemoveName.removeItem(0)
                 self.addFlightAirline.removeItem(0)
-                k-=1
-            self.airlineRemoveName.addItems(self.outer.mybackendFlight.getAirlines())
-            self.addFlightAirline.addItems(self.outer.mybackendFlight.getAirlines())
+                k -= 1
+            self.airlineRemoveName.addItems(
+                self.outer.mybackendFlight.getAirlines())
+            self.addFlightAirline.addItems(
+                self.outer.mybackendFlight.getAirlines())
             k = self.addTicketFlightId.count()
-            while(k>0):
+            while(k > 0):
                 self.addTicketFlightId.removeItem(0)
                 self.removeFlightId.removeItem(0)
-                k-=1
-            self.addTicketFlightId.addItems(self.outer.mybackendFlight.getFlightIDs())
-            self.removeFlightId.addItems(self.outer.mybackendFlight.getFlightIDs())
-
-
+                k -= 1
+            self.addTicketFlightId.addItems(
+                self.outer.mybackendFlight.getFlightIDs())
+            self.removeFlightId.addItems(
+                self.outer.mybackendFlight.getFlightIDs())
 
     def runAirlineAdminMode(self):
         self.Stack.setCurrentWidget(self.flightAdminWindow)
+
     def airlineInitializer(self):
         print("Hello")
         self.searchResults = []
 
         def sorter(flag):
-            if (flag==0):
-                self.searchResults = sorted(self.searchResults, key = lambda i : i['duration'])
+            if (flag == 0):
+                self.searchResults = sorted(
+                    self.searchResults, key=lambda i: i['duration'])
             elif (flag == 1):
-                self.searchResults = sorted(self.searchResults, key = lambda i : i['duration'], reverse = True)
-            elif (flag==2):
-                self.searchResults = sorted(self.searchResults, key = lambda i : i['departure'])
+                self.searchResults = sorted(
+                    self.searchResults, key=lambda i: i['duration'], reverse=True)
+            elif (flag == 2):
+                self.searchResults = sorted(
+                    self.searchResults, key=lambda i: i['departure'])
             elif (flag == 3):
-                self.searchResults = sorted(self.searchResults, key = lambda i : i['departure'], reverse = True)
-            elif (flag== 4):
-                self.searchResults = sorted(self.searchResults, key = lambda i : i['arrival'])
+                self.searchResults = sorted(
+                    self.searchResults, key=lambda i: i['departure'], reverse=True)
+            elif (flag == 4):
+                self.searchResults = sorted(
+                    self.searchResults, key=lambda i: i['arrival'])
             elif (flag == 5):
-                self.searchResults = sorted(self.searchResults, key = lambda i : i['arrival'], reverse = True)
+                self.searchResults = sorted(
+                    self.searchResults, key=lambda i: i['arrival'], reverse=True)
             viewResults()
 
         def sortMenuInitializer():
             print()
             sortMenu = QtWidgets.QMenu()
 
-
             durationAscAction = QtWidgets.QWidgetAction(sortMenu)
             self.durationAscButton = QtWidgets.QPushButton(self.centralwidget1)
             self.durationAscButton.setText("Duration Ascending")
-            self.durationAscButton.clicked.connect(lambda : sorter(0))
+            self.durationAscButton.clicked.connect(lambda: sorter(0))
             durationAscAction.setDefaultWidget(self.durationAscButton)
 
             durationDescAction = QtWidgets.QWidgetAction(sortMenu)
-            self.durationDescButton = QtWidgets.QPushButton(self.centralwidget1)
+            self.durationDescButton = QtWidgets.QPushButton(
+                self.centralwidget1)
             self.durationDescButton.setText("Duration Descending")
-            self.durationDescButton.clicked.connect(lambda : sorter(1))
+            self.durationDescButton.clicked.connect(lambda: sorter(1))
             durationDescAction.setDefaultWidget(self.durationDescButton)
 
             startTimeAscAction = QtWidgets.QWidgetAction(sortMenu)
-            self.startTimeAscButton = QtWidgets.QPushButton(self.centralwidget1)
+            self.startTimeAscButton = QtWidgets.QPushButton(
+                self.centralwidget1)
             self.startTimeAscButton.setText("Departure Time Ascending")
-            self.startTimeAscButton.clicked.connect(lambda : sorter(2))
+            self.startTimeAscButton.clicked.connect(lambda: sorter(2))
             startTimeAscAction.setDefaultWidget(self.startTimeAscButton)
 
             startTimeDescAction = QtWidgets.QWidgetAction(sortMenu)
-            self.startTimeDescButton = QtWidgets.QPushButton(self.centralwidget1)
+            self.startTimeDescButton = QtWidgets.QPushButton(
+                self.centralwidget1)
             self.startTimeDescButton.setText("Departure Time Descending")
-            self.startTimeDescButton.clicked.connect(lambda : sorter(3))
+            self.startTimeDescButton.clicked.connect(lambda: sorter(3))
             startTimeDescAction.setDefaultWidget(self.startTimeDescButton)
 
             arrivalAscAction = QtWidgets.QWidgetAction(sortMenu)
             self.arrivalAscButton = QtWidgets.QPushButton(self.centralwidget1)
             self.arrivalAscButton.setText("Arrival Time Ascending")
-            self.arrivalAscButton.clicked.connect(lambda : sorter(4))
+            self.arrivalAscButton.clicked.connect(lambda: sorter(4))
             arrivalAscAction.setDefaultWidget(self.arrivalAscButton)
 
             arrivalDescAction = QtWidgets.QWidgetAction(sortMenu)
             self.arrivalDescButton = QtWidgets.QPushButton(self.centralwidget1)
             self.arrivalDescButton.setText("Arrival Time Descending")
-            self.arrivalDescButton.clicked.connect(lambda : sorter(5))
+            self.arrivalDescButton.clicked.connect(lambda: sorter(5))
             arrivalDescAction.setDefaultWidget(self.arrivalDescButton)
-
 
             sortMenu.addSeparator()
             sortMenu.addAction(durationAscAction)
@@ -1440,19 +1599,20 @@ class Ui_MainWindow(object):
         def cityOptions():
             self.mybackendFlight.getAirport()
             k = cityBox.count()
-            while(k>0):
+            while(k > 0):
                 cityBox.removeItem(0)
-                k-=1
+                k -= 1
             cityBox.addItems(self.mybackendFlight.cities)
 
         def printCountry():
             print(countryBox.currentText())
             if (countryBox.currentText() != "Country"):
                 k = cityBox.count()
-                while(k>0):
+                while(k > 0):
                     cityBox.removeItem(0)
-                    k-=1
-                cityBox.addItems(self.mybackendFlight.city4country(countryBox.currentText()))
+                    k -= 1
+                cityBox.addItems(self.mybackendFlight.city4country(
+                    countryBox.currentText()))
             else:
                 cityOptions()
 
@@ -1474,19 +1634,19 @@ class Ui_MainWindow(object):
                 self.listWidget.addItem(listWidgetItem)
                 self.listWidget.setItemWidget(listWidgetItem, fw)
 
-
         def pushOutput():
 
-            self.searchResults = self.mybackendFlight.getFlights(cityBox.currentText())
+            self.searchResults = self.mybackendFlight.getFlights(
+                cityBox.currentText())
             print(self.searchResults)
             viewResults()
 
         def displayFlightItems():
             self.listWidget.clear()
 
-
             #searchButton.setGeometry(QtCore.QRect(580, 70, 161, 61))
-            searchButton.setStyleSheet("border-right-color: rgb(239, 41, 41);\n")
+            searchButton.setStyleSheet(
+                "border-right-color: rgb(239, 41, 41);\n")
             searchButton.setObjectName("pushButton")
             searchButton.clicked.connect(pushOutput)
             ###########################
@@ -1508,7 +1668,6 @@ class Ui_MainWindow(object):
             self.listWidget.addItem(listWidgetItem)
             self.listWidget.setItemWidget(listWidgetItem, sb)
 
-
         ##########################
 
         sortMenuInitializer()
@@ -1521,10 +1680,9 @@ class Ui_MainWindow(object):
         except:
             pass
         #self.listWidget.itemClicked.connect(lambda: print())
-        sb = self.SearchBoxWidget(self,countryBox, cityBox, searchButton)
+        sb = self.SearchBoxWidget(self, countryBox, cityBox, searchButton)
         displayFlightItems()
     ##### flight ends here ######
-
 
     def customeredit(self):
         self.Stack.setCurrentWidget(self.customereditcentralwidget)
@@ -1540,177 +1698,225 @@ class Ui_MainWindow(object):
 
     def exitclick(self):
         os._exit(1)
+
     def changemodeclick(self):
         self.Stack.setCurrentWidget(self.logincentralwidget)
+
     def func1(self):
         hid = self.hotelIDLineEdit11.text()
-        lower,upper = self.mybackend.gethotelbounds()
-        if(len(hid)==0 or not hid.isdigit() or int(hid)<lower or int(hid)>upper):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Inorrect Input',"Enter a valid ID(int only)",QtWidgets.QMessageBox.Ok)
+        lower, upper = self.mybackend.gethotelbounds()
+        if(len(hid) == 0 or not hid.isdigit() or int(hid) < lower or int(hid) > upper):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Inorrect Input', "Enter a valid ID(int only)", QtWidgets.QMessageBox.Ok)
             self.hotelIDLineEdit11.setText("")
         else:
-            a,b,c = self.mybackend.getinfohotel(hid)
+            a, b, c = self.mybackend.getinfohotel(hid)
             self.hotelNameLineEdit12.setText(a)
             self.hotelLocIDLineEdit12.setText(b)
             self.hotelContactLineEdit12.setText(c)
+
     def func2(self):
         hid = self.hotelIDLineEdit11.text()
         a = self.hotelNameLineEdit12.text()
         b = self.hotelLocIDLineEdit12.text()
         c = self.hotelContactLineEdit12.text()
-        lower,upper = self.mybackend.getlocationbounds()
-        if(len(a)==0 or len(b)==0 or len(c)==0 or len(hid)==0):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
+        lower, upper = self.mybackend.getlocationbounds()
+        if(len(a) == 0 or len(b) == 0 or len(c) == 0 or len(hid) == 0):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Empty Fields', "Fields cannot be Empty!", QtWidgets.QMessageBox.Ok)
         elif(a.isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Name cannot be a number!",QtWidgets.QMessageBox.Ok)
-        elif(int(b)<lower or int(b)>upper):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Loc_id out of Range",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Name cannot be a number!", QtWidgets.QMessageBox.Ok)
+        elif(int(b) < lower or int(b) > upper):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Loc_id out of Range", QtWidgets.QMessageBox.Ok)
         elif(not c.isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"contact must be a number",QtWidgets.QMessageBox.Ok)
-        elif(len(c)!=10):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"contact must be of 10 digits",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "contact must be a number", QtWidgets.QMessageBox.Ok)
+        elif(len(c) != 10):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "contact must be of 10 digits", QtWidgets.QMessageBox.Ok)
         else:
-            self.mybackend.updatehotelinfo(hid,a,b,c)
+            self.mybackend.updatehotelinfo(hid, a, b, c)
+
     def func3(self):
         a = self.hotelNameLineEdit13.text()
         b = self.hotelLocIDLineEdit13.text()
         c = self.hotelContactLineEdit13.text()
-        lower,upper = self.mybackend.getlocationbounds()
-        if(len(a)==0 or len(b)==0 or len(c)==0 ):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
+        lower, upper = self.mybackend.getlocationbounds()
+        if(len(a) == 0 or len(b) == 0 or len(c) == 0):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Empty Fields', "Fields cannot be Empty!", QtWidgets.QMessageBox.Ok)
         elif(a.isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Name cannot be a number!",QtWidgets.QMessageBox.Ok)
-        elif(int(b)<lower or int(b)>upper):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Loc_id out of Range",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Name cannot be a number!", QtWidgets.QMessageBox.Ok)
+        elif(int(b) < lower or int(b) > upper):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Loc_id out of Range", QtWidgets.QMessageBox.Ok)
         elif(not c.isdigit):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"contact must be a number",QtWidgets.QMessageBox.Ok)
-        elif(len(c)!=10):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"contact must be of 10 digits",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "contact must be a number", QtWidgets.QMessageBox.Ok)
+        elif(len(c) != 10):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "contact must be of 10 digits", QtWidgets.QMessageBox.Ok)
         else:
-            self.mybackend.addintohotel(a,b,c)
+            self.mybackend.addintohotel(a, b, c)
             self.hotelNameLineEdit13.setText("")
             self.hotelLocIDLineEdit13.setText("")
             self.hotelContactLineEdit13.setText("")
+
     def func4(self):
         lid = self.hotelIDLineEdit21.text()
-        lower,upper = self.mybackend.getlocationbounds()
-        if(len(lid)==0 or not lid.isdigit() or int(lid)<lower or int(lid)>upper):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Enter a valid ID(int only)",QtWidgets.QMessageBox.Ok)
+        lower, upper = self.mybackend.getlocationbounds()
+        if(len(lid) == 0 or not lid.isdigit() or int(lid) < lower or int(lid) > upper):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Enter a valid ID(int only)", QtWidgets.QMessageBox.Ok)
             self.hotelIDLineEdit21.setText("")
         else:
-            a,b,c = self.mybackend.getinfolocation(lid)
+            a, b, c = self.mybackend.getinfolocation(lid)
             self.hotelNameLineEdit22.setText(a)
             self.hotelLocIDLineEdit22.setText(b)
             self.hotelContactLineEdit22.setText(c)
+
     def func5(self):
         lid = self.hotelIDLineEdit21.text()
         a = self.hotelNameLineEdit22.text()
         b = self.hotelLocIDLineEdit22.text()
         c = self.hotelContactLineEdit22.text()
-        if(len(a)==0 or len(b)==0 or len(c)==0 or len(lid)==0):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
+        if(len(a) == 0 or len(b) == 0 or len(c) == 0 or len(lid) == 0):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Empty Fields', "Fields cannot be Empty!", QtWidgets.QMessageBox.Ok)
         elif(a.isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Name cannot be a number!",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Name cannot be a number!", QtWidgets.QMessageBox.Ok)
         elif(not c.isdigit() or not b.isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"X and Y must be a number",QtWidgets.QMessageBox.Ok)
-        elif(int(c)>1000 or int(c)<-1000 or int(b)>1000 or int(b)<-1000):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"X and Y must be between -1000 and 1000",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "X and Y must be a number", QtWidgets.QMessageBox.Ok)
+        elif(int(c) > 1000 or int(c) < -1000 or int(b) > 1000 or int(b) < -1000):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "X and Y must be between -1000 and 1000", QtWidgets.QMessageBox.Ok)
         else:
-            self.mybackend.updatelocationinfo(lid,a,b,c)
+            self.mybackend.updatelocationinfo(lid, a, b, c)
+
     def func6(self):
         a = self.hotelNameLineEdit23.text()
         b = self.hotelLocIDLineEdit23.text()
         c = self.hotelContactLineEdit23.text()
-        if(len(a)==0 or len(b)==0 or len(c)==0):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
+        if(len(a) == 0 or len(b) == 0 or len(c) == 0):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Empty Fields', "Fields cannot be Empty!", QtWidgets.QMessageBox.Ok)
         elif(a.isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Name cannot be a number!",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Name cannot be a number!", QtWidgets.QMessageBox.Ok)
         elif(not c.isdigit() or not b.isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"X and Y must be a number",QtWidgets.QMessageBox.Ok)
-        elif(int(c)>1000 or int(c)<-1000 or int(b)>1000 or int(b)<-1000):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"X and Y must be between -1000 and 1000",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "X and Y must be a number", QtWidgets.QMessageBox.Ok)
+        elif(int(c) > 1000 or int(c) < -1000 or int(b) > 1000 or int(b) < -1000):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "X and Y must be between -1000 and 1000", QtWidgets.QMessageBox.Ok)
         else:
-            self.mybackend.addintolocation(a,b,c)
+            self.mybackend.addintolocation(a, b, c)
             self.hotelNameLineEdit23.setText("")
             self.hotelLocIDLineEdit23.setText("")
             self.hotelContactLineEdit23.setText("")
+
     def reviewtab(self):
-        tempCustomQWidget = self.listWidget.itemWidget(self.listWidget.selectedItems()[0])
+        tempCustomQWidget = self.listWidget.itemWidget(
+            self.listWidget.selectedItems()[0])
         test = tempCustomQWidget.hotelNameLabel
         self.Stack.setCurrentWidget(self.reviewcentralwidget)
-        self.clicked=False
+        self.clicked = False
         self.sortReviewButton.setText('View:')
         self.setReview(test.text())
+
     def func7(self):
         rid = self.hotelIDLineEdit31.text()
-        lower,upper = self.mybackend.getroombounds()
-        if(len(rid)==0 or not rid.isdigit() or int(rid)<lower or int(rid)>upper):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Enter a valid ID(int only)",QtWidgets.QMessageBox.Ok)
+        lower, upper = self.mybackend.getroombounds()
+        if(len(rid) == 0 or not rid.isdigit() or int(rid) < lower or int(rid) > upper):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Enter a valid ID(int only)", QtWidgets.QMessageBox.Ok)
             self.hotelIDLineEdit31.setText("")
         else:
-            a,b,c,d = self.mybackend.getinforoom(rid)
+            a, b, c, d = self.mybackend.getinforoom(rid)
             self.hotelNameLineEdit32.setText(a)
             self.hotelLocIDLineEdit32.setText(b)
             self.hotelContactLineEdit32.setText(c)
             self.hotelBookedLineEdit32.setText(d)
+
     def func8(self):
         rid = self.hotelIDLineEdit31.text()
         a = self.hotelNameLineEdit32.text()
         b = self.hotelLocIDLineEdit32.text()
         c = self.hotelContactLineEdit32.text()
         d = self.hotelBookedLineEdit32.text()
-        lower,upper = self.mybackend.gethotelbounds()
-        if(len(a)==0 or len(b)==0 or len(c)==0 or len(rid)==0 or len(d)==0):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
-        elif(int(b)<lower or int(b)>upper):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Hotel_id out of Range",QtWidgets.QMessageBox.Ok)
+        lower, upper = self.mybackend.gethotelbounds()
+        if(len(a) == 0 or len(b) == 0 or len(c) == 0 or len(rid) == 0 or len(d) == 0):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Empty Fields', "Fields cannot be Empty!", QtWidgets.QMessageBox.Ok)
+        elif(int(b) < lower or int(b) > upper):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Hotel_id out of Range", QtWidgets.QMessageBox.Ok)
         elif(not c.isdigit() or not a.isdigit() or not b.isdigit() or not d.isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Capacity, Hotel_id, Cost, Booked must be a number",QtWidgets.QMessageBox.Ok)
-        elif(int(a)<1 or int(a)>5):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Capacity must be between 1 and 5",QtWidgets.QMessageBox.Ok)
-        elif(int(c)<0):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Cost cannot be negative",QtWidgets.QMessageBox.Ok)
-        elif(not (int(d)==0 or int(d)==1)):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Booked must be 1(True) or 0(False)",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Capacity, Hotel_id, Cost, Booked must be a number", QtWidgets.QMessageBox.Ok)
+        elif(int(a) < 1 or int(a) > 5):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Capacity must be between 1 and 5", QtWidgets.QMessageBox.Ok)
+        elif(int(c) < 0):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Cost cannot be negative", QtWidgets.QMessageBox.Ok)
+        elif(not (int(d) == 0 or int(d) == 1)):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Booked must be 1(True) or 0(False)", QtWidgets.QMessageBox.Ok)
         else:
-            self.mybackend.updateroominfo(rid,a,b,c,d)
+            self.mybackend.updateroominfo(rid, a, b, c, d)
+
     def func9(self):
         a = self.hotelNameLineEdit33.text()
         b = self.hotelLocIDLineEdit33.text()
         c = self.hotelContactLineEdit33.text()
         d = self.hotelBookedLineEdit33.text()
-        lower,upper = self.mybackend.gethotelbounds()
-        if(len(a)==0 or len(b)==0 or len(c)==0 or len(d)==0):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
-        elif(int(b)<lower or int(b)>upper):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Hotel_id out of Range",QtWidgets.QMessageBox.Ok)
+        lower, upper = self.mybackend.gethotelbounds()
+        if(len(a) == 0 or len(b) == 0 or len(c) == 0 or len(d) == 0):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Empty Fields', "Fields cannot be Empty!", QtWidgets.QMessageBox.Ok)
+        elif(int(b) < lower or int(b) > upper):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Hotel_id out of Range", QtWidgets.QMessageBox.Ok)
         elif(not c.isdigit() or not a.isdigit() or not b.isdigit() or not d.isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Capacity, Hotel_id, Cost, Booked must be a number",QtWidgets.QMessageBox.Ok)
-        elif(int(a)<1 or int(a)>5):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Capacity must be between 1 and 5",QtWidgets.QMessageBox.Ok)
-        elif(int(c)<0):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Cost cannot be negative",QtWidgets.QMessageBox.Ok)
-        elif(not (int(d)==0 or int(d)==1)):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Booked must be 1(True) or 0(False)",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Capacity, Hotel_id, Cost, Booked must be a number", QtWidgets.QMessageBox.Ok)
+        elif(int(a) < 1 or int(a) > 5):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Capacity must be between 1 and 5", QtWidgets.QMessageBox.Ok)
+        elif(int(c) < 0):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Cost cannot be negative", QtWidgets.QMessageBox.Ok)
+        elif(not (int(d) == 0 or int(d) == 1)):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Booked must be 1(True) or 0(False)", QtWidgets.QMessageBox.Ok)
         else:
-            self.mybackend.addintoroom(a,b,c,d)
+            self.mybackend.addintoroom(a, b, c, d)
             self.hotelNameLineEdit33.setText("")
             self.hotelLocIDLineEdit33.setText("")
             self.hotelContactLineEdit33.setText("")
             self.hotelBookedLineEdit33.setText("")
+
     def func10(self):
         cid = self.customerIDLineEdit1.text()
-        lower,upper = self.mybackend.getcustomerbounds()
-        if(len(cid)==0 or not cid.isdigit() or int(cid)<lower or int(cid)>upper):
-            choice = QtWidgets.QMessageBox.information(self.customereditcentralwidget, 'Inorrect Input',"Enter a valid ID(int only)",QtWidgets.QMessageBox.Ok)
+        lower, upper = self.mybackend.getcustomerbounds()
+        if(len(cid) == 0 or not cid.isdigit() or int(cid) < lower or int(cid) > upper):
+            choice = QtWidgets.QMessageBox.information(
+                self.customereditcentralwidget, 'Inorrect Input', "Enter a valid ID(int only)", QtWidgets.QMessageBox.Ok)
             self.customerIDLineEdit1.setText("")
         else:
-            a,b,c,d,e = self.mybackend.getinfocustomer(cid)
+            a, b, c, d, e = self.mybackend.getinfocustomer(cid)
             self.customerFirstNameLineEdit2.setText(a)
             self.customerLastNameLineEdit2.setText(b)
             self.customerContactLineEdit2.setText(c)
             self.customerGenderLineEdit2.setText(d)
             self.customerBalanceLineEdit2.setText(e)
+
     def func11(self):
         cid = self.customerIDLineEdit1.text()
         a = self.customerFirstNameLineEdit2.text()
@@ -1718,50 +1924,61 @@ class Ui_MainWindow(object):
         c = self.customerContactLineEdit2.text()
         d = self.customerGenderLineEdit2.text()
         e = self.customerBalanceLineEdit2.text()
-        if(len(a)==0 or len(b)==0 or len(c)==0 or len(d)==0 or len(e)==0 or len(cid)==0):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
+        if(len(a) == 0 or len(b) == 0 or len(c) == 0 or len(d) == 0 or len(e) == 0 or len(cid) == 0):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Empty Fields', "Fields cannot be Empty!", QtWidgets.QMessageBox.Ok)
         elif(a.isdigit() or b.isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Name cannot be a number!",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Name cannot be a number!", QtWidgets.QMessageBox.Ok)
         elif(c.isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"contact must be an email",QtWidgets.QMessageBox.Ok)
-        elif(not(d=="M" or d=="F")):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Gender must be 'M' or 'F'",QtWidgets.QMessageBox.Ok)
-        elif(not e.isdigit() or int(e)<0):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Balance must be a (positive)number",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "contact must be an email", QtWidgets.QMessageBox.Ok)
+        elif(not(d == "M" or d == "F")):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Gender must be 'M' or 'F'", QtWidgets.QMessageBox.Ok)
+        elif(not e.isdigit() or int(e) < 0):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Balance must be a (positive)number", QtWidgets.QMessageBox.Ok)
         else:
-            self.mybackend.updatecustomerinfo(cid,a,b,c,d,e)
+            self.mybackend.updatecustomerinfo(cid, a, b, c, d, e)
+
     def func12(self):
         a = self.customerFirstNameLineEdit3.text()
         b = self.customerLastNameLineEdit3.text()
         c = self.customerContactLineEdit3.text()
         d = self.customerGenderLineEdit3.text()
         e = self.customerBalanceLineEdit3.text()
-        if(len(a)==0 or len(b)==0 or len(c)==0 or len(d)==0 or len(e)==0):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
+        if(len(a) == 0 or len(b) == 0 or len(c) == 0 or len(d) == 0 or len(e) == 0):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Empty Fields', "Fields cannot be Empty!", QtWidgets.QMessageBox.Ok)
         elif(a.isdigit() or b.isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Name cannot be a number!",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Name cannot be a number!", QtWidgets.QMessageBox.Ok)
         elif(c.isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"contact must be an email",QtWidgets.QMessageBox.Ok)
-        elif(not(d=="M" or d=="F")):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Gender must be 'M' or 'F'",QtWidgets.QMessageBox.Ok)
-        elif(not e.isdigit() or int(e)<0):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Balance must be a (positive)number",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "contact must be an email", QtWidgets.QMessageBox.Ok)
+        elif(not(d == "M" or d == "F")):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Gender must be 'M' or 'F'", QtWidgets.QMessageBox.Ok)
+        elif(not e.isdigit() or int(e) < 0):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Balance must be a (positive)number", QtWidgets.QMessageBox.Ok)
         else:
-            self.mybackend.addintocustomer(a,b,c,d,e)
+            self.mybackend.addintocustomer(a, b, c, d, e)
             self.customerFirstNameLineEdit3.setText("")
             self.customerLastNameLineEdit3.setText("")
             self.customerContactLineEdit3.setText("")
             self.customerGenderLineEdit3.setText("")
             self.customerBalanceLineEdit3.setText("")
 
-    def timeCheck(self,t):
+    def timeCheck(self, t):
         try:
-            datetime.strptime(t,'%H:%M:%S')
+            datetime.strptime(t, '%H:%M:%S')
             return True
         except:
             return False
 
-    def IDpresent(self,attrID):
+    def IDpresent(self, attrID):
         IDs = self.mybackendAttraction.getIDs()
 
         for ids in IDs:
@@ -1780,23 +1997,29 @@ class Ui_MainWindow(object):
         cost = self.attractionCostInput.text()
         typeAttr = self.attractionTypeInput.text()
 
-
-        if (len(attrID)==0 or len(attrName)==0 or len(summary)==0 or len(duration)==0 or len(start)==0 or len(cost)==0 or len(typeAttr)==0):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
+        if (len(attrID) == 0 or len(attrName) == 0 or len(summary) == 0 or len(duration) == 0 or len(start) == 0 or len(cost) == 0 or len(typeAttr) == 0):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Empty Fields', "Fields cannot be Empty!", QtWidgets.QMessageBox.Ok)
         elif (not attrID.isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"ID cannot be alphabetic!",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "ID cannot be alphabetic!", QtWidgets.QMessageBox.Ok)
         # elif(attrName.isdigit()):
             # choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Name cannot be a number!",QtWidgets.QMessageBox.Ok)
         elif(not duration.isdigit() or int(duration) < 0):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Duration must be a (positive) number",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Duration must be a (positive) number", QtWidgets.QMessageBox.Ok)
         elif(not self.timeCheck(start)):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Time must me in HH:MM:SS format",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Time must me in HH:MM:SS format", QtWidgets.QMessageBox.Ok)
         elif(not cost.isdigit() or int(cost) < 0):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Cost must be a (positive) number",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Cost must be a (positive) number", QtWidgets.QMessageBox.Ok)
         elif (not self.IDpresent(attrID)):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Invalid ID. ID doesn't exist in table. Please enter correct ID to update fields.",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',
+                                                       "Invalid ID. ID doesn't exist in table. Please enter correct ID to update fields.", QtWidgets.QMessageBox.Ok)
         else:
-            self.mybackendAttraction.updateAttractions(attrID,attrName,summary,duration,start,cost,typeAttr)
+            self.mybackendAttraction.updateAttractions(
+                attrID, attrName, summary, duration, start, cost, typeAttr)
             self.attractionIDInput.setText("")
             self.attractionNameInput.setText("")
             self.attractionSummaryInput.setText("")
@@ -1814,23 +2037,29 @@ class Ui_MainWindow(object):
         cost = self.attractionCostInput.text()
         typeAttr = self.attractionTypeInput.text()
 
-
-        if (len(attrID)==0 or len(attrName)==0 or len(summary)==0 or len(duration)==0 or len(start)==0 or len(cost)==0 or len(typeAttr)==0):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
+        if (len(attrID) == 0 or len(attrName) == 0 or len(summary) == 0 or len(duration) == 0 or len(start) == 0 or len(cost) == 0 or len(typeAttr) == 0):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Empty Fields', "Fields cannot be Empty!", QtWidgets.QMessageBox.Ok)
         elif (not attrID.isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"ID cannot be alphabetic!",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "ID cannot be alphabetic!", QtWidgets.QMessageBox.Ok)
         # elif(attrName.isdigit()):
             # choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Name cannot be a number!",QtWidgets.QMessageBox.Ok)
         elif(not duration.isdigit() or int(duration) < 0):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Duration must be a (positive) number",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Duration must be a (positive) number", QtWidgets.QMessageBox.Ok)
         elif(not self.timeCheck(start)):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Time must me in HH:MM:SS format",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Time must me in HH:MM:SS format", QtWidgets.QMessageBox.Ok)
         elif(not cost.isdigit() or int(cost) < 0):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Cost must be a (positive) number",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Cost must be a (positive) number", QtWidgets.QMessageBox.Ok)
         elif (self.IDpresent(attrID)):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"ID already exists in table. Cannot add new fields with this ID. Please enter new ID to add fields.",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',
+                                                       "ID already exists in table. Cannot add new fields with this ID. Please enter new ID to add fields.", QtWidgets.QMessageBox.Ok)
         else:
-            self.mybackendAttraction.addAttractions(attrID,attrName,summary,duration,start,cost,typeAttr)
+            self.mybackendAttraction.addAttractions(
+                attrID, attrName, summary, duration, start, cost, typeAttr)
             self.attractionIDInput.setText("")
             self.attractionNameInput.setText("")
             self.attractionSummaryInput.setText("")
@@ -1838,9 +2067,6 @@ class Ui_MainWindow(object):
             self.attractionStartInput.setText("")
             self.attractionCostInput.setText("")
             self.attractionTypeInput.setText("")
-
-
-
 
     def func009update(self):
         attrID = self.restaurantIDInput.text()
@@ -1852,38 +2078,47 @@ class Ui_MainWindow(object):
         Likes = self.restaurantLikesInput.text()
         Neighbourhood = self.restaurantNeighbourhoodInput.text()
 
-
-        if (len(attrID)==0 and len(attrName)==0 and len(cost)==0 and len(typeAttr)==0 and len(Lat)==0 and len(Long)==0 and len(Likes)==0 and len(Neighbourhood) == 0):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
+        if (len(attrID) == 0 and len(attrName) == 0 and len(cost) == 0 and len(typeAttr) == 0 and len(Lat) == 0 and len(Long) == 0 and len(Likes) == 0 and len(Neighbourhood) == 0):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Empty Fields', "Fields cannot be Empty!", QtWidgets.QMessageBox.Ok)
 
         elif(len(attrID) != 0 and not attrID.isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"ID cannot be alphabetic",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "ID cannot be alphabetic", QtWidgets.QMessageBox.Ok)
 
         elif(len(cost) != 0 and (not cost.isdigit() or int(cost) < 0)):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect cost",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Incorrect cost", QtWidgets.QMessageBox.Ok)
         elif(len(Likes) != 0) and (not Likes.isdigit() or int(Likes) < 0):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect likes",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Incorrect likes", QtWidgets.QMessageBox.Ok)
 
-        elif len(typeAttr)!= 0 and (typeAttr.isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Category",QtWidgets.QMessageBox.Ok)
+        elif len(typeAttr) != 0 and (typeAttr.isdigit()):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Incorrect Category", QtWidgets.QMessageBox.Ok)
 # <<<<<<< HEAD
 #         elif len(Lat) != 0 and (not Lat.isdigit()):
 #             choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Latitude",QtWidgets.QMessageBox.Ok)
 #         elif len(Long) != 0 and (not Long.isdigit()):
 # =======
         elif len(Lat) is not 0 and (not Lat.replace('.', '', 1).isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Latitude",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Incorrect Latitude", QtWidgets.QMessageBox.Ok)
         elif len(Long) is not 0 and (not Long.replace('.', '', 1).isdigit()):
-# >>>>>>> f89cecae8f7d11b88564107b1ef1afca091a26f8
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Longitude",QtWidgets.QMessageBox.Ok)
+            # >>>>>>> f89cecae8f7d11b88564107b1ef1afca091a26f8
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Incorrect Longitude", QtWidgets.QMessageBox.Ok)
 
         elif len(Neighbourhood) != 0 and (Neighbourhood.isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Neighbourhood",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Incorrect Neighbourhood", QtWidgets.QMessageBox.Ok)
 
         elif(not self.mybackendRestaurant.getIDs(attrID)):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect ID/ ID not present",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Incorrect ID/ ID not present", QtWidgets.QMessageBox.Ok)
         else:
-            self.mybackendRestaurant.updateRestaurants(attrName,Lat, Long,typeAttr,attrID, Likes, cost, Neighbourhood)
+            self.mybackendRestaurant.updateRestaurants(
+                attrName, Lat, Long, typeAttr, attrID, Likes, cost, Neighbourhood)
 
     def func009add(self):
         attrID = self.restaurantIDInput.text()
@@ -1895,88 +2130,107 @@ class Ui_MainWindow(object):
         Likes = self.restaurantLikesInput.text()
         Neighbourhood = self.restaurantNeighbourhoodInput.text()
 
-
-        if (len(attrID)==0 or len(attrName)==0 or len(cost)==0 or len(typeAttr)==0 or len(Lat)==0 or len(Long)==0 or len(Likes)==0 or len(Neighbourhood) == 0):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Empty Fields',"Fields cannot be Empty!",QtWidgets.QMessageBox.Ok)
+        if (len(attrID) == 0 or len(attrName) == 0 or len(cost) == 0 or len(typeAttr) == 0 or len(Lat) == 0 or len(Long) == 0 or len(Likes) == 0 or len(Neighbourhood) == 0):
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Empty Fields', "Fields cannot be Empty!", QtWidgets.QMessageBox.Ok)
 
         elif(not attrID.isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"ID cannot be alphabetic",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "ID cannot be alphabetic", QtWidgets.QMessageBox.Ok)
 
         elif(not cost.isdigit() or int(cost) < 0):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect cost",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Incorrect cost", QtWidgets.QMessageBox.Ok)
         elif(not Likes.isdigit() or int(Likes) < 0):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect cost",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Incorrect cost", QtWidgets.QMessageBox.Ok)
 
         elif(typeAttr.isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Category",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Incorrect Category", QtWidgets.QMessageBox.Ok)
         elif(not Lat.replace('.', '', 1).isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Latitude",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Incorrect Latitude", QtWidgets.QMessageBox.Ok)
         elif(not Long.replace('.', '', 1).isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Longitude",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Incorrect Longitude", QtWidgets.QMessageBox.Ok)
 
         elif(Neighbourhood.isdigit()):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect Neighbourhood",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Incorrect Neighbourhood", QtWidgets.QMessageBox.Ok)
         elif(self.mybackendRestaurant.getIDs(attrID)):
-            choice = QtWidgets.QMessageBox.information(self.hoteleditcentralwidget, 'Incorrect Input',"Incorrect ID/ ID present",QtWidgets.QMessageBox.Ok)
+            choice = QtWidgets.QMessageBox.information(
+                self.hoteleditcentralwidget, 'Incorrect Input', "Incorrect ID/ ID present", QtWidgets.QMessageBox.Ok)
         else:
-            self.mybackendRestaurant.addRestaurants(attrName,Lat, Long,typeAttr,attrID, Likes, cost, Neighbourhood)
-
+            self.mybackendRestaurant.addRestaurants(
+                attrName, Lat, Long, typeAttr, attrID, Likes, cost, Neighbourhood)
 
     def adminmodeclicked(self):
         self.Stack.setCurrentWidget(self.adminchoosemodecentralwidget)
+
     def bookRoomButtonClicked(self):
         if self.clicked:
-            self.clicked=False
+            self.clicked = False
             money = self.rbalanceLabel.text()
             money = int(money[10:])
             cost = self.bookCostLabel.text()
             cost = int(cost[7:])
             money = money - cost
-            if(money>=0):
-                choice = QtWidgets.QMessageBox.question(self.bookcentralwidget, 'Confirmation',"Confirm Purchase?",QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
+            if(money >= 0):
+                choice = QtWidgets.QMessageBox.question(
+                    self.bookcentralwidget, 'Confirmation', "Confirm Purchase?", QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
                 if choice == QtWidgets.QMessageBox.Yes:
                     self.BALANCE = str(money)
-                    self.mybackend.setBalance(str(self.BALANCE),str(self.USER_ID))
+                    self.mybackend.setBalance(
+                        str(self.BALANCE), str(self.USER_ID))
                     self.rbalanceLabel.setText("Balance : " + self.BALANCE)
                     self.balanceLabel.setText("Balance : " + self.BALANCE)
                     self.ovbalanceLabel.setText("Balance : " + self.BALANCE)
                     self.bookBalanceLabel.setText("Balance : " + self.BALANCE)
-                    tempCustomQWidget = self.bookListWidget.itemWidget(self.bookListWidget.selectedItems()[0])
+                    tempCustomQWidget = self.bookListWidget.itemWidget(
+                        self.bookListWidget.selectedItems()[0])
                     x = tempCustomQWidget.bookRoomIDLabel.text()
-                    self.bookListWidget.takeItem(self.bookListWidget.row(self.bookListWidget.selectedItems()[0]))
+                    self.bookListWidget.takeItem(self.bookListWidget.row(
+                        self.bookListWidget.selectedItems()[0]))
                     self.mybackend.updateroom(x[10:])
 
                 else:
                     pass
             else:
-                choice = QtWidgets.QMessageBox.question(self.bookcentralwidget, 'Confirmation',"Add 5000?",QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
+                choice = QtWidgets.QMessageBox.question(
+                    self.bookcentralwidget, 'Confirmation', "Add 5000?", QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
                 if choice == QtWidgets.QMessageBox.Yes:
                     money = money + cost + 5000
                     self.BALANCE = str(money)
-                    self.mybackend.setBalance(self.BALANCE,self.USER_ID)
+                    self.mybackend.setBalance(self.BALANCE, self.USER_ID)
                     self.rbalanceLabel.setText("Balance : " + self.BALANCE)
                     self.balanceLabel.setText("Balance : " + self.BALANCE)
                     self.ovbalanceLabel.setText("Balance : " + self.BALANCE)
                     self.bookBalanceLabel.setText("Balance : " + self.BALANCE)
                 else:
                     pass
+
     def hoteledit(self):
         self.Stack.setCurrentWidget(self.hoteleditcentralwidget)
+
     def backClick(self):
         self.Stack.setCurrentWidget(self.centralwidget1)
-        self.clicked=False
+        self.clicked = False
         self.setHotel(0)
         self.sortButton.setText("Sort By:")
+
     def ovbackClick(self):
         self.Stack.setCurrentWidget(self.centralwidget1)
-        self.clicked=False
+        self.clicked = False
         self.setHotel(0)
         self.sortButton.setText("Sort By:")
+
     def loginPushButtonClicked(self):
         self.USER_ID = self.loginIDTextEdit.text()
-        lower,upper = self.mybackend.getcustomerbounds()
-        if(len(self.USER_ID)==0 or not self.USER_ID.isdigit() or int(self.USER_ID)<lower or int(self.USER_ID)>upper):
-            choice = QtWidgets.QMessageBox.information(self.logincentralwidget, 'Incorrect Input',"Enter a valid ID(int only)",QtWidgets.QMessageBox.Ok)
+        lower, upper = self.mybackend.getcustomerbounds()
+        if(len(self.USER_ID) == 0 or not self.USER_ID.isdigit() or int(self.USER_ID) < lower or int(self.USER_ID) > upper):
+            choice = QtWidgets.QMessageBox.information(
+                self.logincentralwidget, 'Incorrect Input', "Enter a valid ID(int only)", QtWidgets.QMessageBox.Ok)
             self.loginIDTextEdit.setText("")
         else:
             self.BALANCE = str(self.mybackend.getBalance(self.USER_ID))
@@ -1988,15 +2242,17 @@ class Ui_MainWindow(object):
             self.balanceLabel.setText("Balance : " + self.BALANCE)
             self.ovbalanceLabel.setText("Balance : " + self.BALANCE)
             self.bookBalanceLabel.setText("Balance : " + self.BALANCE)
+
     def adminPushButtonClicked(self):
-        self.ADMIN_MODE=True
-        self.CUSTOMER_MODE=False
+        self.ADMIN_MODE = True
+        self.CUSTOMER_MODE = False
         print('ADMIN_MODE')
         # self.loginModeLabel.setText("Admin Login")
         self.loginPushButtonClicked()
+
     def customerPushButtonClicked(self):
-        self.ADMIN_MODE=False
-        self.CUSTOMER_MODE=True
+        self.ADMIN_MODE = False
+        self.CUSTOMER_MODE = True
         print('CUSTOMER_MODE')
         # self.loginModeLabel.setText("Customer Login")
         self.loginPushButtonClicked()
@@ -2005,14 +2261,11 @@ class Ui_MainWindow(object):
 
         runn(self, self.USER_ID)
         #self.cams = ReviewScreen(self.USER_ID)
-        #ex=ReviewScreen(self.USER_ID)
-        #self.cams.show()
+        # ex=ReviewScreen(self.USER_ID)
+        # self.cams.show()
 
-
-        #os._exit(1)
-        #self.close()
-
-
+        # os._exit(1)
+        # self.close()
 
     def bufferFuncHotel(self):
         self.sortMenuItemsHotel()
@@ -2026,9 +2279,6 @@ class Ui_MainWindow(object):
         self.sortReviewItems()
         self.sortReviewButton.setPopupMode(QtWidgets.QToolButton.InstantPopup)
         self.backButton.clicked.connect(self.backClick)
-
-
-
 
     def sortMenuItemsAttraction(self):
         sortMenu = QtWidgets.QMenu()
@@ -2188,7 +2438,6 @@ class Ui_MainWindow(object):
     def showRRS(self):
         self.ui = RSS()
 
-
     def displayRestaurants(self):
         self.sortButton.setText("Sort By:")
         self.restaurants = self.mybackendRestaurant.getRestaurant()
@@ -2213,7 +2462,8 @@ class Ui_MainWindow(object):
         self.listWidget.clear()
         for venue, category, cost, likes in data:
             restaurantWidget = RestaurantWidget()
-            restaurantWidget.setTextOnAllLabel('Name :          ' + venue, 'Type :           '+category, 'Cost :            '+str(cost), 'Likes :            '+str(likes))
+            restaurantWidget.setTextOnAllLabel('Name :          ' + venue, 'Type :           ' +
+                                               category, 'Cost :            '+str(cost), 'Likes :            '+str(likes))
             listWidgetItem = QtWidgets.QListWidgetItem(self.listWidget)
             listWidgetItem.setSizeHint(restaurantWidget.sizeHint())
             # self.listWidget.itemClicked.connect(self.test())
@@ -2248,18 +2498,23 @@ class Ui_MainWindow(object):
         sortReviewMenu.addSeparator()
         sortReviewMenu.addAction(allReviewsAction)
         self.sortReviewButton.setMenu(sortReviewMenu)
+
     def positiveclick(self):
         self.sortReviewButton.setText("Positive Reviews:")
         self.setReviewMood(3)
+
     def negativeclick(self):
         self.sortReviewButton.setText("Negative Reviews:")
         self.setReviewMood(1)
+
     def neutralclick(self):
         self.sortReviewButton.setText("Neutral Reviews:")
         self.setReviewMood(2)
+
     def allreviewsclick(self):
         self.sortReviewButton.setText("View:")
         self.setReviewMood(4)
+
     def sortMenuItemsHotel(self):
         sortMenu = QtWidgets.QMenu()
 
@@ -2388,136 +2643,168 @@ class Ui_MainWindow(object):
         self.clicked = True
 
     def selectionChanged(self):
-        tempCustomQWidget = self.listWidget.itemWidget(self.listWidget.selectedItems()[0])
+        tempCustomQWidget = self.listWidget.itemWidget(
+            self.listWidget.selectedItems()[0])
         name = tempCustomQWidget.hotelNameLabel.text()
         locality = tempCustomQWidget.localityLabel.text()
         rating = tempCustomQWidget.averageRatingLabel.text()
         price = tempCustomQWidget.averagePriceLabel.text()
         booked = tempCustomQWidget.percentageBookedLabel.text()
-        self.nLabel.setText("Name : "+ name[7:])
-        self.pLabel.setText("Average Price : "+ price[13:])
-        self.lLabel.setText("Locality : "+ locality[11:])
-        self.rLabel.setText("Average Rating : "+ rating[13:])
-        self.bLabel.setText("Booked Percent : "+ booked[8:])
+        self.nLabel.setText("Name : " + name[7:])
+        self.pLabel.setText("Average Price : " + price[13:])
+        self.lLabel.setText("Locality : " + locality[11:])
+        self.rLabel.setText("Average Rating : " + rating[13:])
+        self.bLabel.setText("Booked Percent : " + booked[8:])
         self.Stack.setCurrentWidget(self.overviewcentralwidget)
-        self.clicked=False
+        self.clicked = False
+
     def test(self):
-        if(self.clicked==False):
+        if(self.clicked == False):
             print('clicked')
-        tempCustomQWidget = self.bookListWidget.itemWidget(self.bookListWidget.selectedItems()[0])
+        tempCustomQWidget = self.bookListWidget.itemWidget(
+            self.bookListWidget.selectedItems()[0])
         self.bookCapacity.setText(tempCustomQWidget.bookCapacityLabel.text())
         self.bookCostLabel.setText(tempCustomQWidget.bookCostLabel.text())
         self.bookIDLabel.setText(tempCustomQWidget.bookRoomIDLabel.text())
-        self.clicked=True;
+        self.clicked = True
+
     def bookbackclick(self):
         self.Stack.setCurrentWidget(self.centralwidget1)
-        self.clicked=False
+        self.clicked = False
         self.setHotel(0)
         self.sortButton.setText("Sort By:")
+
     def bookreviewclick(self):
-        tempCustomQWidget = self.listWidget.itemWidget(self.listWidget.selectedItems()[0])
+        tempCustomQWidget = self.listWidget.itemWidget(
+            self.listWidget.selectedItems()[0])
         test = tempCustomQWidget.hotelNameLabel
         self.Stack.setCurrentWidget(self.reviewcentralwidget)
-        self.clicked=False
+        self.clicked = False
         self.sortReviewButton.setText('View:')
         self.setReview(test.text())
+
     def bookoverviewclick(self):
         self.Stack.setCurrentWidget(self.overviewcentralwidget)
-        self.clicked=False
+        self.clicked = False
+
     def ovbookclick(self):
-        tempCustomQWidget = self.listWidget.itemWidget(self.listWidget.selectedItems()[0])
+        tempCustomQWidget = self.listWidget.itemWidget(
+            self.listWidget.selectedItems()[0])
         test = tempCustomQWidget.hotelNameLabel
         self.Stack.setCurrentWidget(self.bookcentralwidget)
         self.bookCapacity.setText("Capacity : ")
         self.bookCostLabel.setText("Cost : ")
         self.bookIDLabel.setText("Room ID : ")
-        self.clicked=False
+        self.clicked = False
         self.setRooms(test.text())
+
     def reviewbookclick(self):
-        tempCustomQWidget = self.listWidget.itemWidget(self.listWidget.selectedItems()[0])
+        tempCustomQWidget = self.listWidget.itemWidget(
+            self.listWidget.selectedItems()[0])
         test = tempCustomQWidget.hotelNameLabel
         self.Stack.setCurrentWidget(self.bookcentralwidget)
         # self.bookCapacity.setText("")
-        self.clicked=False
+        self.clicked = False
         # self.bookCostLabel.setText("")
         # self.bookIDLabel.setText("")
         self.setRooms(test.text())
-    def setHotel(self,rating=0):
+
+    def setHotel(self, rating=0):
         self.hotels = self.mybackend.gethotelbyrating(rating)
         self.listWidget.clear()
-        for name,hid,loc,avg_price,booked,rating in self.hotels:
+        for name, hid, loc, avg_price, booked, rating in self.hotels:
             myQCustomQWidget = QCustomQWidget()
-            myQCustomQWidget.setTextOnAllLabel('Name : ' + name,'Avg. Rating : '+rating,'Locality : '+loc,'Avg. Price : '+avg_price,'Booked : '+booked)
+            myQCustomQWidget.setTextOnAllLabel(
+                'Name : ' + name, 'Avg. Rating : '+rating, 'Locality : '+loc, 'Avg. Price : '+avg_price, 'Booked : '+booked)
             listWidgetItem = QtWidgets.QListWidgetItem(self.listWidget)
             listWidgetItem.setSizeHint(myQCustomQWidget.sizeHint())
             self.listWidget.addItem(listWidgetItem)
             self.listWidget.setItemWidget(listWidgetItem, myQCustomQWidget)
-    def setHotelPrice(self,price):
+
+    def setHotelPrice(self, price):
         self.hotels = self.mybackend.gethotelbyprice(price)
         self.listWidget.clear()
-        for name,hid,loc,avg_price,booked,rating in self.hotels:
+        for name, hid, loc, avg_price, booked, rating in self.hotels:
             myQCustomQWidget = QCustomQWidget()
-            myQCustomQWidget.setTextOnAllLabel('Name : ' + name,'Avg. Rating : '+rating,'Locality : '+loc,'Avg. Price : '+avg_price,'Booked : '+booked)
+            myQCustomQWidget.setTextOnAllLabel(
+                'Name : ' + name, 'Avg. Rating : '+rating, 'Locality : '+loc, 'Avg. Price : '+avg_price, 'Booked : '+booked)
             listWidgetItem = QtWidgets.QListWidgetItem(self.listWidget)
             listWidgetItem.setSizeHint(myQCustomQWidget.sizeHint())
             self.listWidget.addItem(listWidgetItem)
             self.listWidget.setItemWidget(listWidgetItem, myQCustomQWidget)
-    def setReview(self,hotel_name):
+
+    def setReview(self, hotel_name):
         self.reviewlist = self.mybackend.getReview(hotel_name)
         self.reviewlistWidget.clear()
-        for rid,stars,desc,cid,hid,name,hotel_name in self.reviewlist:
+        for rid, stars, desc, cid, hid, name, hotel_name in self.reviewlist:
             myQCustomQWidget = QCustomQWidget2()
-            myQCustomQWidget.setTextOnAllLabel(name+" - "+stars+" Stars",desc)
+            myQCustomQWidget.setTextOnAllLabel(name+" - "+stars+" Stars", desc)
             listWidgetItem = QtWidgets.QListWidgetItem(self.reviewlistWidget)
             listWidgetItem.setSizeHint(myQCustomQWidget.sizeHint())
             self.reviewlistWidget.addItem(listWidgetItem)
-            self.reviewlistWidget.setItemWidget(listWidgetItem, myQCustomQWidget)
-    def setReviewMood(self,mood):
-        if(mood==1):
+            self.reviewlistWidget.setItemWidget(
+                listWidgetItem, myQCustomQWidget)
+
+    def setReviewMood(self, mood):
+        if(mood == 1):
             self.reviewlistWidget.clear()
-            for rid,stars,desc,cid,hid,name,hotel_name in self.reviewlist:
-                if(desc=='Bad' or desc=='Very Bad'):
+            for rid, stars, desc, cid, hid, name, hotel_name in self.reviewlist:
+                if(desc == 'Bad' or desc == 'Very Bad'):
                     myQCustomQWidget = QCustomQWidget2()
-                    myQCustomQWidget.setTextOnAllLabel(name+" - "+stars+" Stars",desc)
-                    listWidgetItem = QtWidgets.QListWidgetItem(self.reviewlistWidget)
+                    myQCustomQWidget.setTextOnAllLabel(
+                        name+" - "+stars+" Stars", desc)
+                    listWidgetItem = QtWidgets.QListWidgetItem(
+                        self.reviewlistWidget)
                     listWidgetItem.setSizeHint(myQCustomQWidget.sizeHint())
                     self.reviewlistWidget.addItem(listWidgetItem)
-                    self.reviewlistWidget.setItemWidget(listWidgetItem, myQCustomQWidget)
-        elif(mood==2):
+                    self.reviewlistWidget.setItemWidget(
+                        listWidgetItem, myQCustomQWidget)
+        elif(mood == 2):
             self.reviewlistWidget.clear()
-            for rid,stars,desc,cid,hid,name,hotel_name in self.reviewlist:
-                if(desc=='Average'):
+            for rid, stars, desc, cid, hid, name, hotel_name in self.reviewlist:
+                if(desc == 'Average'):
                     myQCustomQWidget = QCustomQWidget2()
-                    myQCustomQWidget.setTextOnAllLabel(name+" - "+stars+" Stars",desc)
-                    listWidgetItem = QtWidgets.QListWidgetItem(self.reviewlistWidget)
+                    myQCustomQWidget.setTextOnAllLabel(
+                        name+" - "+stars+" Stars", desc)
+                    listWidgetItem = QtWidgets.QListWidgetItem(
+                        self.reviewlistWidget)
                     listWidgetItem.setSizeHint(myQCustomQWidget.sizeHint())
                     self.reviewlistWidget.addItem(listWidgetItem)
-                    self.reviewlistWidget.setItemWidget(listWidgetItem, myQCustomQWidget)
-        elif(mood==3):
+                    self.reviewlistWidget.setItemWidget(
+                        listWidgetItem, myQCustomQWidget)
+        elif(mood == 3):
             self.reviewlistWidget.clear()
-            for rid,stars,desc,cid,hid,name,hotel_name in self.reviewlist:
-                if(desc=='Good' or desc=='Very Good' or desc=='Excellent'):
+            for rid, stars, desc, cid, hid, name, hotel_name in self.reviewlist:
+                if(desc == 'Good' or desc == 'Very Good' or desc == 'Excellent'):
                     myQCustomQWidget = QCustomQWidget2()
-                    myQCustomQWidget.setTextOnAllLabel(name+" - "+stars+" Stars",desc)
-                    listWidgetItem = QtWidgets.QListWidgetItem(self.reviewlistWidget)
+                    myQCustomQWidget.setTextOnAllLabel(
+                        name+" - "+stars+" Stars", desc)
+                    listWidgetItem = QtWidgets.QListWidgetItem(
+                        self.reviewlistWidget)
                     listWidgetItem.setSizeHint(myQCustomQWidget.sizeHint())
                     self.reviewlistWidget.addItem(listWidgetItem)
-                    self.reviewlistWidget.setItemWidget(listWidgetItem, myQCustomQWidget)
+                    self.reviewlistWidget.setItemWidget(
+                        listWidgetItem, myQCustomQWidget)
         else:
             self.reviewlistWidget.clear()
-            for rid,stars,desc,cid,hid,name,hotel_name in self.reviewlist:
+            for rid, stars, desc, cid, hid, name, hotel_name in self.reviewlist:
                 myQCustomQWidget = QCustomQWidget2()
-                myQCustomQWidget.setTextOnAllLabel(name+" - "+stars+" Stars",desc)
-                listWidgetItem = QtWidgets.QListWidgetItem(self.reviewlistWidget)
+                myQCustomQWidget.setTextOnAllLabel(
+                    name+" - "+stars+" Stars", desc)
+                listWidgetItem = QtWidgets.QListWidgetItem(
+                    self.reviewlistWidget)
                 listWidgetItem.setSizeHint(myQCustomQWidget.sizeHint())
                 self.reviewlistWidget.addItem(listWidgetItem)
-                self.reviewlistWidget.setItemWidget(listWidgetItem, myQCustomQWidget)
-    def setRooms(self,hotel_name):
+                self.reviewlistWidget.setItemWidget(
+                    listWidgetItem, myQCustomQWidget)
+
+    def setRooms(self, hotel_name):
         self.roomlist = self.mybackend.getrooms(hotel_name)
         self.bookListWidget.clear()
-        for rid,cap,hid,cost,booked,hotel_name in self.roomlist:
+        for rid, cap, hid, cost, booked, hotel_name in self.roomlist:
             myQCustomQWidget = QCustomQWidget3()
-            myQCustomQWidget.setTextOnAllLabel("Cost : "+cost,"Capacity : "+cap,"Room ID : "+rid)
+            myQCustomQWidget.setTextOnAllLabel(
+                "Cost : "+cost, "Capacity : "+cap, "Room ID : "+rid)
             listWidgetItem = QtWidgets.QListWidgetItem(self.bookListWidget)
             listWidgetItem.setSizeHint(myQCustomQWidget.sizeHint())
             self.bookListWidget.addItem(listWidgetItem)
@@ -2557,7 +2844,8 @@ class Ui_MainWindow(object):
         self.menuMode.setTitle(_translate("MainWindow", "Option"))
         self.actionChangeMode.setText(_translate("MainWindow", "Change Mode"))
         self.actionExit.setText(_translate("MainWindow", "Exit"))
-        self.hotelButton.setStatusTip(_translate("MainWindow", "Search for Hotels"))
+        self.hotelButton.setStatusTip(
+            _translate("MainWindow", "Search for Hotels"))
         self.hotelButton.setText(_translate("MainWindow", "Hotels"))
         self.airlinesButton.setText(_translate("MainWindow", "Airlines"))
         self.movieButton.setText(_translate("MainWindow", "Movies"))
@@ -2586,7 +2874,7 @@ class Ui_MainWindow(object):
         self.ovbookButton.setText(_translate("MainWindow", "Book"))
         self.ovreviewButton.setText(_translate("MainWindow", "Reviews"))
         self.ovbackButton.setText(_translate("MainWindow", "Back"))
-        self.rbalanceLabel.setText(_translate("MainWindow",'Balance :'))
+        self.rbalanceLabel.setText(_translate("MainWindow", 'Balance :'))
         self.bookBalanceLabel.setText(_translate("MainWindow", "Balance : "))
         self.bookIndetifierLabel.setText(_translate("MainWindow", "Hotels"))
         self.bookOverviewButton.setText(_translate("MainWindow", "Overview"))
@@ -2597,31 +2885,45 @@ class Ui_MainWindow(object):
         self.bookIDLabel.setText(_translate("MainWindow", "Room ID : "))
         self.bookCapacity.setText(_translate("MainWindow", "Capacity :"))
         self.bookCostLabel.setText(_translate("MainWindow", "Cost : "))
-        self.adminCustomerPushButton.setStatusTip(_translate("MainWindow", "Customer Settings"))
-        self.adminCustomerPushButton.setText(_translate("MainWindow", "Customer"))
-        self.adminHotelPushButton.setStatusTip(_translate("MainWindow", "Hotel Settings"))
+        self.adminCustomerPushButton.setStatusTip(
+            _translate("MainWindow", "Customer Settings"))
+        self.adminCustomerPushButton.setText(
+            _translate("MainWindow", "Customer"))
+        self.adminHotelPushButton.setStatusTip(
+            _translate("MainWindow", "Hotel Settings"))
         self.adminHotelPushButton.setText(_translate("MainWindow", "Hotel"))
-        self.adminAttractionsPushButton.setStatusTip(_translate("MainWindow", "Attractions Settings"))
-        self.adminAttractionsPushButton.setText(_translate("MainWindow", "Attractions"))
-        self.adminMoviesPushButton.setStatusTip(_translate("MainWindow", "Movies Settings"))
+        self.adminAttractionsPushButton.setStatusTip(
+            _translate("MainWindow", "Attractions Settings"))
+        self.adminAttractionsPushButton.setText(
+            _translate("MainWindow", "Attractions"))
+        self.adminMoviesPushButton.setStatusTip(
+            _translate("MainWindow", "Movies Settings"))
         self.adminMoviesPushButton.setText(_translate("MainWindow", "Movies"))
-        self.adminAirlinesPushButton.setStatusTip(_translate("MainWindow", "Airlines Settings"))
-        self.adminAirlinesPushButton.setText(_translate("MainWindow", "Airlines"))
-        self.adminRestaurantsPushButton.setStatusTip(_translate("MainWindow", "Restaurants Settings"))
-        self.adminRestaurantsPushButton.setText(_translate("MainWindow", "Restaurants"))
-        self.adminChooseModeLabell.setText(_translate("MainWindow", "CHOOSE MODE"))
+        self.adminAirlinesPushButton.setStatusTip(
+            _translate("MainWindow", "Airlines Settings"))
+        self.adminAirlinesPushButton.setText(
+            _translate("MainWindow", "Airlines"))
+        self.adminRestaurantsPushButton.setStatusTip(
+            _translate("MainWindow", "Restaurants Settings"))
+        self.adminRestaurantsPushButton.setText(
+            _translate("MainWindow", "Restaurants"))
+        self.adminChooseModeLabell.setText(
+            _translate("MainWindow", "CHOOSE MODE"))
         self.hotelLogoLabel1.setText(_translate("MainWindow", "HOTEL"))
         self.hotelEditPushButton11.setText(_translate("MainWindow", "Edit"))
         self.hotelIDLabel11.setText(_translate("MainWindow", "ID : "))
         self.hotelNameLabel12.setText(_translate("MainWindow", "Name : "))
         self.hotelLocIDLabel12.setText(_translate("MainWindow", "Loc_id : "))
-        self.hotelContactLabel12.setText(_translate("MainWindow", "Contact : "))
+        self.hotelContactLabel12.setText(
+            _translate("MainWindow", "Contact : "))
         self.hotelAddPushButton1.setText(_translate("MainWindow", "Add"))
         self.hotelNameLabel13.setText(_translate("MainWindow", "Name : "))
         self.hotelLocIDLabel13.setText(_translate("MainWindow", "Loc_id : "))
-        self.hotelContactLabel13.setText(_translate("MainWindow", "Contact : "))
-        self.hotelGoPushButton13.setText(_translate("MainWindow","Go"))
-        self.hotelUpdatePushButton12.setText(_translate("MainWindow","Update"))
+        self.hotelContactLabel13.setText(
+            _translate("MainWindow", "Contact : "))
+        self.hotelGoPushButton13.setText(_translate("MainWindow", "Go"))
+        self.hotelUpdatePushButton12.setText(
+            _translate("MainWindow", "Update"))
         self.hotelLogoLabel2.setText(_translate("MainWindow", "LOCATIONS"))
         self.hotelEditPushButton21.setText(_translate("MainWindow", "Edit"))
         self.hotelIDLabel21.setText(_translate("MainWindow", "ID : "))
@@ -2632,65 +2934,89 @@ class Ui_MainWindow(object):
         self.hotelNameLabel23.setText(_translate("MainWindow", "Name : "))
         self.hotelLocIDLabel23.setText(_translate("MainWindow", "X : "))
         self.hotelContactLabel23.setText(_translate("MainWindow", "Y : "))
-        self.hotelGoPushButton23.setText(_translate("MainWindow","Go"))
-        self.hotelUpdatePushButton22.setText(_translate("MainWindow","Update"))
+        self.hotelGoPushButton23.setText(_translate("MainWindow", "Go"))
+        self.hotelUpdatePushButton22.setText(
+            _translate("MainWindow", "Update"))
         self.hotelLogoLabel3.setText(_translate("MainWindow", "ROOM"))
         self.hotelEditPushButton31.setText(_translate("MainWindow", "Edit"))
         self.hotelIDLabel31.setText(_translate("MainWindow", "ID : "))
         self.hotelNameLabel32.setText(_translate("MainWindow", "Capacity : "))
         self.hotelLocIDLabel32.setText(_translate("MainWindow", "Hotel_id : "))
         self.hotelContactLabel32.setText(_translate("MainWindow", "Cost : "))
-        self.hotelBookedLabel32.setText(_translate("MainWindow","Booked : "))
+        self.hotelBookedLabel32.setText(_translate("MainWindow", "Booked : "))
         self.hotelAddPushButton3.setText(_translate("MainWindow", "Add"))
         self.hotelNameLabel33.setText(_translate("MainWindow", "Capacity : "))
         self.hotelLocIDLabel33.setText(_translate("MainWindow", "Hotel_id : "))
         self.hotelContactLabel33.setText(_translate("MainWindow", "Cost : "))
-        self.hotelBookedLabel33.setText(_translate("MainWindow","Booked : "))
-        self.hotelGoPushButton33.setText(_translate("MainWindow","Go"))
-        self.hotelUpdatePushButton32.setText(_translate("MainWindow","Update"))
+        self.hotelBookedLabel33.setText(_translate("MainWindow", "Booked : "))
+        self.hotelGoPushButton33.setText(_translate("MainWindow", "Go"))
+        self.hotelUpdatePushButton32.setText(
+            _translate("MainWindow", "Update"))
         self.customerLogoLabel1.setText(_translate("MainWindow", "CUSTOMER"))
         self.customerEditPushButton1.setText(_translate("MainWindow", "Edit"))
         self.customerIDLabel1.setText(_translate("MainWindow", "ID : "))
-        self.customerFirstNameLabel2.setText(_translate("MainWindow", "firstName : "))
-        self.customerLastNameLabel2.setText(_translate("MainWindow", "lastName : "))
-        self.customerContactLabel2.setText(_translate("MainWindow", "Contact : "))
-        self.customerGenderLabel2.setText(_translate("MainWindow", "Gender : "))
-        self.customerBalanceLabel2.setText(_translate("MainWindow", "Balance : "))
-        self.customerUpdatePushButton2.setText(_translate("MainWindow", "Update"))
+        self.customerFirstNameLabel2.setText(
+            _translate("MainWindow", "firstName : "))
+        self.customerLastNameLabel2.setText(
+            _translate("MainWindow", "lastName : "))
+        self.customerContactLabel2.setText(
+            _translate("MainWindow", "Contact : "))
+        self.customerGenderLabel2.setText(
+            _translate("MainWindow", "Gender : "))
+        self.customerBalanceLabel2.setText(
+            _translate("MainWindow", "Balance : "))
+        self.customerUpdatePushButton2.setText(
+            _translate("MainWindow", "Update"))
         self.customerAddPushButton1.setText(_translate("MainWindow", "Add"))
-        self.customerFirstNameLabel3.setText(_translate("MainWindow", "firstName : "))
-        self.customerLastNameLabel3.setText(_translate("MainWindow", "lastName : "))
-        self.customerContactLabel3.setText(_translate("MainWindow", "Contact : "))
-        self.customerGenderLabel3.setText(_translate("MainWindow", "Gender : "))
-        self.customerBalanceLabel3.setText(_translate("MainWindow", "Balance : "))
+        self.customerFirstNameLabel3.setText(
+            _translate("MainWindow", "firstName : "))
+        self.customerLastNameLabel3.setText(
+            _translate("MainWindow", "lastName : "))
+        self.customerContactLabel3.setText(
+            _translate("MainWindow", "Contact : "))
+        self.customerGenderLabel3.setText(
+            _translate("MainWindow", "Gender : "))
+        self.customerBalanceLabel3.setText(
+            _translate("MainWindow", "Balance : "))
         self.customerGoPushButton3.setText(_translate("MainWindow", "Go"))
 
-        self.attractionLabel.setText(_translate("MainWindow", "You are editing the Attraction table. Please note Attraction_ID is the primary key."))
-        self.attractionIDLabel.setText(_translate("MainWindow", "Attraction ID : "))
-        self.attractionNameLabel.setText(_translate("MainWindow", "Name Of Attraction : "))
-        self.attractionSummaryLabel.setText(_translate("MainWindow", "Summary : "))
-        self.attractionDurationLabel.setText(_translate("MainWindow", "Duration : "))
-        self.attractionStartLabel.setText(_translate("MainWindow", "Start Time : "))
+        self.attractionLabel.setText(_translate(
+            "MainWindow", "You are editing the Attraction table. Please note Attraction_ID is the primary key."))
+        self.attractionIDLabel.setText(
+            _translate("MainWindow", "Attraction ID : "))
+        self.attractionNameLabel.setText(
+            _translate("MainWindow", "Name Of Attraction : "))
+        self.attractionSummaryLabel.setText(
+            _translate("MainWindow", "Summary : "))
+        self.attractionDurationLabel.setText(
+            _translate("MainWindow", "Duration : "))
+        self.attractionStartLabel.setText(
+            _translate("MainWindow", "Start Time : "))
         self.attractionCostLabel.setText(_translate("MainWindow", "Cost : "))
         self.attractionTypeLabel.setText(_translate("MainWindow", "Type :"))
 
         self.attractionUpdateButton.setText(_translate("MainWindow", "Update"))
         self.attractionAddButton.setText(_translate("MainWindow", "Add"))
 
-
-        self.restaurantLabel.setText(_translate("MainWindow", "You are editing the Restaurant table. Please note Venue_ID is the primary key."))
-        self.restaurantIDLabel.setText(_translate("MainWindow", "Restaurant ID : "))
-        self.restaurantNameLabel.setText(_translate("MainWindow", "Name Of Restaurant : "))
-        self.restaurantLatLabel.setText(_translate("MainWindow", "Latitude : "))
-        self.restaurantLongLabel.setText(_translate("MainWindow", "Longitude : "))
-        self.restaurantCategoryLabel.setText(_translate("MainWindow", "Category : "))
+        self.restaurantLabel.setText(_translate(
+            "MainWindow", "You are editing the Restaurant table. Please note Venue_ID is the primary key."))
+        self.restaurantIDLabel.setText(
+            _translate("MainWindow", "Restaurant ID : "))
+        self.restaurantNameLabel.setText(
+            _translate("MainWindow", "Name Of Restaurant : "))
+        self.restaurantLatLabel.setText(
+            _translate("MainWindow", "Latitude : "))
+        self.restaurantLongLabel.setText(
+            _translate("MainWindow", "Longitude : "))
+        self.restaurantCategoryLabel.setText(
+            _translate("MainWindow", "Category : "))
         self.restaurantCostLabel.setText(_translate("MainWindow", "Cost : "))
         self.restaurantLikesLabel.setText(_translate("MainWindow", "Likes :"))
-        self.restaurantNeighbourhoodLabel.setText(_translate("MainWindow", "Neighbourhood :"))
+        self.restaurantNeighbourhoodLabel.setText(
+            _translate("MainWindow", "Neighbourhood :"))
 
         self.restaurantUpdateButton.setText(_translate("MainWindow", "Update"))
         self.restaurantAddButton.setText(_translate("MainWindow", "Add"))
-
 
 
 if __name__ == "__main__":
