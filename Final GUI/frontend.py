@@ -996,13 +996,13 @@ class Ui_MainWindow(object):
 
 
     ######## Flights Part Starts Here ################
-
+    
     class FlightWidget(QtWidgets.QWidget):
         def __init__(self, outer, parent=None):
             super(outer.FlightWidget, self).__init__(parent)
             self.outer = outer
             self.box = QtWidgets.QVBoxLayout()
-
+            
             self.id = QtWidgets.QLabel()
             self.airline = QtWidgets.QLabel()
             self.airport = QtWidgets.QLabel()
@@ -1055,7 +1055,7 @@ class Ui_MainWindow(object):
                     window.reject()
                     return
                 selectedSeats = spinbox.value()
-
+                
                 print("You attempted to book {} seats in Flight No: {}".format(selectedSeats, flightNo))
                 seats = self.outer.mybackendFlight.bookSeats(flightNo, selectedSeats, int(self.outer.USER_ID), int(self.outer.BALANCE))
                 if (seats[0]==-1):
@@ -1118,13 +1118,13 @@ class Ui_MainWindow(object):
             self.box.addWidget(searchbutton)
             self.setLayout(self.box)
 
-
+    
     class airlineAdminMode:
         def __init__(self, outer):
             outer.flightAdminWindow = QtWidgets.QWidget(outer.MainWindow)
             self.outer = outer
             mainVertLayout = QtWidgets.QVBoxLayout()
-
+            
             ## add airline ##
             airlineAdder = QtWidgets.QVBoxLayout()
             airlineAdder.addWidget(QtWidgets.QLabel("Add Airline"))
@@ -1166,7 +1166,7 @@ class Ui_MainWindow(object):
             flightAdder.addWidget(QtWidgets.QLabel("Add FLight"))
             flightAdderH = QtWidgets.QHBoxLayout()
             flightAdderH2 = QtWidgets.QHBoxLayout()
-
+            
             self.addFlightAirline = QtWidgets.QComboBox()
             self.addFlightAirline.addItems(outer.mybackendFlight.getAirlines())
             self.addFlightAirport = QtWidgets.QComboBox()
@@ -1190,10 +1190,10 @@ class Ui_MainWindow(object):
             flightAdderH2.addWidget(addFlightBtn)
             flightAdderH2.addWidget(QtWidgets.QLabel("Flight Id: "))
             flightAdderH2.addWidget(self.addFlightResult)
-
+            
             flightAdder.addLayout(flightAdderH)
             flightAdder.addLayout(flightAdderH2)
-
+            
 
             ## add tickets ##
             ticketAdder = QtWidgets.QVBoxLayout()
@@ -1204,7 +1204,7 @@ class Ui_MainWindow(object):
             val1 = QtGui.QIntValidator()
             val1.setBottom(1)
             self.addTicketFlightId.setValidator(val1)
-
+           
             self.addTicketNumSeats = QtWidgets.QLineEdit()
             self.addTicketNumSeats.setValidator(QtGui.QIntValidator(1,500))
             self.addTicketNumSeats.setPlaceholderText("Number of Seats")
@@ -1269,11 +1269,11 @@ class Ui_MainWindow(object):
             k = self.airlineRemoveName.count()
             while(k>0):
                 self.airlineRemoveName.removeItem(0)
-                self.addFlightAirline.removeItem(0)
+                self.addFlightAirline.removeItem(0)                
                 k-=1
             self.airlineRemoveName.addItems(self.outer.mybackendFlight.getAirlines())
             self.addFlightAirline.addItems(self.outer.mybackendFlight.getAirlines())
-
+            
         def addAirport(self):
             name = self.addAirportName.text()
             country = self.addAirportCountry.text()
@@ -1287,10 +1287,10 @@ class Ui_MainWindow(object):
             self.outer.mybackendFlight.addAirport(name, country, city)
             k = self.addFlightAirport.count()
             while(k>0):
-                self.addFlightAirport.removeItem(0)
+                self.addFlightAirport.removeItem(0)          
                 k-=1
             self.addFlightAirport.addItems(self.outer.mybackendFlight.getAllAirports())
-
+            
         def addFlight(self):
             airline = self.addFlightAirline.currentText()
             airport = self.addFlightAirport.currentText()
@@ -1300,12 +1300,12 @@ class Ui_MainWindow(object):
                 choice = QtWidgets.QMessageBox.information(self.outer.flightAdminWindow, 'Wrong DateTime',"Arrival DateTime should be after Departure DateTime",QtWidgets.QMessageBox.Ok)
                 return
             idx = self.outer.mybackendFlight.addFlight(airline, airport, departure, arrival)
-
+            
             self.addFlightResult.setText(str(idx))
             k = self.addTicketFlightId.count()
             while(k>0):
                 self.addTicketFlightId.removeItem(0)
-                self.removeFlightId.removeItem(0)
+                self.removeFlightId.removeItem(0)          
                 k-=1
             self.addTicketFlightId.addItems(self.outer.mybackendFlight.getFlightIDs())
             self.removeFlightId.addItems(self.outer.mybackendFlight.getFlightIDs())
@@ -1317,9 +1317,9 @@ class Ui_MainWindow(object):
             if not(numtickets>0 and price>0):
                 choice = QtWidgets.QMessageBox.information(self.outer.flightAdminWindow, 'Non Positive Value',"Only Positive Values are Allowed",QtWidgets.QMessageBox.Ok)
                 return
-
+            
             self.outer.mybackendFlight.addTickets(int(flightid), numtickets, price)
-
+            
         def removeFlight(self):
             id = int(self.removeFlightId.currentText())
             choice = QtWidgets.QMessageBox.information(self.outer.flightAdminWindow, 'Confirmaton',"Are you sure, you want to remove the chosen flight",QtWidgets.QMessageBox.Yes  |QtWidgets.QMessageBox.No)
@@ -1328,7 +1328,7 @@ class Ui_MainWindow(object):
             k = self.addTicketFlightId.count()
             while(k>0):
                 self.addTicketFlightId.removeItem(0)
-                self.removeFlightId.removeItem(0)
+                self.removeFlightId.removeItem(0)          
                 k-=1
             self.addTicketFlightId.addItems(self.outer.mybackendFlight.getFlightIDs())
             self.removeFlightId.addItems(self.outer.mybackendFlight.getFlightIDs())
@@ -1341,13 +1341,20 @@ class Ui_MainWindow(object):
             k = self.airlineRemoveName.count()
             while(k>0):
                 self.airlineRemoveName.removeItem(0)
-                self.addFlightAirline.removeItem(0)
+                self.addFlightAirline.removeItem(0)                
                 k-=1
             self.airlineRemoveName.addItems(self.outer.mybackendFlight.getAirlines())
             self.addFlightAirline.addItems(self.outer.mybackendFlight.getAirlines())
+            k = self.addTicketFlightId.count()
+            while(k>0):
+                self.addTicketFlightId.removeItem(0)
+                self.removeFlightId.removeItem(0)          
+                k-=1
+            self.addTicketFlightId.addItems(self.outer.mybackendFlight.getFlightIDs())
+            self.removeFlightId.addItems(self.outer.mybackendFlight.getFlightIDs())
 
-
-
+      
+    
     def runAirlineAdminMode(self):
         self.Stack.setCurrentWidget(self.flightAdminWindow)
     def airlineInitializer(self):

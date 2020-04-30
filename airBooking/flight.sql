@@ -4,8 +4,10 @@ CREATE TABLE flight(
   ,dest_airport INTEGER  NOT NULL
   ,departure    DATETIME  NOT NULL
   ,arrival      DATETIME  NOT NULL
+  ,CHECK (arrival > departure)
   ,FOREIGN KEY (airline) REFERENCES airlines(ID)
   ,FOREIGN KEY (dest_airport) REFERENCES airport(id)
+  
 );
 INSERT INTO flight(flight_id,airline,dest_airport,departure,arrival) VALUES (1,10,39,'2020-05-04 05:00:00','2020-05-05 09:00:00');
 INSERT INTO flight(flight_id,airline,dest_airport,departure,arrival) VALUES (2,1,30,'2020-05-04 16:00:00','2020-05-05 22:00:00');
