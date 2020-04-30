@@ -24,11 +24,11 @@ class PUM(QDialog):
 
 class backendRestaurant:
     def __init__(self):
-        # self.cnx = mysql.connector.connect(user='root', password='40@Vaibhav',host='127.0.0.1', database='dbms')
+        self.cnx = mysql.connector.connect(user='root', password='40@Vaibhav',host='127.0.0.1', database='dbms')
         # self.cnx = mysql.connector.connect(host="localhost",user="root",passwd="admin",database = 'finalproject',auth_plugin='mysql_native_password',autocommit=True)
-        self.cnx = mysql.connector.connect(user='rhythm', password='password',
-                                           host='127.0.0.1',
-                                           database='proj')
+        # self.cnx = mysql.connector.connect(user='rhythm', password='password',
+        #                                    host='127.0.0.1',
+        #                                    database='proj')
         self.cur = self.cnx.cursor(buffered=True)
         self.getRestaurant()
 
@@ -57,7 +57,7 @@ class backendRestaurant:
 
         if(len(Likes) is not 0):
             self.cur.execute('update Venues set Likes = %s where Venue_Id = %s',(str(Likes),str(Venue_Id)))
-            self.cur.execute('update Reviews set Likes = %s where Venue_Id = %s',(str(Likes),str(Venue_Id)))
+            self.cur.execute('update Review set Likes = %s where Venue_Id = %s',(str(Likes),str(Venue_Id)))
 
         if(len(Cost) is not 0):
             self.cur.execute('update Venues set Likes = %s where Venue_Id = %s',(str(Cost),str(Venue_Id)))

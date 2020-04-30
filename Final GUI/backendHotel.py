@@ -2,10 +2,10 @@ import mysql.connector
 
 class backendHotel:
 	def __init__(self):
-		# self.mydb = mysql.connector.connect(host="localhost",user="root",passwd="admin",database = 'finalproject',auth_plugin='mysql_native_password',autocommit=True)
-		self.mydb = mysql.connector.connect(user='rhythm', password='password',
-                                           host='127.0.0.1',
-                                           database='proj')
+		self.mydb = mysql.connector.connect(host="localhost",user="root",passwd="40@Vaibhav",database = 'dbms',auth_plugin='mysql_native_password',autocommit=True)
+		# self.mydb = mysql.connector.connect(user='rhythm', password='password',
+        #                                    host='127.0.0.1',
+        #                                    database='proj')
 		self.mycursor = self.mydb.cursor(buffered=True)
 		self.hotels = []
 		self.all_hotel_list=[]
