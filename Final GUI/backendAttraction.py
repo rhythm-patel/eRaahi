@@ -15,23 +15,30 @@ class backendAttraction:
         self.getAttractions()
 
     def getIDs(self):
-    	self.IDs = []
-    	self.cur.execute('select Attraction_ID from Attraction')
-    	for ids in self.cur:
-    		self.IDs.append(ids)
-    	return self.IDs
+        self.IDs = []
+        self.cur.execute('select Attraction_ID from Attraction')
+        for ids in self.cur:
+            self.IDs.append(ids)
+        return self.IDs
 
-    def updateAttractions(self,Attraction_ID,Name_of_Attraction,Summary,Duration,Start_Time,Cost,Type):
-        self.cur.execute('update Attraction set Name_of_Attraction = %s where Attraction_ID = %s',(str(Name_of_Attraction),str(Attraction_ID)))
-        self.cur.execute('update Attraction set Summary = %s where Attraction_ID = %s',(str(Summary),str(Attraction_ID)))
-        self.cur.execute('update Attraction set Duration = %s where Attraction_ID = %s',(str(Duration),str(Attraction_ID)))
-        self.cur.execute('update Attraction set Start_Time = %s where Attraction_ID = %s',(str(Start_Time),str(Attraction_ID)))
-        self.cur.execute('update Attraction set Cost = %s where Attraction_ID = %s',(str(Cost),str(Attraction_ID)))
-        self.cur.execute('update Attraction set Type = %s where Attraction_ID = %s',(str(Type),str(Attraction_ID)))
+    def updateAttractions(self, Attraction_ID, Name_of_Attraction, Summary, Duration, Start_Time, Cost, Type):
+        self.cur.execute('update Attraction set Name_of_Attraction = %s where Attraction_ID = %s', (str(
+            Name_of_Attraction), str(Attraction_ID)))
+        self.cur.execute('update Attraction set Summary = %s where Attraction_ID = %s', (str(
+            Summary), str(Attraction_ID)))
+        self.cur.execute('update Attraction set Duration = %s where Attraction_ID = %s', (str(
+            Duration), str(Attraction_ID)))
+        self.cur.execute('update Attraction set Start_Time = %s where Attraction_ID = %s', (str(
+            Start_Time), str(Attraction_ID)))
+        self.cur.execute('update Attraction set Cost = %s where Attraction_ID = %s', (str(
+            Cost), str(Attraction_ID)))
+        self.cur.execute('update Attraction set Type = %s where Attraction_ID = %s', (str(
+            Type), str(Attraction_ID)))
         self.cnx.commit()
 
-    def addAttractions(self,Attraction_ID,Name_of_Attraction,Summary,Duration,Start_Time,Cost,Type):
-        self.cur.execute('INSERT INTO Attraction (Attraction_ID, Name_of_Attraction, Summary, Duration, Start_Time, Cost, Type) VALUES (%s, %s, %s, %s, %s, %s, %s)',(str(Attraction_ID),str(Name_of_Attraction),str(Summary),str(Duration),str(Start_Time),str(Cost),str(Type)))
+    def addAttractions(self, Attraction_ID, Name_of_Attraction, Summary, Duration, Start_Time, Cost, Type):
+        self.cur.execute('INSERT INTO Attraction (Attraction_ID, Name_of_Attraction, Summary, Duration, Start_Time, Cost, Type) VALUES (%s, %s, %s, %s, %s, %s, %s)', (str(
+            Attraction_ID), str(Name_of_Attraction), str(Summary), str(Duration), str(Start_Time), str(Cost), str(Type)))
         self.cnx.commit()
 
     def getAttractions(self):
